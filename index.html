@@ -981,40 +981,49 @@ if(!reduce&&matchMedia("(hover:hover)").matches){
   document.querySelectorAll(".card").forEach(c=>c.onmousemove=e=>{const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")});
 }
 
-// 背景音樂：網頁即時合成的氛圍電子（和弦鋪底＋輕節拍＋點綴音），按鈕開啟才會發聲
-(function(){const btn=document.getElementById("music");let ctx,master,delay,filt,timer,step=0,nextT=0,on=false,noise;
-  const BEAT=60/88,E8=BEAT/2;                         // 88 BPM，以八分音符為一格
-  const CH=[ // [低音, 和弦音...]：Am9 → Fmaj7 → Cmaj7 → G6
-    [110,[220,261.63,329.63,493.88]],[87.31,[174.61,220,261.63,329.63]],[130.81,[196,246.94,261.63,329.63]],[98,[196,246.94,293.66,329.63]]];
-  const ARP=[440,523.25,587.33,659.25,783.99,880];
+// 背景音樂：網頁即時合成的 Tech House（四拍底鼓＋反拍開鈸＋滾動貝斯＋和弦刺音），按鈕開啟才會發聲
+(function(){const btn=document.getElementById("music");let ctx,master,duck,delay,stabF,timer,step=0,nextT=0,on=false,noise;
+  const BPM=125,S16=60/BPM/4,SWING=S16*.10;                 // 以十六分音符為一格，反拍略往後推出律動
+  const ROOT=55;                                             // A 小調
+  const BASS=[null,0,0,null, null,0,12,null, null,0,0,3, null,0,10,null];   // 相對根音的半音數，null＝休止（避開底鼓）
+  const STAB=[220,261.63,329.63,392];                        // Am7
+  const hz=n=>ROOT*Math.pow(2,n/12);
   function build(){ctx=new (window.AudioContext||window.webkitAudioContext)();
-    const comp=ctx.createDynamicsCompressor();comp.threshold.value=-18;comp.ratio.value=4;comp.connect(ctx.destination);
+    const comp=ctx.createDynamicsCompressor();comp.threshold.value=-14;comp.ratio.value=5;comp.attack.value=.004;comp.release.value=.12;comp.connect(ctx.destination);
     master=ctx.createGain();master.gain.value=0;master.connect(comp);
     const an=ctx.createAnalyser();an.fftSize=512;master.connect(an);window.__musicAnalyser=an;
-    filt=ctx.createBiquadFilter();filt.type="lowpass";filt.frequency.value=900;filt.Q.value=.7;filt.connect(master);
-    const lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=.07;lg.gain.value=380;lfo.connect(lg);lg.connect(filt.frequency);lfo.start();
-    delay=ctx.createDelay(1.5);delay.delayTime.value=BEAT*.75;const fb=ctx.createGain();fb.gain.value=.38;const dl=ctx.createBiquadFilter();dl.type="lowpass";dl.frequency.value=2400;
-    const wet=ctx.createGain();wet.gain.value=.32;delay.connect(dl);dl.connect(fb);fb.connect(delay);dl.connect(wet);wet.connect(master);
-    const len=ctx.sampleRate*.25,buf=ctx.createBuffer(1,len,ctx.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;noise=buf}
-  function env(g,t,peak,a,dur,r){g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(peak,t+a);g.gain.setValueAtTime(peak,t+dur);g.gain.linearRampToValueAtTime(0,t+dur+r)}
-  function pad(notes,t,dur){for(const f of notes)for(const det of [-7,7]){const o=ctx.createOscillator(),g=ctx.createGain();o.type="sawtooth";o.frequency.value=f;o.detune.value=det;
-    env(g,t,.03,1.6,dur,2.2);o.connect(g);g.connect(filt);o.start(t);o.stop(t+dur+2.4)}}
-  function bass(f,t,dur){const o=ctx.createOscillator(),g=ctx.createGain();o.type="sine";o.frequency.value=f;env(g,t,.16,.08,dur*.8,.6);o.connect(g);g.connect(master);o.start(t);o.stop(t+dur+.8)}
-  function kick(t){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(115,t);o.frequency.exponentialRampToValueAtTime(42,t+.16);
-    g.gain.setValueAtTime(.3,t);g.gain.exponentialRampToValueAtTime(.001,t+.32);o.connect(g);g.connect(master);o.start(t);o.stop(t+.34)}
-  function hat(t,v){const s=ctx.createBufferSource(),hp=ctx.createBiquadFilter(),g=ctx.createGain();s.buffer=noise;hp.type="highpass";hp.frequency.value=7500;
-    g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+.07);s.connect(hp);hp.connect(g);g.connect(master);s.start(t);s.stop(t+.09)}
-  function pluck(f,t){const o=ctx.createOscillator(),g=ctx.createGain();o.type="triangle";o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.07,t+.01);
-    g.gain.exponentialRampToValueAtTime(.001,t+.9);o.connect(g);g.connect(master);g.connect(delay);o.start(t);o.stop(t+1)}
-  function tick(){while(nextT<ctx.currentTime+.35){const s=step%16,c=CH[Math.floor(step/16)%CH.length],bar=Math.floor(step/16);
-      if(s===0){pad(c[1],nextT,E8*16);bass(c[0],nextT,E8*8)}
-      if(s===8)bass(c[0],nextT,E8*6);
-      if(bar>=2){if(s%8===0)kick(nextT);if(s%2===1)hat(nextT,s%4===3?.035:.02)}       // 前兩個和弦只有鋪底，節拍之後才進來
-      if(bar>=1&&s%2===0&&Math.random()<.42)pluck(ARP[Math.floor(Math.random()*ARP.length)],nextT);
-      nextT+=E8;step++}}
-  function start(){if(!ctx)build();ctx.resume();step=0;nextT=ctx.currentTime+.08;clearInterval(timer);timer=setInterval(tick,100);tick();
-    master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(.55,ctx.currentTime+2.5)}
-  function stop(){clearInterval(timer);const t=ctx.currentTime;master.gain.cancelScheduledValues(t);master.gain.setValueAtTime(master.gain.value,t);master.gain.linearRampToValueAtTime(0,t+.8);setTimeout(()=>{if(!on)ctx.suspend()},1600)}
+    duck=ctx.createGain();duck.connect(master);               // 底鼓一下，貝斯與和弦就被壓一下（抽吸感）
+    stabF=ctx.createBiquadFilter();stabF.type="lowpass";stabF.frequency.value=700;stabF.Q.value=6;stabF.connect(duck);
+    delay=ctx.createDelay(1);delay.delayTime.value=S16*3;const fb=ctx.createGain();fb.gain.value=.34;const hp=ctx.createBiquadFilter();hp.type="highpass";hp.frequency.value=500;
+    const wet=ctx.createGain();wet.gain.value=.28;delay.connect(hp);hp.connect(fb);fb.connect(delay);hp.connect(wet);wet.connect(duck);
+    const len=ctx.sampleRate*.5,buf=ctx.createBuffer(1,len,ctx.sampleRate),d=buf.getChannelData(0);for(let k=0;k<len;k++)d[k]=Math.random()*2-1;noise=buf}
+  function kick(t){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(165,t);o.frequency.exponentialRampToValueAtTime(46,t+.11);
+    g.gain.setValueAtTime(.95,t);g.gain.exponentialRampToValueAtTime(.001,t+.3);o.connect(g);g.connect(master);o.start(t);o.stop(t+.32);
+    duck.gain.cancelScheduledValues(t);duck.gain.setValueAtTime(.22,t);duck.gain.linearRampToValueAtTime(1,t+S16*3)}
+  function nz(t,type,freq,q,vol,dec){const s=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();s.buffer=noise;f.type=type;f.frequency.value=freq;f.Q.value=q;
+    g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+dec);s.connect(f);f.connect(g);g.connect(master);s.start(t,Math.random()*.2);s.stop(t+dec+.02)}
+  const hat=(t,v)=>nz(t,"highpass",9000,.7,v,.035),ohat=t=>nz(t,"highpass",7000,.7,.11,.16);
+  function clap(t,v=.3){for(const o of [0,.011,.022])nz(t+o,"bandpass",1500,1.4,v*.7,.05);nz(t+.03,"bandpass",1300,1,v,.18)}
+  function bass(n,t){const o=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain();o.type="square";o.frequency.value=hz(n);
+    f.type="lowpass";f.Q.value=7;f.frequency.setValueAtTime(900,t);f.frequency.exponentialRampToValueAtTime(160,t+.11);
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.34,t+.006);g.gain.exponentialRampToValueAtTime(.001,t+S16*.95);
+    o.connect(f);f.connect(g);g.connect(duck);o.start(t);o.stop(t+S16)}
+  function stab(t,cut){stabF.frequency.setValueAtTime(cut,t);for(const fr of STAB)for(const det of [-9,9]){const o=ctx.createOscillator(),g=ctx.createGain();o.type="sawtooth";o.frequency.value=fr;o.detune.value=det;
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.045,t+.005);g.gain.exponentialRampToValueAtTime(.001,t+.16);o.connect(g);g.connect(stabF);g.connect(delay);o.start(t);o.stop(t+.18)}}
+  function perc(t,f){const o=ctx.createOscillator(),g=ctx.createGain();o.type="sine";o.frequency.setValueAtTime(f*1.5,t);o.frequency.exponentialRampToValueAtTime(f,t+.04);
+    g.gain.setValueAtTime(.16,t);g.gain.exponentialRampToValueAtTime(.001,t+.11);o.connect(g);g.connect(master);g.connect(delay);o.start(t);o.stop(t+.12)}
+  function tick(){while(nextT<ctx.currentTime+.3){const s=step%16,bar=Math.floor(step/16),t=nextT+(s%2?SWING:0),fill=bar%8===7&&s>=12;
+      if(s%4===0&&!fill)kick(t);                                        // 四拍底鼓
+      hat(t,s%4===2?.0:(s%2?.05:.03));                                  // 十六分閉鈸
+      if(bar>=2){if(s%4===2)ohat(t);if(s===4||s===12)clap(t)}           // 反拍開鈸、二四拍拍手
+      if(bar>=4&&BASS[s]!==null&&!fill)bass(BASS[s],t);                 // 滾動貝斯
+      if(bar>=8){if(s===3||s===10||(bar%2&&s===14))stab(t,600+((bar%8)*16+s)/128*2600);   // 和弦刺音，八小節內濾波器慢慢打開
+        if(s===7)perc(t,330);if(s===13&&bar%2)perc(t,247)}
+      if(fill)clap(t,.14+(s-12)*.06);                                   // 每八小節最後半拍抽掉底鼓做過門
+      nextT+=S16;step++}}
+  function start(){if(!ctx)build();ctx.resume();step=0;nextT=ctx.currentTime+.08;clearInterval(timer);timer=setInterval(tick,60);tick();
+    master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(.5,ctx.currentTime+1.2)}
+  function stop(){clearInterval(timer);const t=ctx.currentTime;master.gain.cancelScheduledValues(t);master.gain.setValueAtTime(master.gain.value,t);master.gain.linearRampToValueAtTime(0,t+.6);setTimeout(()=>{if(!on)ctx.suspend()},1300)}
   btn.onclick=()=>{on=!on;btn.setAttribute("aria-pressed",on);btn.setAttribute("aria-label",on?"關閉背景音樂":"開啟背景音樂");on?start():stop()};
   document.addEventListener("visibilitychange",()=>{if(!ctx||!on)return;document.hidden?ctx.suspend():ctx.resume()});
   window.__music=()=>({on,state:ctx&&ctx.state,step})})();
