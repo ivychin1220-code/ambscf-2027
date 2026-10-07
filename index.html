@@ -427,6 +427,13 @@ a.vr:hover{background:var(--panel2);transform:translateY(-4px)}
 @media(max-width:1000px){.vgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.vgrid{grid-template-columns:1fr}#vendors .chips{justify-content:flex-start;gap:0 24px}#vendors .chip{font-size:16px}.vr h3{font-size:20px}}
 
+.lg{display:block;width:112px;height:112px;margin:0 auto 20px;border-radius:24px;overflow:hidden;background:#0e0a2b;transition:transform .35s}
+.lg img{width:100%;height:100%;object-fit:cover}
+.lg.contain img{object-fit:contain;padding:10px}
+.lg.light{background:#fff}
+.lg.none{display:grid;place-items:center;font-size:40px;font-weight:900;color:var(--c);background:rgba(255,255,255,.05)}
+a.vr:hover .lg{transform:scale(1.06) rotate(-2deg)}
+
 /* DJ 與舞台：置中、放大，電腦版三欄排開 */
 .djsec .wrap{text-align:center}
 .djsec h2{font-size:clamp(36px,5vw,64px)}
@@ -447,6 +454,14 @@ a.vr:hover{background:var(--panel2);transform:translateY(-4px)}
   .dj{flex:none}
 }
 @media(max-width:899px){.dj{flex-basis:min(340px,84vw)}.dj h3{font-size:30px}.dj .disc{width:140px;height:140px}}
+
+.dj .disc.photo{border-width:3px;background:#0e0a2b}
+.dj .disc.photo img{transition:transform .5s}
+.dj:hover .disc.photo img{transform:scale(1.08)}
+/* 只有活動預告圖的演出者：放大取中間人像 */
+.dj .disc.crop img{inset:auto;left:50%;top:50%;width:250%;height:auto;max-width:none;border-radius:0;translate:-50% -48%}
+.dj:hover .disc.crop img{transform:scale(1.06)}
+@media(min-width:1100px){.djrow{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}.dj{flex:0 0 calc(25% - 15px);padding:36px 20px 76px}.dj h3{font-size:30px}}
 
 /* 時間表：置中、放大，電腦版左右交錯 */
 .sched .wrap{text-align:center}
@@ -626,7 +641,7 @@ details p{font-size:16px;margin:0 0 24px}
     </div>
     <div class="stats">
       <div class="stat rv"><b data-n="40" data-s="+">0</b><span>身心靈品牌</span></div>
-      <div class="stat rv" style="--d:.1s"><b data-n="6">0</b><span>組舞台演出</span></div>
+      <div class="stat rv" style="--d:.1s"><b data-n="7">0</b><span>組舞台演出</span></div>
       <div class="stat rv" style="--d:.2s"><b data-n="2">0</b><span>天主題市集</span></div>
       <div class="stat rv" style="--d:.3s"><b data-n="1">0</b><span>場新年開運晚會</span></div>
     </div>
@@ -648,7 +663,7 @@ details p{font-size:16px;margin:0 0 24px}
   <div class="wrap">
     <p class="eyebrow rv">Stage Lineup · 1/2 – 1/3</p>
     <h2 class="rv">DJ 與舞台陣容</h2>
-    <p class="lead rv">1/2 四組音樂人從午後接力到入夜，1/3 尺八與梵唄接棒，在北流戶外舞台陪你逛市集。</p>
+    <p class="lead rv">1/2 四組音樂人從午後接力到入夜，1/3 尺八與梵唄接棒，晚會由董事長樂團主唱吉董壓軸。</p>
   </div>
   <p class="swipe rv">← SWIPE →</p>
   <div class="djrow" id="djrow"></div>
@@ -680,12 +695,12 @@ details p{font-size:16px;margin:0 0 24px}
         <div class="ev k-stage" style="--i:1"><time>15:00 – 16:00</time><span class="tag">舞台</span><h4>路哥</h4><p>尺八演出</p></div>
         <div class="ev k-stage" style="--i:2"><time>16:00 – 17:00</time><span class="tag">舞台</span><h4>空行者</h4><p>梵唄音樂人・跨界創作藝術家</p></div>
         <div class="ev k-gala" style="--i:3"><time>17:00</time><span class="tag">晚會</span><h4>晚宴賓客報到進場</h4><p>暖場音樂</p></div>
-        <div class="ev k-gala" style="--i:4"><time>18:00</time><span class="tag">晚會</span><h4>開運晚會正式開始</h4><p>開場演唱、主持人開場、主辦單位致詞</p></div>
+        <div class="ev k-gala" style="--i:4"><time>18:00</time><span class="tag">晚會</span><h4>開運晚會正式開始</h4><p>吉董（董事長樂團主唱）開場演唱、主持人開場、主辦單位致詞</p></div>
         <div class="ev k-gala" style="--i:5"><time>18:45</time><span class="tag">晚會</span><h4>魔術表演</h4></div>
         <div class="ev k-gala" style="--i:6"><time>19:00</time><span class="tag">晚會</span><h4>現場互動</h4></div>
         <div class="ev k-gala" style="--i:7"><time>19:25</time><span class="tag">晚會</span><h4>抽獎與頒獎</h4><p>第一次抽獎、頒獎、分會長分享</p></div>
         <div class="ev k-gala" style="--i:8"><time>20:00</time><span class="tag">晚會</span><h4>最終抽獎</h4></div>
-        <div class="ev k-gala" style="--i:9"><time>20:15</time><span class="tag">晚會</span><h4>壓軸演唱・一起為台灣祈福</h4><p>大合照與謝幕</p></div>
+        <div class="ev k-gala" style="--i:9"><time>20:15</time><span class="tag">晚會</span><h4>吉董壓軸演唱・一起為台灣祈福</h4><p>大合照與謝幕</p></div>
         <div class="ev k-gala" style="--i:10"><time>20:30</time><span class="tag">晚會</span><h4>晚會結束</h4></div>
       </div>
     </div>
@@ -805,45 +820,45 @@ tick();setInterval(tick,1000);
 // cat 分類｜name 攤位名｜tags 服務項目｜desc 介紹｜days 擺攤日｜url 連結｜img 照片路徑（沒有就留空）
 const CATS={"命理開運":"var(--violet)","身心療癒":"var(--cyan)","香氛手作":"var(--pink)","文創選物":"var(--amber)","輕食飲品":"#7dffb0"};
 const vendors=[
-  {"cat":"命理開運","name":"和豐開運坊","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"文王卦米卦、籖卦、八字、生肖姓名學","days":["1/2","1/3"],"url":"https://www.instagram.com/y2288181?igsi=MW01bTYzMGp5aml4cg%3D%3D&utm_source=qr","img":""},
-  {"cat":"命理開運","name":"Zoe的心光角落","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"Zoe 以塔羅占卜與身心靈陪伴為核心，希望用貼近日常、容易理解的方式，陪伴每個人整理當下的困惑與方向。除了塔羅占卜，也提供盧恩符文、與個人陪伴服務，並製作魔法…","days":["1/2","1/3"],"url":"https://www.instagram.com/zoe_tarot_8?igsi=eDNxcWI2aGc2dGQw","img":""},
-  {"cat":"身心療癒","name":"開門紅/拉蒙朵國際藝術有限公司","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"開門紅是拉蒙朵藝術中心旗下的能量療癒開運品牌，主要產品有開運膏、開運精油、開運紅內褲、開運手串、項錬、吊飾等多種產品。江柏樂老師及其他命理老師推薦、美鳳有約、…","days":["1/2","1/3"],"url":"https://www.lmart.url.tw","img":""},
-  {"cat":"文創選物","name":"808魔術店","tags":"塔羅牌 收藏撲克牌 魔術道具","desc":"販售魔術道具 整人玩具 收藏撲克牌 塔羅牌","days":["1/2","1/3"],"url":"https://www.shop2000.com.tw/808magicstore","img":""},
-  {"cat":"文創選物","name":"拆禮物/Gift of nature","tags":"各式桌遊","desc":"從生命靈數認識自己，從水晶探索更多可能，也陪你在喜歡的事裡，找到自己的方向。「拆禮物」Gift of Nature，陪你拆開無限的可能，不只是水晶與命盤，更是…","days":["1/2","1/3"],"url":"https://www.instagram.com/lovewz.nature/","img":""},
-  {"cat":"香氛手作","name":"沐癒心靈 x 曦境能量手工製香","tags":"手工藝、生活選品、礦石、文創","desc":"陪伴 × 探索 × 表達 × 創造 × 整合 以點點色彩曼陀羅為核心 結合多元藝術與生活覺察 在創作中探索、表達自己 並創造屬於自己的生命色彩","days":["1/2","1/3"],"url":"https://www.instagram.com/muzi_dotliving","img":""},
-  {"cat":"命理開運","name":"星光大道","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"星光大道 Starway 是一個探索宇宙智慧、個人成長與內在啟發的學習空間。 我們融合未來思維、星空哲學、能量平衡與古代文明的知識， 提供課程、實作工作坊與公…","days":["1/2","1/3"],"url":"https://www.facebook.com/share/1Bqz7YABV1/","img":""},
-  {"cat":"文創選物","name":"Go.Do.Be.Live！ 好好生活！","tags":"二手書、新書","desc":"我是Annie，Go.Do.Be.Live!的創辦人兼作者。我於2020年創立了這個品牌，因為我希望將自主學習變成一種創意且易於使用的方法。 無論您是在辦公桌…","days":["1/2","1/3"],"url":"https://www.godobelive.com","img":""},
-  {"cat":"香氛手作","name":"Lilly","tags":"客製化能量手串、客製化能量調香水","desc":"翻轉傳統意象，讓隨身守護成為你的專屬時尚 堅持客製化，每一條手串、每一瓶調香水都是獨一無二不重覆、不復刻，打造個人能量。","days":["1/2","1/3"],"url":"https://www.instagram.com/lilly08082026?stkn=MWM3d2MxaXI3NTVhMA==","img":""},
-  {"cat":"命理開運","name":"銘君閣象棋卜卦","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"運籌帷幄，決勝千里 解感情｜事業｜人生選擇 陪你理清迷惘，找到下一步","days":["1/3"],"url":"https://www.instagram.com/mingjunge329?stkn=MW45MWQ3Z3VhZzlmbA==","img":""},
-  {"cat":"身心療癒","name":"1x🌏life","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"療癒90%的潛意識信念與感受，用1成輕鬆的意識，活出美好的生命～ 更放鬆的回到自己的心，回到內在的寧靜，透過希塔療癒的冥想方式，在無條件的愛裡，清理限制性的信…","days":["1/2","1/3"],"url":"https://www.instagram.com/1xlife/","img":""},
-  {"cat":"命理開運","name":"身心靈創製所","tags":"生命藍圖數字解析、牌卡、魔法鹽魔法蠟燭","desc":"身心靈創製所，是一個融合心理成長、靈性探索、生命教育與生活創作的陪伴空間。我們透過課程、工作坊、牌卡與引導式對話，陪伴你看見內在情緒與生命經驗，理解關係中的課…","days":["1/2","1/3"],"url":"https://www.instagram.com/h_y_f___?stkn=MXhyaDBvZXIxaWN6Yg%3D%3D&utm_source=qr","img":""},
-  {"cat":"命理開運","name":"貓男爵的城堡","tags":"塔羅牌+Cosplay+戲劇輔療","desc":"結合塔羅牌+Cosplay+戲劇輔療，讓眼前的問題呈現出來並更好解決問題","days":["1/2","1/3"],"url":"https://www.facebook.com/share/19XfnKSKEZ/?mibextid=wwXIfr","img":""},
-  {"cat":"命理開運","name":"命理森活學苑＆沅然之所","tags":"奇門八字、五行手鏈、開運物品","desc":"命理森活 八字看底牌，奇門看時機。我們提供八字與奇門遁甲諮詢，並出具正式報告書，讓分析看得懂、帶得走。不談吉凶恐嚇，只回答一件事：以你的條件，這一步怎麼走最省…","days":["1/2"],"url":"https://chenshen33.liyang.international/","img":""},
-  {"cat":"命理開運","name":"Queen tarot healing /璀璨心靈療心室","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"Queen’s Tarot Healing｜璀璨心靈療心室創立於2019年，專注於關係療癒諮詢、自我成長與個人目標引導，透過一對一線上服務，陪伴你在感情、事業…","days":["1/2"],"url":"https://www.instagram.com/queen_tarot_healing?stkn=MXh6c2hveWltY3htNA%3D%3D&utm_source=qr","img":""},
-  {"cat":"身心療癒","name":"Aura-Soma在台北","tags":"AURA-Soma靈性彩油.瑪雅曆","desc":"你好，我們是「Aura-Soma在台北」。 色彩，有時比語言更早說出我們內在的狀態 從直覺挑選一瓶觸動你的彩油開始，透過色彩與療心卡的探索，看見此刻的自己，也…","days":["1/2","1/3"],"url":"https://www.instagram.com/yutinghsyue?stkn=MWxocGVmYnYyMGk1cQ%3D%3D&utm_source=qr","img":""},
-  {"cat":"輕食飲品","name":"台灣多元文化與人才發展協會- 月老來電","tags":"果昔飲品/ 奇門遁甲/馬雅曆法/通靈問事/珊瑚玉及手作","desc":"月老來電是以東方神明文化-月老為核心，創造人與人間的串連交流、學習與生活的溫暖空間。從主打餐飲巴西莓碗、空間租借到多元活動，融合靈性與財商教育，攜手台灣多元文…","days":["1/2","1/3"],"url":"https://www.instagram.com/yuelaoonline?stkn=ZG83eHhlemJlaTFk&utm_source=qr","img":""},
-  {"cat":"命理開運","name":"Medi Journey｜人生翻譯所","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"Medi Journey 從「Meditation 覺察」出發，是一個關於生命探索與自我理解的品牌。 我們將占星、牌卡與生命覺察作為閱讀人生的不同語言，陪伴人…","days":["1/2","1/3"],"url":"https://www.instagram.com/medijourney7/","img":""},
-  {"cat":"命理開運","name":"光徑-七脈輪平衡卡牌/星域美學顧問有限與以明科技股份有限公司聯盟合作","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"源於宇宙靈感啟發研發的「七脈輪能量啟動卡牌」，攜手俄羅斯 Bio-Well GDV 檢測儀台灣團隊與身心諮商師共同打造。我們將脈輪能量「科學可視化」，建構結合…","days":["1/2","1/3"],"url":"https://hocom.tw/h/index?key=8693605752","img":""},
-  {"cat":"命理開運","name":"品萱佛觀音問事（品萱能量中心）","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"為您提供身心靈檢測問事諮詢 #讓能量提升你的境界、思維、格局、實力、貴人、財富 #連結富貴生基風水讓你每天充滿正能量 #真心誠意就能看見日出 #我要我的幸福","days":["1/2","1/3"],"url":"https://www.facebook.com/share/1D2A2YiFXo/?mibextid=wwXIfr","img":""},
-  {"cat":"香氛手作","name":"神道本店","tags":"手工藝、生活選品、礦石、文創","desc":"我們是來自香港的珠串小店，主要銷售日本銘石與日本銘木等日本製品，我們也是香港首間及引入日本銘石和日本銘木的授權代理店家。由疫情至今已經營六年。","days":["1/2","1/3"],"url":"https://www.instagram.com/shinto_ishitoki_?stkn=MWg3Z3ZnZW5sYXNzeQ%3D%3D&utm_source=qr","img":""},
-  {"cat":"身心療癒","name":"缽卡先生頌缽臻藏中心","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"缽卡先生頌缽臻藏中心，專注於尼泊爾手工頌缽、銅鑼與聲音文化，結合臻藏選缽、頌缽音浴、銅鑼音浴及專業教學，打造融合聲音、文化與身心放鬆的體驗空間。每一只頌缽都有…","days":["1/2","1/3"],"url":"https://www.instagram.com/nepaltaiwan/","img":""},
-  {"cat":"身心療癒","name":"水療室/跳大神","tags":"水晶/阿卡西解讀/牌卡解析","desc":"水晶，往往是我們內在的投射。 結合水晶療癒與阿卡西紀錄， 能量其次，需求為先。 在 Upala水療室， 協助每位來訪的旅人， 找到最貼近心靈狀態的水晶夥伴， …","days":["1/2","1/3"],"url":"https://www.instagram.com/upalahealing/","img":""},
-  {"cat":"身心療癒","name":"零壹象限","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"零壹象限 ｜從0到1的創造與顯化｜ 音流・香道・內在梳理 在與心的對話里，活成心之所向 讓你回到自己的頻率","days":["1/2","1/3"],"url":"","img":""},
-  {"cat":"輕食飲品","name":"凱歐斯智能調酒機","tags":"調飲、酒精飲品、輕食、甜點","desc":"凱歐斯將自動化設備、客製化酒單與現場服務整合為完整方案。 適用於婚禮、企業活動、飯店酒吧與品牌派對， 讓每一杯都能穩定、快速、具備科技感。","days":["1/3"],"url":"","img":""},
-  {"cat":"身心療癒","name":"澄空","tags":"寧靜碰觸(身體工作)","desc":"澄空，是一個以「身體覺察、臨在與陪伴」為核心的身心照顧。 我們相信，身體收藏著生命中的喜怒哀樂，而療癒不一定是急著改變或解決什麼，有時只是需要一個安全而溫柔的…","days":["1/2","1/3"],"url":"https://www.clarify-sky.com/","img":""},
-  {"cat":"身心療癒","name":"如是療遇所/黃東全人顧問有限公司","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"如是療遇所 Here We R Lab。 如果你最近睡不好、撐很久、生活卡住了，卻不知道該從哪裡開始整理，歡迎來聊聊。 我們從理解你的狀態開始，透過身體覺察與…","days":["1/2"],"url":"https://www.instagram.com/tony_takitani_h?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==","img":""},
-  {"cat":"身心療癒","name":"Karpa Light Space 麗塔療癒空間","tags":"希塔、頌缽、能量療癒、水晶","desc":"Karpa Light Space 麗塔療瑜空間，是一個陪伴你回到自己、重新理解自己的療癒空間。當工作、關係、情緒或人生模式不斷重複，也許真正需要的不是更努力…","days":["1/2","1/3"],"url":"https://www.facebook.com/RitaKIDSYOGA","img":""},
-  {"cat":"文創選物","name":"靈魂實踐家","tags":"各式桌遊","desc":"靈魂實踐家是一個結合自我探索、心理與身心靈工具，以及 AI 科技的生命實踐品牌。**我們將占星、牌卡、生命數字、心理學、NLP、孫子兵法等跨領域知識，轉化為可…","days":["1/2","1/3"],"url":"https://www.facebook.com/soul.reacher2024","img":""},
-  {"cat":"命理開運","name":"BG5-商業人類圖","tags":"BG5-商業人類圖","desc":"BG5-商業人類圖（BG5-Humandesign for Business）是人類圖體系在職涯與商業上的應用。BG5 體系隸屬於 IHDS 國際人類圖學校旗…","days":["1/2","1/3"],"url":"https://insight-connected.com","img":""},
-  {"cat":"身心療癒","name":"蒔青光域","tags":"花精","desc":"蒔青光域由創辦人寶菈一手打造，是臺灣在地身心靈療癒花精品牌。獨創「光臨花精」系統，由創辦人選用臺灣在地生長、無毒、無藥、無肥、野生或有機植物，全程手工製作，以…","days":["1/2","1/3"],"url":"https://www.mglightrealm.com","img":""},
-  {"cat":"命理開運","name":"紫微抖樹洞","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"這是在現代忙碌生活中的心靈避風港-《紫微抖樹洞(Shake Shake)》 我們打破傳統命理嚴肅迷信的框架,以幽默易懂的方式,為您開啟一扇探索生命狀態的窗。 …","days":["1/2","1/3"],"url":"https://www.facebook.com/profile.php?id=61593556404196","img":""},
-  {"cat":"身心療癒","name":"SEE ME◆真彩奧藝◆靈魂存檔站","tags":"能量繪圖、能量療育、調頻精油、調頻蠟燭、光場掃描圖","desc":"我們是三個用不同能量語言來協助陪伴你看見內在的療癒品牌，從能量場的掃描認識自己、天使靈氣的溫柔調頻，加上視覺的光圖與氣味的芬芳調頻，讓人們在這不同媒介的共振下…","days":["1/2","1/3"],"url":"https://www.instagram.com/erica__yy真彩奧藝:https://instagram.com/tcoa090010","img":""},
-  {"cat":"香氛手作","name":"QBell","tags":"手工藝、生活選品、礦石、文創","desc":"你有沒有注意到——站在海邊，海浪的聲音跟節奏自然會讓人平靜下來。那種平靜不是你做了什麼，是環境裡的聲音、光、溫度——全都是振動，你的身體一直在接收，只是大腦叫…","days":["1/2","1/3"],"url":"https://qbellx.com/","img":""},
-  {"cat":"香氛手作","name":"香巖山房","tags":"沉香","desc":"香品、佛像、手串、命理","days":["1/2","1/3"],"url":"","img":""},
-  {"cat":"香氛手作","name":"礦言礦語","tags":"手工藝、生活選品、礦石、文創","desc":"以天然水晶與礦石為創作起點，相信每一顆水晶都有屬於自己的紋理、色澤與模樣，就像世界上沒有兩片完全相同的葉子，每一顆都帶著自然留下的獨特痕跡。 我們將天然礦石融…","days":["1/2","1/3"],"url":"https://www.instagram.com/fantasy.crystal?stkn=bXkydjZqeXp1cnc4","img":""},
-  {"cat":"輕食飲品","name":"白狐喔鬆餅","tags":"調飲、酒精飲品、輕食、甜點","desc":"品牌使命∆∆ 以完成人們的精神滿足為目的，打破鬆餅的享用限制，讓顧客放鬆地獲得由大地恩賜來的美好食材， 與職人的堅持之心所共創“純粹”、“講究”帶來的滿足與幸…","days":["1/2","1/3"],"url":"https://www.instagram.com/huinyeouwaffle/","img":""},
-  {"cat":"香氛手作","name":"Lily’s Lead 秝水晶-你的水晶手鍊設計師","tags":"手工藝、生活選品、礦石、文創","desc":"秝水晶 Lily’s Lead，從一份想更理解自己與家人的心意出發，將紫微斗數的洞察，化為日常可以佩戴的美好。品牌名稱中的「秝」，來自女兒的名字，也承載著豐收…","days":["1/2","1/3"],"url":"https://www.instagram.com/lilylead?stkn=NnM2YXI0bDlwN2Zm&utm_source=qr","img":""},
-  {"cat":"香氛手作","name":"水仙光境 水晶｜原礦｜能量充電空間","tags":"","desc":"待確認：品牌簡介未填","days":[],"url":"https://www.instagram.com/aqua_forest.crystal/","img":""}
+  {"cat":"命理開運","name":"和豐開運坊","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"文王卦米卦、籖卦、八字、生肖姓名學","days":["1/2","1/3"],"url":"https://www.instagram.com/y2288181?igsi=MW01bTYzMGp5aml4cg%3D%3D&utm_source=qr","img":"assets/vendors/01.jpg","no":"01","fit":"","ok":true},
+  {"cat":"文創選物","name":"拆禮物/Gift of nature","tags":"各式桌遊","desc":"從生命靈數認識自己，從水晶探索更多可能，也陪你在喜歡的事裡，找到自己的方向。 「拆禮物」Gift of Nature，陪你拆開無限的可能，不只是水晶與命盤，更是那些還沒被看見的自己，以及人生裡更多值得探索的可能。","days":["1/2","1/3"],"url":"https://www.instagram.com/lovewz.nature/","img":"assets/vendors/05.jpg","no":"05","fit":"light","ok":true},
+  {"cat":"香氛手作","name":"沐癒心靈 x 曦境能量手工製香","tags":"手工藝、生活選品、礦石、文創","desc":"陪伴 × 探索 × 表達 × 創造 × 整合 以點點色彩曼陀羅為核心 結合多元藝術與生活覺察 在創作中探索、表達自己 並創造屬於自己的生命色彩","days":["1/2","1/3"],"url":"https://www.instagram.com/muzi_dotliving","img":"assets/vendors/06.jpg","no":"06","fit":"","ok":true},
+  {"cat":"香氛手作","name":"Lilly","tags":"客製化能量手串、客製化能量調香水","desc":"翻轉傳統意象，讓隨身守護成為你的專屬時尚 堅持客製化，每一條手串、每一瓶調香水都是獨一無二不重覆、不復刻，打造個人能量。","days":["1/2","1/3"],"url":"https://www.instagram.com/lilly08082026?stkn=MWM3d2MxaXI3NTVhMA==","img":"assets/vendors/09.jpg","no":"09","fit":"","ok":true},
+  {"cat":"身心療癒","name":"1x🌏life","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"療癒90%的潛意識信念與感受，用1成輕鬆的意識，活出美好的生命～ 更放鬆的回到自己的心，回到內在的寧靜，透過希塔療癒的冥想方式，在無條件的愛裡，清理限制性的信念、感受，請萬有源頭下載新的美好信念與感覺，用更純粹的愛愛自己","days":["1/2","1/3"],"url":"https://www.instagram.com/1xlife/","img":"assets/vendors/11.jpg","no":"11","fit":"","ok":true},
+  {"cat":"命理開運","name":"身心靈創製所","tags":"生命藍圖數字解析、牌卡、魔法鹽魔法蠟燭","desc":"身心靈創製所，是一個融合心理成長、靈性探索、生命教育與生活創作的陪伴空間。 我們透過課程、工作坊、牌卡與引導式對話，陪伴你看見內在情緒與生命經驗，理解關係中的課題，重新連結自己的力量。 這裡不急著給出標準答案，而是溫柔陪你傾聽自己、接納自己，在每一次覺察與選擇中，活得更真實、更自在，也一步步靠近愛與完整。","days":["1/2","1/3"],"url":"https://www.instagram.com/h_y_f___?stkn=MXhyaDBvZXIxaWN6Yg%3D%3D&utm_source=qr","img":"assets/vendors/12.png","no":"12","fit":"","ok":true},
+  {"cat":"命理開運","name":"命理森活學苑＆沅然之所","tags":"奇門八字、五行手鏈、開運物品","desc":"命理森活 八字看底牌，奇門看時機。我們提供八字與奇門遁甲諮詢，並出具正式報告書，讓分析看得懂、帶得走。不談吉凶恐嚇，只回答一件事：以你的條件，這一步怎麼走最省力。命理是決策的參考座標，方向盤始終在你手上。 沅然之所 別人戴什麼，跟你適合什麼是兩件事。我們先看你的五行結構，再依喜用神配置材質與色系；天然石材、紮實編製，並附配戴與保養說明。器物只是載體，配得對，才有意義","days":["1/2"],"url":"https://chenshen33.liyang.international/","img":"assets/vendors/14.jpg","no":"14","fit":"","ok":true},
+  {"cat":"輕食飲品","name":"台灣多元文化與人才發展協會- 月老來電","tags":"果昔飲品/ 奇門遁甲/馬雅曆法/通靈問事/珊瑚玉及手作","desc":"月老來電是以東方神明文化-月老為核心，創造人與人間的串連交流、學習與生活的溫暖空間。從主打餐飲巴西莓碗、空間租借到多元活動，融合靈性與財商教育，攜手台灣多元文化與人才發展協會，投入人才培育與創業發展，讓每位有緣的朋友可以有形與無形都圓滿！","days":["1/2","1/3"],"url":"https://www.instagram.com/yuelaoonline?stkn=ZG83eHhlemJlaTFk&utm_source=qr","img":"assets/vendors/17.jpg","no":"17","fit":"","ok":true},
+  {"cat":"命理開運","name":"Medi Journey｜人生翻譯所","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"Medi Journey 從「Meditation 覺察」出發，是一個關於生命探索與自我理解的品牌。 我們將占星、牌卡與生命覺察作為閱讀人生的不同語言，陪伴人們重新看見自己正在經歷的關係、選擇、轉變與生命階段。 這次以「人生翻譯所」為主題來到文化祭，希望把占星與牌卡帶回日常生活：不急著預測答案，而是透過一場對話，整理此刻的自己，看見原本可能忽略的線索。","days":["1/2","1/3"],"url":"https://www.instagram.com/medijourney7/","img":"assets/vendors/18.jpg","no":"18","fit":"","ok":true},
+  {"cat":"命理開運","name":"品萱佛觀音問事（品萱能量中心）","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"為您提供身心靈檢測問事諮詢 #讓能量提升你的境界、思維、格局、實力、貴人、財富 #連結富貴生基風水讓你每天充滿正能量 #真心誠意就能看見日出 #我要我的幸福","days":["1/2","1/3"],"url":"https://www.facebook.com/share/1D2A2YiFXo/?mibextid=wwXIfr","img":"assets/vendors/20.jpg","no":"20","fit":"","ok":true},
+  {"cat":"香氛手作","name":"神道本店","tags":"手工藝、生活選品、礦石、文創","desc":"我們是來自香港的珠串小店，主要銷售日本銘石與日本銘木等日本製品，我們也是香港首間及引入日本銘石和日本銘木的授權代理店家。由疫情至今已經營六年。","days":["1/2","1/3"],"url":"https://www.instagram.com/shinto_ishitoki_?stkn=MWg3Z3ZnZW5sYXNzeQ%3D%3D&utm_source=qr","img":"assets/vendors/21.jpg","no":"21","fit":"","ok":true},
+  {"cat":"身心療癒","name":"缽卡先生頌缽臻藏中心","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"缽卡先生頌缽臻藏中心，專注於尼泊爾手工頌缽、銅鑼與聲音文化，結合臻藏選缽、頌缽音浴、銅鑼音浴及專業教學，打造融合聲音、文化與身心放鬆的體驗空間。 每一只頌缽都有獨特的聲音與共鳴，透過專業引導，讓人重新感受聲音與自己的連結。從收藏一只好缽，到享受一段寧靜時光，讓頌缽走進更多人的生活。","days":["1/2","1/3"],"url":"https://www.instagram.com/nepaltaiwan/","img":"assets/vendors/22.jpg","no":"22","fit":"","ok":true},
+  {"cat":"身心療癒","name":"零壹象限","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"零壹象限 ｜從0到1的創造與顯化｜ 音流・香道・內在梳理 在與心的對話里，活成心之所向 讓你回到自己的頻率","days":["1/2","1/3"],"url":"","img":"assets/vendors/24.jpg","no":"24","fit":"","ok":true},
+  {"cat":"身心療癒","name":"澄空","tags":"寧靜碰觸(身體工作)","desc":"澄空，是一個以「身體覺察、臨在與陪伴」為核心的身心照顧。 我們相信，身體收藏著生命中的喜怒哀樂，而療癒不一定是急著改變或解決什麼，有時只是需要一個安全而溫柔的空間，讓自己慢下來，被好好地傾聽與承接。 澄空透過溫柔、臨在與不評判的陪伴，提供寧靜碰觸、LomiLomi、澄心與臼井靈氣等服務，邀請人們重新感受身體、靠近內在，讓忙碌的步調逐漸緩下來，找回屬於自己的節奏。 希望透過每一次的相遇，讓人有一段時間可以回到自己、感受自己，也讓身體被好好地照顧。 讓一切到來，溫柔回應。 在澄空，我們陪你慢慢走。","days":["1/2","1/3"],"url":"https://www.clarify-sky.com/","img":"assets/vendors/26.png","no":"26","fit":"","ok":true},
+  {"cat":"身心療癒","name":"Karpa Light Space 麗塔療癒空間","tags":"希塔、頌缽、能量療癒、水晶","desc":"Karpa Light Space 麗塔療瑜空間，是一個陪伴你回到自己、重新理解自己的療癒空間。當工作、關係、情緒或人生模式不斷重複，也許真正需要的不是更努力，而是看見內在尚未被理解的自己。透過希塔、頌缽、瑜伽與能量療癒，陪你從覺察走向轉化，鬆開舊有信念，在愛、慈悲與界線中，重新選擇想要的人生。","days":["1/2","1/3"],"url":"https://www.facebook.com/RitaKIDSYOGA","img":"assets/vendors/28.png","no":"28","fit":"contain","ok":true},
+  {"cat":"文創選物","name":"靈魂實踐家","tags":"各式桌遊","desc":"靈魂實踐家是一個結合自我探索、心理與身心靈工具，以及 AI 科技的生命實踐品牌。**我們將占星、牌卡、生命數字、心理學、NLP、孫子兵法等跨領域知識，轉化為可…","days":["1/2","1/3"],"url":"https://www.facebook.com/soul.reacher2024","img":"assets/vendors/29.png","no":"29","fit":"contain","ok":true},
+  {"cat":"身心療癒","name":"蒔青光域","tags":"花精","desc":"蒔青光域由創辦人寶菈一手打造，是臺灣在地身心靈療癒花精品牌。獨創「光臨花精」系統，由創辦人選用臺灣在地生長、無毒、無藥、無肥、野生或有機植物，全程手工製作，以…","days":["1/2","1/3"],"url":"https://www.mglightrealm.com","img":"assets/vendors/31.jpg","no":"31","fit":"","ok":true},
+  {"cat":"命理開運","name":"紫微抖樹洞","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"這是在現代忙碌生活中的心靈避風港-《紫微抖樹洞(Shake Shake)》 我們打破傳統命理嚴肅迷信的框架,以幽默易懂的方式,為您開啟一扇探索生命狀態的窗。 …","days":["1/2","1/3"],"url":"https://www.facebook.com/profile.php?id=61593556404196","img":"assets/vendors/32.png","no":"32","fit":"","ok":true},
+  {"cat":"香氛手作","name":"QBell","tags":"手工藝、生活選品、礦石、文創","desc":"你有沒有注意到——站在海邊，海浪的聲音跟節奏自然會讓人平靜下來。那種平靜不是你做了什麼，是環境裡的聲音、光、溫度——全都是振動，你的身體一直在接收，只是大腦叫…","days":["1/2","1/3"],"url":"https://qbellx.com/","img":"assets/vendors/34.jpg","no":"34","fit":"","ok":true},
+  {"cat":"香氛手作","name":"香巖山房","tags":"沉香","desc":"香品、佛像、手串、命理","days":["1/2","1/3"],"url":"","img":"assets/vendors/35.jpg","no":"35","fit":"","ok":true},
+  {"cat":"香氛手作","name":"Lily’s Lead 秝水晶-你的水晶手鍊設計師","tags":"手工藝、生活選品、礦石、文創","desc":"秝水晶 Lily’s Lead，從一份想更理解自己與家人的心意出發，將紫微斗數的洞察，化為日常可以佩戴的美好。品牌名稱中的「秝」，來自女兒的名字，也承載著豐收…","days":["1/2","1/3"],"url":"https://www.instagram.com/lilylead?stkn=NnM2YXI0bDlwN2Zm&utm_source=qr","img":"assets/vendors/38.jpg","no":"38","fit":"","ok":true},
+  {"cat":"命理開運","name":"Zoe的心光角落","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"Zoe 以塔羅占卜與身心靈陪伴為核心，希望用貼近日常、容易理解的方式，陪伴每個人整理當下的困惑與方向。除了塔羅占卜，也提供盧恩符文、與個人陪伴服務，並製作魔法蠟燭、能量噴霧、水晶等能量商品，讓占卜與療癒更自然地融入生活。","days":["1/2","1/3"],"url":"https://www.instagram.com/zoe_tarot_8?igsi=eDNxcWI2aGc2dGQw","img":"","no":"02","fit":"","ok":true},
+  {"cat":"文創選物","name":"Go.Do.Be.Live！ 好好生活！","tags":"二手書、新書","desc":"我是Annie，Go.Do.Be.Live!的創辦人兼作者。我於2020年創立了這個品牌，因為我希望將自主學習變成一種創意且易於使用的方法。 無論您是在辦公桌前、咖啡館的靜謐角落，還是在探索世界，我的創意卡片都能幫助您撥開迷霧，找到正確的答案。 每張卡片都是我親手繪製的。我相信匠心獨運，因為它體現了專注和個人努力。絕不使用人工智慧！每幅插圖都旨在激發特定的靈感，幫助您擺脫停滯不前的狀態，走向充滿力量的生活。 我們的產品已在台灣、東亞、美國和澳洲售出超過18,000套。該品牌已成功完成五次眾籌活動，籌集資金超過460萬新台幣。 Pinkoi商店已於2023年上線。 我將引導您掌控自己的成長和成功。","days":["1/2","1/3"],"url":"https://www.godobelive.com","img":"","no":"08","fit":"","ok":true},
+  {"cat":"身心療癒","name":"Aura-Soma在台北","tags":"AURA-Soma靈性彩油.瑪雅曆","desc":"你好，我們是「Aura-Soma在台北」。 色彩，有時比語言更早說出我們內在的狀態 從直覺挑選一瓶觸動你的彩油開始，透過色彩與療心卡的探索，看見此刻的自己，也重新發現那些一直都在、卻可能被忙碌生活忽略的內在力量 這次市集也帶來彩油姓名學、馬雅曆星系印記與舒服的手部靈魂按摩，從不同角度認識自己的天賦、特質與生命節奏。 不需要懂色彩，也不需要準備任何問題。 只是留一點時間給自己，讓色彩成為一面鏡子，好好聽聽此刻的心","days":["1/2","1/3"],"url":"https://www.instagram.com/yutinghsyue?stkn=MWxocGVmYnYyMGk1cQ%3D%3D&utm_source=qr","img":"","no":"16","fit":"","ok":true},
+  {"cat":"命理開運","name":"光徑-七脈輪平衡卡牌/星域美學顧問有限與以明科技股份有限公司聯盟合作","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"源於宇宙靈感啟發研發的「七脈輪能量啟動卡牌」，攜手俄羅斯 Bio-Well GDV 檢測儀台灣團隊與身心諮商師共同打造。我們將脈輪能量「科學可視化」，建構結合 49 張牌卡、專屬脈輪精油與圓滿日記的完整自癒體系。 跳脫純玄學框架，以「數據可視化＋卡牌引導＋植物芳療」開創療癒新標準。本項目致力成為從業者具公信力的專業教具與培訓系統，期盼藉由大會展現科學論證的能量平衡，賦能產業人才，攜手開創共好新生態！","days":["1/2","1/3"],"url":"https://hocom.tw/h/index?key=8693605752","img":"","no":"19","fit":"","ok":true},
+  {"cat":"身心療癒","name":"如是療遇所/黃東全人顧問有限公司","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"如是療遇所 Here We R Lab。 如果你最近睡不好、撐很久、生活卡住了，卻不知道該從哪裡開始整理，歡迎來聊聊。 我們從理解你的狀態開始，透過身體覺察與靈氣療遇， 陪你一步一步重新找回生活的節奏——不是讓你放鬆一次就好，而是陪你把生活重新排回來。","days":["1/2"],"url":"https://www.instagram.com/tony_takitani_h?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==","img":"","no":"27","fit":"","ok":true},
+  {"cat":"身心療癒","name":"開門紅/拉蒙朵國際藝術有限公司","tags":"精油、頌缽、音療、按摩、瑜伽","desc":"開門紅是拉蒙朵藝術中心旗下的能量療癒開運品牌，主要產品有開運膏、開運精油、開運紅內褲、開運手串、項錬、吊飾等多種產品。江柏樂老師及其他命理老師推薦、美鳳有約、…","days":["1/2","1/3"],"url":"https://www.lmart.url.tw","img":"","no":"03","fit":"","ok":false},
+  {"cat":"文創選物","name":"808魔術店","tags":"塔羅牌 收藏撲克牌 魔術道具","desc":"販售魔術道具 整人玩具 收藏撲克牌 塔羅牌","days":["1/2","1/3"],"url":"https://www.shop2000.com.tw/808magicstore","img":"","no":"04","fit":"","ok":false},
+  {"cat":"命理開運","name":"星光大道","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"星光大道 Starway 是一個探索宇宙智慧、個人成長與內在啟發的學習空間。 我們融合未來思維、星空哲學、能量平衡與古代文明的知識， 提供課程、實作工作坊與公…","days":["1/2","1/3"],"url":"https://www.facebook.com/share/1Bqz7YABV1/","img":"","no":"07","fit":"","ok":false},
+  {"cat":"命理開運","name":"銘君閣象棋卜卦","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"運籌帷幄，決勝千里 解感情｜事業｜人生選擇 陪你理清迷惘，找到下一步","days":["1/3"],"url":"https://www.instagram.com/mingjunge329?stkn=MW45MWQ3Z3VhZzlmbA==","img":"","no":"10","fit":"","ok":false},
+  {"cat":"命理開運","name":"貓男爵的城堡","tags":"塔羅牌+Cosplay+戲劇輔療","desc":"結合塔羅牌+Cosplay+戲劇輔療，讓眼前的問題呈現出來並更好解決問題","days":["1/2","1/3"],"url":"https://www.facebook.com/share/19XfnKSKEZ/?mibextid=wwXIfr","img":"","no":"13","fit":"","ok":false},
+  {"cat":"命理開運","name":"Queen tarot healing /璀璨心靈療心室","tags":"紫微、八字、占星塔羅、牌卡、姓名學","desc":"Queen’s Tarot Healing｜璀璨心靈療心室創立於2019年，專注於關係療癒諮詢、自我成長與個人目標引導，透過一對一線上服務，陪伴你在感情、事業…","days":["1/2"],"url":"https://www.instagram.com/queen_tarot_healing?stkn=MXh6c2hveWltY3htNA%3D%3D&utm_source=qr","img":"","no":"15","fit":"","ok":false},
+  {"cat":"身心療癒","name":"水療室/跳大神","tags":"水晶/阿卡西解讀/牌卡解析","desc":"水晶，往往是我們內在的投射。 結合水晶療癒與阿卡西紀錄， 能量其次，需求為先。 在 Upala水療室， 協助每位來訪的旅人， 找到最貼近心靈狀態的水晶夥伴， …","days":["1/2","1/3"],"url":"https://www.instagram.com/upalahealing/","img":"","no":"23","fit":"","ok":false},
+  {"cat":"輕食飲品","name":"凱歐斯智能調酒機","tags":"調飲、酒精飲品、輕食、甜點","desc":"凱歐斯將自動化設備、客製化酒單與現場服務整合為完整方案。 適用於婚禮、企業活動、飯店酒吧與品牌派對， 讓每一杯都能穩定、快速、具備科技感。","days":["1/3"],"url":"","img":"","no":"25","fit":"","ok":false},
+  {"cat":"命理開運","name":"BG5-商業人類圖","tags":"BG5-商業人類圖","desc":"BG5-商業人類圖（BG5-Humandesign for Business）是人類圖體系在職涯與商業上的應用。BG5 體系隸屬於 IHDS 國際人類圖學校旗…","days":["1/2","1/3"],"url":"https://insight-connected.com","img":"","no":"30","fit":"","ok":false},
+  {"cat":"身心療癒","name":"SEE ME◆真彩奧藝◆靈魂存檔站","tags":"能量繪圖、能量療育、調頻精油、調頻蠟燭、光場掃描圖","desc":"我們是三個用不同能量語言來協助陪伴你看見內在的療癒品牌，從能量場的掃描認識自己、天使靈氣的溫柔調頻，加上視覺的光圖與氣味的芬芳調頻，讓人們在這不同媒介的共振下…","days":["1/2","1/3"],"url":"https://www.instagram.com/erica__yy真彩奧藝:https://instagram.com/tcoa090010","img":"","no":"33","fit":"","ok":false},
+  {"cat":"香氛手作","name":"礦言礦語","tags":"手工藝、生活選品、礦石、文創","desc":"以天然水晶與礦石為創作起點，相信每一顆水晶都有屬於自己的紋理、色澤與模樣，就像世界上沒有兩片完全相同的葉子，每一顆都帶著自然留下的獨特痕跡。 我們將天然礦石融…","days":["1/2","1/3"],"url":"https://www.instagram.com/fantasy.crystal?stkn=bXkydjZqeXp1cnc4","img":"","no":"36","fit":"","ok":false},
+  {"cat":"輕食飲品","name":"白狐喔鬆餅","tags":"調飲、酒精飲品、輕食、甜點","desc":"品牌使命∆∆ 以完成人們的精神滿足為目的，打破鬆餅的享用限制，讓顧客放鬆地獲得由大地恩賜來的美好食材， 與職人的堅持之心所共創“純粹”、“講究”帶來的滿足與幸…","days":["1/2","1/3"],"url":"https://www.instagram.com/huinyeouwaffle/","img":"","no":"37","fit":"","ok":false},
+  {"cat":"香氛手作","name":"水仙光境 水晶｜原礦｜能量充電空間","tags":"","desc":"待確認：品牌簡介未填","days":[],"url":"https://www.instagram.com/aqua_forest.crystal/","img":"","no":"39","fit":"","ok":false}
 ];
 const chips=document.getElementById("chips"),vgrid=document.getElementById("vgrid");
 let showAll=false;
@@ -851,7 +866,7 @@ function drawVendors(f){
   const all=vendors.filter(v=>f==="全部"||v.cat===f),list=showAll||f!=="全部"?all:all.slice(0,12);
   vgrid.innerHTML=list.map((v,i)=>{const tag=v.url?"a":"div",attr=v.url?` href="${v.url}" target="_blank" rel="noopener"`:"";
     return `<${tag} class="vr"${attr} style="--c:${CATS[v.cat]};--i:${Math.min(i,14)}">
-    <div><p class="cat">${v.cat}</p><h3>${v.name}</h3>${v.tags?`<p class="tg">${v.tags}</p>`:""}<p class="ds">${v.desc}</p></div>
+    <div>${v.img?`<span class="lg ${v.fit||""}"><img src="${v.img}" alt="${v.name} Logo" loading="lazy"></span>`:`<span class="lg none">${[...v.name][0]}</span>`}<p class="cat">${v.cat}</p><h3>${v.name}</h3>${v.tags?`<p class="tg">${v.tags}</p>`:""}<p class="ds">${v.desc}</p></div>
     <div class="side"><span>${v.days.length?v.days.join(" · "):""}</span>${v.url?'<span class="go">↗</span>':""}</div></${tag}>`}).join("")
    +(list.length<all.length?`<button class="vmore" id="vmore">看全部 ${all.length} 個攤位</button>`:"");
   const m=document.getElementById("vmore");if(m)m.onclick=()=>{showAll=true;drawVendors(f)};
@@ -863,17 +878,18 @@ drawVendors("全部");
 // ===== DJ 資料 =====
 // role 一行定位｜bio 介紹｜tags 曲風｜img 照片路徑（沒有就留空，會顯示旋轉唱盤）
 const djs=[
-  {slot:"1/2（六）14:00 — 15:00 · OPENING",name:"Subi",role:"小提琴與電子音樂跨界仙女",bio:"結合小提琴、鋼琴與電子節拍，以自然聲響營造沉浸式音樂體驗。",tags:["小提琴","電子"],img:"",c:"var(--cyan)"},
-  {slot:"1/2（六）15:00 — 17:00",name:"Victor F:Lo",sub:"陸偉華",role:"聲音與光影藝術家・Portal Arts 主理人",bio:"以電子聲響，探索身體與意識的共振。",tags:["電子聲響"],img:"",c:"var(--violet)"},
-  {slot:"1/2（六）17:00 — 19:00",name:"DJ Yu Jin",role:"佛系吃素的 DJ",bio:"",tags:[],img:"",c:"var(--pink)"},
-  {slot:"1/2（六）19:00 — 21:00 · CLOSING",name:"DJ Mandy Ray",role:"俠女 DJ",bio:"",tags:[],img:"",c:"var(--amber)"},
+  {slot:"1/2（六）14:00 — 15:00 · OPENING",name:"Subi",role:"小提琴與電子音樂跨界仙女",bio:"結合小提琴、鋼琴與電子節拍，以自然聲響營造沉浸式音樂體驗。",tags:["小提琴","電子"],img:"assets/perf/subi.jpg",c:"var(--cyan)"},
+  {slot:"1/2（六）15:00 — 17:00",name:"Victor F:Lo",sub:"陸偉華",role:"聲音與光影藝術家・Portal Arts 主理人",bio:"以電子聲響，探索身體與意識的共振。",tags:["電子聲響"],img:"assets/perf/victor.jpg",c:"var(--violet)"},
+  {slot:"1/2（六）17:00 — 19:00",name:"DJ Yu Jin",role:"佛系吃素的 DJ",bio:"",tags:[],img:"assets/perf/yujin.jpg",c:"var(--pink)"},
+  {slot:"1/2（六）19:00 — 21:00 · CLOSING",name:"DJ Mandy Ray",role:"俠女 DJ",bio:"",tags:[],img:"assets/perf/mandy.jpg",c:"var(--amber)"},
   {slot:"1/3（日）15:00 — 16:00",name:"路哥",role:"尺八演出",bio:"",tags:["尺八"],img:"",c:"#7dffb0"},
-  {slot:"1/3（日）16:00 — 17:00",name:"空行者",role:"梵唄音樂人・跨界創作藝術家",bio:"把梵音與咒語融入樂器，帶來傳統與當代交會的聲音體驗。",tags:["梵唄"],img:"",c:"var(--cyan)"},
+  {slot:"1/3（日）16:00 — 17:00",name:"空行者",role:"梵唄音樂人・跨界創作藝術家",bio:"把梵音與咒語融入樂器，帶來傳統與當代交會的聲音體驗。",tags:["梵唄"],img:"assets/perf/kongxingzhe.jpg",crop:1,c:"var(--cyan)"},
+  {slot:"1/3（日）18:00 起 · 開運晚會",name:"吉董",role:"董事長樂團主唱",bio:"為開運晚會帶來開場與壓軸演唱。",tags:["晚會演出"],img:"assets/perf/jidong.jpg",crop:1,c:"var(--pink)"},
 ];
 const djrow=document.getElementById("djrow");
 djrow.innerHTML=djs.map(d=>`<article class="dj" style="--c:${d.c}">
   <div class="slot">${d.slot}</div>
-  <div class="disc ${d.img?"photo":""}">${d.img?`<img src="${d.img}" alt="${d.name}">`:`<span>${[...d.name.replace("DJ ","")].slice(0,2).join("").toUpperCase()}</span>`}</div>
+  <div class="disc ${d.img?"photo":""} ${d.crop?"crop":""}">${d.img?`<img src="${d.img}" alt="${d.name}">`:`<span>${[...d.name.replace("DJ ","")].slice(0,2).join("").toUpperCase()}</span>`}</div>
   <h3>${d.name}${d.sub?`<small>${d.sub}</small>`:""}</h3>
   <p class="role">${d.role}</p>
   <p class="bio">${d.bio||"介紹即將公開"}</p>
