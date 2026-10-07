@@ -556,6 +556,19 @@ details p{font-size:16px;margin:0 0 24px}
 .stat span{font-size:16px}
 @media(max-width:760px){.about p{font-size:17px}.stats{grid-template-columns:1fr 1fr;gap:16px}.stat{padding:28px 12px}.stat span{font-size:14px}}
 
+/* 舞台光束：從插畫的舞台燈位置往天空掃動 */
+.hero-beams{position:absolute;left:50%;bottom:38.6vw;width:0;height:0;z-index:1;pointer-events:none}
+.hero-beams i{position:absolute;left:0;bottom:0;width:26vw;height:120vh;margin-left:-13vw;transform-origin:50% 100%;clip-path:polygon(47% 100%,53% 100%,100% 0,0 0);background:linear-gradient(to top,var(--bc) 0%,color-mix(in srgb,var(--bc) 45%,transparent) 35%,transparent 82%);mix-blend-mode:screen;filter:blur(16px);opacity:.18;rotate:var(--a);animation:beamSway var(--t) ease-in-out infinite alternate,beamGlow calc(var(--t)*.62) ease-in-out infinite alternate;animation-delay:var(--dl),var(--dl);will-change:rotate,opacity}
+.hero-beams i:nth-child(1){--bc:#6fdcff;--a:-52deg;--s:9deg;--t:7s;--dl:-1s;margin-left:calc(-13vw - 9vw)}
+.hero-beams i:nth-child(2){--bc:#f7567c;--a:-25deg;--s:-8deg;--t:8.5s;--dl:-4s;margin-left:calc(-13vw - 4vw)}
+.hero-beams i:nth-child(3){--bc:#ffffff;--a:0deg;--s:6deg;--t:10s;--dl:-2s}
+.hero-beams i:nth-child(4){--bc:#8f86f0;--a:25deg;--s:8deg;--t:8s;--dl:-6s;margin-left:calc(-13vw + 4vw)}
+.hero-beams i:nth-child(5){--bc:#f5b25c;--a:52deg;--s:-9deg;--t:7.5s;--dl:-3s;margin-left:calc(-13vw + 9vw)}
+@keyframes beamSway{from{rotate:calc(var(--a) - var(--s))}to{rotate:calc(var(--a) + var(--s))}}
+@keyframes beamGlow{from{opacity:.08}to{opacity:.5}}
+@media(max-width:700px){.hero-beams{bottom:63.5vw}.hero-beams i{width:44vw;margin-left:-22vw!important;height:110vh;filter:blur(10px)}.hero-beams i:nth-child(1),.hero-beams i:nth-child(5){display:none}}
+@media(prefers-reduced-motion:reduce){.hero-beams i{animation:none;opacity:.2}}
+
 /* ================= 首屏 v3：插畫鋪底 ================= */
 .hero2{display:block;min-height:0;padding:128px 0 0;text-align:center;overflow:hidden}
 .hero2 .hero2-text{display:block;position:relative;z-index:2}
@@ -630,6 +643,7 @@ details p{font-size:16px;margin:0 0 24px}
       <div><b data-u="s">--</b><small>秒</small></div>
     </div>
   </div>
+  <div class="hero-beams" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="hero-art" id="heroArt" aria-hidden="true"><img src="assets/poster-dark.jpg" alt=""></div>
 </section>
 
