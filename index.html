@@ -569,6 +569,21 @@ details p{font-size:16px;margin:0 0 24px}
 @media(max-width:700px){.hero-beams{bottom:63.5vw}.hero-beams i{width:44vw;margin-left:-22vw!important;height:110vh;filter:blur(10px)}.hero-beams i:nth-child(1),.hero-beams i:nth-child(5){display:none}}
 @media(prefers-reduced-motion:reduce){.hero-beams i{animation:none;opacity:.2}}
 
+/* 背景音樂開關 */
+.music{position:fixed;left:18px;bottom:18px;z-index:40;display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 16px;border:0;border-radius:999px;background:rgba(23,18,63,.86);backdrop-filter:blur(10px);color:var(--ink);font:inherit;font-size:14px;font-weight:700;letter-spacing:.06em;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:background .25s,transform .25s}
+.music:hover{background:var(--panel2);transform:translateY(-2px)}
+.music:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.mbars{display:flex;align-items:flex-end;gap:3px;height:16px}
+.mbars i{width:3px;height:4px;border-radius:2px;background:var(--mute);transition:background .25s}
+.music[aria-pressed=true]{background:var(--pink);color:#fff}
+.music[aria-pressed=true] .mbars i{background:#fff;animation:eq .9s ease-in-out infinite alternate}
+.music[aria-pressed=true] .mbars i:nth-child(2){animation-delay:-.3s}
+.music[aria-pressed=true] .mbars i:nth-child(3){animation-delay:-.6s}
+.music[aria-pressed=true] .mbars i:nth-child(4){animation-delay:-.15s}
+.music[aria-pressed=true] .mbars i{height:16px}
+@media(max-width:600px){.music{left:12px;bottom:14px;height:44px;padding:0 14px}.music .mtxt{display:none}}
+@media(prefers-reduced-motion:reduce){.music[aria-pressed=true] .mbars i{animation:none}}
+
 /* ================= 首屏 v3：插畫鋪底 ================= */
 .hero2{display:block;min-height:0;padding:128px 0 0;text-align:center;overflow:hidden}
 .hero2 .hero2-text{display:block;position:relative;z-index:2}
@@ -805,6 +820,8 @@ details p{font-size:16px;margin:0 0 24px}
   </div>
 </footer>
 
+<button class="music" id="music" type="button" aria-pressed="false" aria-label="開啟背景音樂"><span class="mbars"><i></i><i></i><i></i><i></i></span><span class="mtxt">音樂</span></button>
+
 <a class="btn btn-main float-cta" id="fcta" href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">立即購票</a>
 
 <script>
@@ -963,6 +980,44 @@ document.querySelectorAll(".tab").forEach(tb=>tb.onclick=()=>{
 if(!reduce&&matchMedia("(hover:hover)").matches){
   document.querySelectorAll(".card").forEach(c=>c.onmousemove=e=>{const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")});
 }
+
+// 背景音樂：網頁即時合成的氛圍電子（和弦鋪底＋輕節拍＋點綴音），按鈕開啟才會發聲
+(function(){const btn=document.getElementById("music");let ctx,master,delay,filt,timer,step=0,nextT=0,on=false,noise;
+  const BEAT=60/88,E8=BEAT/2;                         // 88 BPM，以八分音符為一格
+  const CH=[ // [低音, 和弦音...]：Am9 → Fmaj7 → Cmaj7 → G6
+    [110,[220,261.63,329.63,493.88]],[87.31,[174.61,220,261.63,329.63]],[130.81,[196,246.94,261.63,329.63]],[98,[196,246.94,293.66,329.63]]];
+  const ARP=[440,523.25,587.33,659.25,783.99,880];
+  function build(){ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const comp=ctx.createDynamicsCompressor();comp.threshold.value=-18;comp.ratio.value=4;comp.connect(ctx.destination);
+    master=ctx.createGain();master.gain.value=0;master.connect(comp);
+    const an=ctx.createAnalyser();an.fftSize=512;master.connect(an);window.__musicAnalyser=an;
+    filt=ctx.createBiquadFilter();filt.type="lowpass";filt.frequency.value=900;filt.Q.value=.7;filt.connect(master);
+    const lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=.07;lg.gain.value=380;lfo.connect(lg);lg.connect(filt.frequency);lfo.start();
+    delay=ctx.createDelay(1.5);delay.delayTime.value=BEAT*.75;const fb=ctx.createGain();fb.gain.value=.38;const dl=ctx.createBiquadFilter();dl.type="lowpass";dl.frequency.value=2400;
+    const wet=ctx.createGain();wet.gain.value=.32;delay.connect(dl);dl.connect(fb);fb.connect(delay);dl.connect(wet);wet.connect(master);
+    const len=ctx.sampleRate*.25,buf=ctx.createBuffer(1,len,ctx.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;noise=buf}
+  function env(g,t,peak,a,dur,r){g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(peak,t+a);g.gain.setValueAtTime(peak,t+dur);g.gain.linearRampToValueAtTime(0,t+dur+r)}
+  function pad(notes,t,dur){for(const f of notes)for(const det of [-7,7]){const o=ctx.createOscillator(),g=ctx.createGain();o.type="sawtooth";o.frequency.value=f;o.detune.value=det;
+    env(g,t,.03,1.6,dur,2.2);o.connect(g);g.connect(filt);o.start(t);o.stop(t+dur+2.4)}}
+  function bass(f,t,dur){const o=ctx.createOscillator(),g=ctx.createGain();o.type="sine";o.frequency.value=f;env(g,t,.16,.08,dur*.8,.6);o.connect(g);g.connect(master);o.start(t);o.stop(t+dur+.8)}
+  function kick(t){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(115,t);o.frequency.exponentialRampToValueAtTime(42,t+.16);
+    g.gain.setValueAtTime(.3,t);g.gain.exponentialRampToValueAtTime(.001,t+.32);o.connect(g);g.connect(master);o.start(t);o.stop(t+.34)}
+  function hat(t,v){const s=ctx.createBufferSource(),hp=ctx.createBiquadFilter(),g=ctx.createGain();s.buffer=noise;hp.type="highpass";hp.frequency.value=7500;
+    g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+.07);s.connect(hp);hp.connect(g);g.connect(master);s.start(t);s.stop(t+.09)}
+  function pluck(f,t){const o=ctx.createOscillator(),g=ctx.createGain();o.type="triangle";o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.07,t+.01);
+    g.gain.exponentialRampToValueAtTime(.001,t+.9);o.connect(g);g.connect(master);g.connect(delay);o.start(t);o.stop(t+1)}
+  function tick(){while(nextT<ctx.currentTime+.35){const s=step%16,c=CH[Math.floor(step/16)%CH.length],bar=Math.floor(step/16);
+      if(s===0){pad(c[1],nextT,E8*16);bass(c[0],nextT,E8*8)}
+      if(s===8)bass(c[0],nextT,E8*6);
+      if(bar>=2){if(s%8===0)kick(nextT);if(s%2===1)hat(nextT,s%4===3?.035:.02)}       // 前兩個和弦只有鋪底，節拍之後才進來
+      if(bar>=1&&s%2===0&&Math.random()<.42)pluck(ARP[Math.floor(Math.random()*ARP.length)],nextT);
+      nextT+=E8;step++}}
+  function start(){if(!ctx)build();ctx.resume();step=0;nextT=ctx.currentTime+.08;clearInterval(timer);timer=setInterval(tick,100);tick();
+    master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(.55,ctx.currentTime+2.5)}
+  function stop(){clearInterval(timer);const t=ctx.currentTime;master.gain.cancelScheduledValues(t);master.gain.setValueAtTime(master.gain.value,t);master.gain.linearRampToValueAtTime(0,t+.8);setTimeout(()=>{if(!on)ctx.suspend()},1600)}
+  btn.onclick=()=>{on=!on;btn.setAttribute("aria-pressed",on);btn.setAttribute("aria-label",on?"關閉背景音樂":"開啟背景音樂");on?start():stop()};
+  document.addEventListener("visibilitychange",()=>{if(!ctx||!on)return;document.hidden?ctx.suspend():ctx.resume()});
+  window.__music=()=>({on,state:ctx&&ctx.state,step})})();
 
 // 星空
 (function(){const c=document.getElementById("stars"),x=c.getContext("2d");let W,H,st=[];
