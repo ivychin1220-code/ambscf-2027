@@ -432,6 +432,8 @@ a.vr:hover{background:var(--panel2);transform:translateY(-4px)}
 .lg.contain img{object-fit:contain;padding:10px}
 .lg.light{background:#fff}
 .host{display:inline-block;margin:0 0 10px;padding:3px 14px;border-radius:999px;background:var(--pink);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em}
+/* 主辦單位卡片：介紹完整顯示，不截斷 */
+.vr:has(.host) .ds{-webkit-line-clamp:8}
 .lg.none{display:grid;place-items:center;font-size:40px;font-weight:900;color:var(--c);background:rgba(255,255,255,.05)}
 a.vr:hover .lg{transform:scale(1.06) rotate(-2deg)}
 
