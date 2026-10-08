@@ -458,6 +458,8 @@ a.vr:hover .lg{transform:scale(1.06) rotate(-2deg)}
 }
 @media(max-width:899px){.dj{flex-basis:min(340px,84vw)}.dj h3{font-size:30px}.dj .disc{width:140px;height:140px}}
 
+.djlink{display:inline-block;margin:0 0 14px;font-size:14px;font-weight:700;color:var(--c)}
+.djlink:hover{text-decoration:underline}
 .dj .disc.photo{border-width:3px;background:#0e0a2b}
 .dj .disc.photo img{transition:transform .5s}
 .dj:hover .disc.photo img{transform:scale(1.08)}
@@ -676,7 +678,7 @@ details p{font-size:16px;margin:0 0 24px}
     </div>
     <div class="stats">
       <div class="stat rv"><b data-n="40" data-s="+">0</b><span>身心靈品牌</span></div>
-      <div class="stat rv" style="--d:.1s"><b data-n="7">0</b><span>組舞台演出</span></div>
+      <div class="stat rv" style="--d:.1s"><b data-n="8">0</b><span>組舞台演出</span></div>
       <div class="stat rv" style="--d:.2s"><b data-n="2">0</b><span>天主題市集</span></div>
       <div class="stat rv" style="--d:.3s"><b data-n="1">0</b><span>場新年開運晚會</span></div>
     </div>
@@ -698,7 +700,7 @@ details p{font-size:16px;margin:0 0 24px}
   <div class="wrap">
     <p class="eyebrow rv">Stage Lineup · 1/2 – 1/3</p>
     <h2 class="rv">DJ 與舞台陣容</h2>
-    <p class="lead rv">1/2 四組音樂人從午後接力到入夜，1/3 尺八與梵唄接棒，晚會由董事長樂團主唱吉董壓軸。</p>
+    <p class="lead rv">1/2 四組音樂人從午後接力到入夜，1/3 尺八與梵唄接棒，晚會有董事長樂團主唱吉董與魔術師幾米。</p>
   </div>
   <p class="swipe rv">← SWIPE →</p>
   <div class="djrow" id="djrow"></div>
@@ -731,7 +733,7 @@ details p{font-size:16px;margin:0 0 24px}
         <div class="ev k-stage" style="--i:2"><time>16:00 – 17:00</time><span class="tag">舞台</span><h4>空行者</h4><p>梵唄音樂人・跨界創作藝術家</p></div>
         <div class="ev k-gala" style="--i:3"><time>17:00</time><span class="tag">晚會</span><h4>晚宴賓客報到進場</h4><p>暖場音樂</p></div>
         <div class="ev k-gala" style="--i:4"><time>18:00</time><span class="tag">晚會</span><h4>開運晚會正式開始</h4><p>吉董（董事長樂團主唱）開場演唱、主持人開場、主辦單位致詞</p></div>
-        <div class="ev k-gala" style="--i:5"><time>18:45</time><span class="tag">晚會</span><h4>魔術表演</h4></div>
+        <div class="ev k-gala" style="--i:5"><time>18:45</time><span class="tag">晚會</span><h4>魔術表演｜幾米</h4><p>有法力的魔術師</p></div>
         <div class="ev k-gala" style="--i:6"><time>19:00</time><span class="tag">晚會</span><h4>現場互動</h4></div>
         <div class="ev k-gala" style="--i:7"><time>19:25</time><span class="tag">晚會</span><h4>抽獎與頒獎</h4><p>第一次抽獎、頒獎、分會長分享</p></div>
         <div class="ev k-gala" style="--i:8"><time>20:00</time><span class="tag">晚會</span><h4>最終抽獎</h4></div>
@@ -923,14 +925,16 @@ const djs=[
   {slot:"1/3（日）15:00 — 16:00",name:"路哥",role:"尺八演出",bio:"",tags:["尺八"],img:"",c:"#7dffb0"},
   {slot:"1/3（日）16:00 — 17:00",name:"空行者",role:"梵唄音樂人・跨界創作藝術家",bio:"把梵音與咒語融入樂器，帶來傳統與當代交會的聲音體驗。",tags:["梵唄"],img:"assets/perf/kongxingzhe.jpg",crop:1,c:"var(--cyan)"},
   {slot:"1/3（日）18:00 起 · 開運晚會",name:"吉董",role:"董事長樂團主唱",bio:"為開運晚會帶來開場與壓軸演唱。",tags:["晚會演出"],img:"assets/perf/jidong.jpg",crop:1,c:"var(--pink)"},
+  {slot:"1/3（日）18:45 · 開運晚會",name:"幾米",role:"有法力的魔術師",bio:"",tags:["魔術"],img:"assets/perf/jimmy.jpg",imgStyle:"object-position:62% 0;transform:scale(1.9);transform-origin:60% 22%",url:"https://www.instagram.com/jimmychaostudio/",urlText:"Instagram",c:"var(--amber)"},
 ];
 const djrow=document.getElementById("djrow");
 djrow.innerHTML=djs.map(d=>`<article class="dj" style="--c:${d.c}">
   <div class="slot">${d.slot}</div>
-  <div class="disc ${d.img?"photo":""} ${d.crop?"crop":""}">${d.img?`<img src="${d.img}" alt="${d.name}">`:`<span>${[...d.name.replace("DJ ","")].slice(0,2).join("").toUpperCase()}</span>`}</div>
+  <div class="disc ${d.img?"photo":""} ${d.crop?"crop":""}">${d.img?`<img src="${d.img}" alt="${d.name}"${d.imgStyle?` style="${d.imgStyle}"`:""}>`:`<span>${[...d.name.replace("DJ ","")].slice(0,2).join("").toUpperCase()}</span>`}</div>
   <h3>${d.name}${d.sub?`<small>${d.sub}</small>`:""}</h3>
   <p class="role">${d.role}</p>
   <p class="bio">${d.bio||"介紹即將公開"}</p>
+  ${d.url?`<a class="djlink" href="${d.url}" target="_blank" rel="noopener">${d.urlText||"看更多"} ↗</a>`:""}
   <div class="tags">${d.tags.map(t=>`<span>${t}</span>`).join("")}</div>
   <div class="eq"><i></i><i></i><i></i><i></i></div></article>`).join("");
 // 滑鼠拖曳橫向捲動
