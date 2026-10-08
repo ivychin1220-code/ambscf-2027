@@ -558,16 +558,19 @@ details p{font-size:16px;margin:0 0 24px}
 
 /* 舞台光束：從插畫的舞台燈位置往天空掃動 */
 .hero-beams{position:absolute;left:50%;bottom:38.6vw;width:0;height:0;z-index:1;pointer-events:none}
-.hero-beams i{position:absolute;left:0;bottom:0;width:26vw;height:120vh;margin-left:-13vw;transform-origin:50% 100%;clip-path:polygon(47% 100%,53% 100%,100% 0,0 0);background:linear-gradient(to top,var(--bc) 0%,color-mix(in srgb,var(--bc) 45%,transparent) 35%,transparent 82%);mix-blend-mode:screen;filter:blur(16px);opacity:.18;rotate:var(--a);animation:beamSway var(--t) ease-in-out infinite alternate,beamGlow calc(var(--t)*.62) ease-in-out infinite alternate;animation-delay:var(--dl),var(--dl);will-change:rotate,opacity}
-.hero-beams i:nth-child(1){--bc:#6fdcff;--a:-52deg;--s:9deg;--t:7s;--dl:-1s;margin-left:calc(-13vw - 9vw)}
-.hero-beams i:nth-child(2){--bc:#f7567c;--a:-25deg;--s:-8deg;--t:8.5s;--dl:-4s;margin-left:calc(-13vw - 4vw)}
-.hero-beams i:nth-child(3){--bc:#ffffff;--a:0deg;--s:6deg;--t:10s;--dl:-2s}
-.hero-beams i:nth-child(4){--bc:#8f86f0;--a:25deg;--s:8deg;--t:8s;--dl:-6s;margin-left:calc(-13vw + 4vw)}
-.hero-beams i:nth-child(5){--bc:#f5b25c;--a:52deg;--s:-9deg;--t:7.5s;--dl:-3s;margin-left:calc(-13vw + 9vw)}
-@keyframes beamSway{from{rotate:calc(var(--a) - var(--s))}to{rotate:calc(var(--a) + var(--s))}}
+.hero-beams i{position:absolute;left:0;bottom:0;width:26vw;height:120vh;margin-left:-13vw;transform-origin:50% 100%;clip-path:polygon(47% 100%,53% 100%,100% 0,0 0);background:linear-gradient(to top,var(--bc) 0%,var(--bc2) 35%,transparent 82%);mix-blend-mode:screen;filter:blur(16px);opacity:.18;transform:rotate(var(--a));animation:beamSway var(--t) ease-in-out infinite alternate,beamGlow calc(var(--t)*.62) ease-in-out infinite alternate;animation-delay:var(--dl),var(--dl);will-change:transform,opacity}
+.hero-beams i:nth-child(1){--bc:#6fdcff;--bc2:rgba(111,220,255,.45);--a:-52deg;--s:9deg;--t:7s;--dl:-1s;margin-left:calc(-13vw - 9vw)}
+.hero-beams i:nth-child(2){--bc:#f7567c;--bc2:rgba(247,86,124,.45);--a:-25deg;--s:-8deg;--t:8.5s;--dl:-4s;margin-left:calc(-13vw - 4vw)}
+.hero-beams i:nth-child(3){--bc:#ffffff;--bc2:rgba(255,255,255,.45);--a:0deg;--s:6deg;--t:10s;--dl:-2s}
+.hero-beams i:nth-child(4){--bc:#8f86f0;--bc2:rgba(143,134,240,.45);--a:25deg;--s:8deg;--t:8s;--dl:-6s;margin-left:calc(-13vw + 4vw)}
+.hero-beams i:nth-child(5){--bc:#f5b25c;--bc2:rgba(245,178,92,.45);--a:52deg;--s:-9deg;--t:7.5s;--dl:-3s;margin-left:calc(-13vw + 9vw)}
+@keyframes beamSway{from{transform:rotate(calc(var(--a) - var(--s)))}to{transform:rotate(calc(var(--a) + var(--s)))}}
+@keyframes beamGlowM{from{opacity:.14}to{opacity:.68}}
 @keyframes beamGlow{from{opacity:.08}to{opacity:.5}}
-@media(max-width:700px){.hero-beams{bottom:63.5vw}.hero-beams i{width:44vw;margin-left:-22vw!important;height:110vh;filter:blur(10px)}.hero-beams i:nth-child(1),.hero-beams i:nth-child(5){display:none}}
-@media(prefers-reduced-motion:reduce){.hero-beams i{animation:none;opacity:.2}}
+@media(max-width:700px){.hero-beams{bottom:63.5vw}.hero-beams i{width:40vw;margin-left:-20vw!important;height:105vh;filter:blur(7px);animation-name:beamSway,beamGlowM}
+  .hero-beams i:nth-child(1){--a:-40deg;--s:14deg;--t:4.2s}.hero-beams i:nth-child(2){--a:-20deg;--s:-16deg;--t:5s}.hero-beams i:nth-child(3){--s:15deg;--t:5.8s}
+  .hero-beams i:nth-child(4){--a:20deg;--s:16deg;--t:4.6s}.hero-beams i:nth-child(5){--a:40deg;--s:-14deg;--t:4s}}
+@media(prefers-reduced-motion:reduce){.hero-beams i{animation-name:beamGlow!important;animation-duration:6s!important;animation-iteration-count:infinite!important;animation-direction:alternate!important;animation-timing-function:ease-in-out!important}}
 
 /* 背景音樂開關 */
 .music{position:fixed;left:18px;bottom:18px;z-index:40;display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 16px;border:0;border-radius:999px;background:rgba(23,18,63,.86);backdrop-filter:blur(10px);color:var(--ink);font:inherit;font-size:14px;font-weight:700;letter-spacing:.06em;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:background .25s,transform .25s}
