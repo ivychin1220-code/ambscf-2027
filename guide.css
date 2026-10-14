@@ -22,3 +22,4 @@ a.btn.btn-line:hover,a.btn.btn-line.guide-action:hover{background:#05b34c;transf
 /* 平台按鈕加 Logo（2026-10-14） */
 .platform-link{gap:12px}
 .platform-icon{width:32px;height:32px;flex:none;object-fit:contain}
+@media(max-width:600px){.tab-more{display:none}}
