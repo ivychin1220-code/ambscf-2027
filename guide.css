@@ -11,3 +11,10 @@
 .registration-callout{padding:28px;border:1px solid var(--cyan);border-radius:var(--r);background:var(--panel);margin:0 0 36px;box-shadow:inset 4px 0 0 var(--cyan)}.registration-callout h3{font-size:23px;margin:0 0 12px}.registration-callout p{color:var(--mute)}.registration-callout .eyebrow{color:var(--cyan)}.registration-actions{display:flex;flex-wrap:wrap;gap:14px}.registration-actions .guide-action{flex:1}.registration-hint{font-size:13px;margin-bottom:0}.faqs p>a.guide-action{margin:14px 8px 8px 0}.service-links{align-items:stretch}.service-links a{flex:1}.guide-support .guide-action{margin-top:4px}.faq-jump{gap:10px}.faq-jump .guide-action{padding:10px 16px;font-size:13px}.foot p>.guide-action{margin:4px 6px 4px 0}.nav .guide-back.guide-action{padding:6px 14px;font-size:13px;min-height:38px}
 @media(max-width:760px){.guide-tabs{gap:10px}.guide-shell .guide-tabs a.guide-action{padding:12px 10px;font-size:13px}.registration-callout{padding:22px}.registration-actions,.service-links{flex-direction:column}.registration-actions .guide-action{width:100%;flex:auto}.step-copy .guide-action{width:100%}.faqs p>a.guide-action{display:flex;width:100%;margin:14px 0 8px}.nav .guide-back.guide-action{padding:6px 8px;font-size:11px;min-height:34px}.registration-callout h3{font-size:21px}}
 @media(max-width:380px){.nav .guide-back.guide-action{font-size:10px;padding:5px 6px}.guide-shell .guide-tabs a.guide-action{font-size:12px}}
+
+/* 官方 LINE 按鈕一律 LINE 綠，與首頁一致（2026-10-14） */
+a.btn.btn-line,a.btn.btn-line.guide-action,.guide-shell a.btn.btn-line.guide-action{background:#06C755;border:0;color:#fff}
+a.btn.btn-line:hover,a.btn.btn-line.guide-action:hover{background:#05b34c;transform:translateY(-2px)}
+/* 協助區的次要按鈕與首頁相同 */
+.guide-support a.btn.btn-ghost:not(.guide-action){border:0;background:rgba(255,255,255,.08);color:var(--ink)}
+.guide-support a.btn.btn-ghost:not(.guide-action):hover{background:rgba(255,255,255,.14)}
