@@ -653,6 +653,7 @@ details p{font-size:16px;margin:0 0 24px}
 /* 晚宴｜豐辦桌 */.banquet{margin:40px auto 0;max-width:760px;padding:32px 28px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}.banquet .eyebrow{color:var(--pink);margin:0 0 8px}.banquet h3{font-size:clamp(22px,4vw,30px);margin:0 0 14px}.banquet p{color:var(--mute);line-height:1.9;margin:0}.banquet strong{color:var(--ink);white-space:nowrap}.banquet-link{display:inline-block;margin-top:18px;color:var(--pink);font-weight:700;text-decoration:none}.banquet-link:hover{text-decoration:underline}@media(max-width:600px){.banquet{padding:24px 18px}}
 /* 晚宴菜單 */.menu-h{margin:26px 0 12px;font-size:17px;color:var(--ink)}.menu{list-style:none;counter-reset:m;margin:0 auto;padding:0;max-width:560px;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;text-align:left}.menu li{counter-increment:m;color:var(--ink);font-size:15px;line-height:1.6;padding:6px 0;border-bottom:1px solid var(--line)}.menu li::before{content:counter(m,decimal-leading-zero);color:var(--pink);font-weight:700;font-size:12px;margin-right:10px}.banquet .menu-note{font-size:13px;margin-top:10px}@media(max-width:600px){.menu{grid-template-columns:1fr}}
 /* 手機版：時間表與十道大菜置中 */@media(max-width:760px){.tl{padding-left:0}.tl::before{display:none}.ev,.ev:nth-child(even){text-align:center;padding:22px 0 30px;transform:translateY(12px)}.ev::before,.ev:nth-child(even)::before{left:50%;right:auto;top:0;transform:translateX(-50%)}.ev::after{content:"";position:absolute;left:50%;bottom:6px;width:1px;height:16px;background:var(--line)}.ev:last-child::after{display:none}.ev .tag{margin-left:8px}}@media(max-width:600px){.menu li{text-align:center}}
+/* 選單分隔線 */.nav li.nav-sep{padding-left:28px;border-left:1px solid var(--line)}
 </style></head>
 <body>
 
@@ -660,13 +661,13 @@ details p{font-size:16px;margin:0 0 24px}
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/logo-mark.png" alt="">亞洲身心靈文化祭</a>
     <ul>
+      <li><a href="#schedule">時間表</a></li>
       <li><a href="#vendors">攤商</a></li>
       <li><a href="#dj">DJ</a></li>
-      <li><a href="#schedule">時間表</a></li>
       <li><a href="banquet.html">晚宴</a></li>
       <li><a href="#tickets">票券</a></li>
       <li><a href="#location">交通</a></li>
-      <li><a class="guide-nav-entry" href="guide.html#steps">命書購後必做</a></li>
+      <li class="nav-sep"><a class="guide-nav-entry" href="guide.html#steps">命書購後必做</a></li>
     </ul>
     <a class="mobile-guide" href="guide.html#steps"><b>命書購後必做</b><small>註冊幸運點＋開通問問</small></a>
     <a class="btn btn-main" href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">立即購票</a>
@@ -722,27 +723,6 @@ details p{font-size:16px;margin:0 0 24px}
   </div>
 </section>
 
-<section id="vendors">
-  <div class="wrap">
-    <p class="eyebrow rv">The Market · Taipei 2027</p>
-    <h2 class="rv">攤商陣容</h2>
-    <p class="lead rv">命理開運、身心療癒、香氛手作、文創選物、輕食飲品，40+ 身心靈品牌在現場等你相遇。</p>
-    <div class="chips rv" id="chips"></div>
-    <div class="vgrid" id="vgrid"></div>
-    <p class="note">※ 攤商名單持續更新，實際參展品牌與擺攤日期以現場公告為準。</p>
-  </div>
-</section>
-
-<section id="dj" class="djsec">
-  <div class="wrap">
-    <p class="eyebrow rv">Stage Lineup · 1/2 – 1/3</p>
-    <h2 class="rv">DJ 與舞台陣容</h2>
-    <p class="lead rv">1/2 四組音樂人從午後接力到入夜，1/3 尺八與梵唄接棒，晚宴有吉董與魔術師幾米。</p>
-  </div>
-  <p class="swipe rv">← SWIPE →</p>
-  <div class="djrow" id="djrow"></div>
-</section>
-
 <section class="sched" id="schedule">
   <div class="wrap">
     <p class="eyebrow rv">Schedule</p>
@@ -790,6 +770,29 @@ details p{font-size:16px;margin:0 0 24px}
     </div>
   </div>
 </section>
+
+<section id="vendors">
+  <div class="wrap">
+    <p class="eyebrow rv">The Market · Taipei 2027</p>
+    <h2 class="rv">攤商陣容</h2>
+    <p class="lead rv">命理開運、身心療癒、香氛手作、文創選物、輕食飲品，40+ 身心靈品牌在現場等你相遇。</p>
+    <div class="chips rv" id="chips"></div>
+    <div class="vgrid" id="vgrid"></div>
+    <p class="note">※ 攤商名單持續更新，實際參展品牌與擺攤日期以現場公告為準。</p>
+  </div>
+</section>
+
+<section id="dj" class="djsec">
+  <div class="wrap">
+    <p class="eyebrow rv">Stage Lineup · 1/2 – 1/3</p>
+    <h2 class="rv">DJ 與舞台陣容</h2>
+    <p class="lead rv">1/2 四組音樂人從午後接力到入夜，1/3 尺八與梵唄接棒，晚宴有吉董與魔術師幾米。</p>
+  </div>
+  <p class="swipe rv">← SWIPE →</p>
+  <div class="djrow" id="djrow"></div>
+</section>
+
+
 
 <section id="tickets">
   <div class="wrap">
