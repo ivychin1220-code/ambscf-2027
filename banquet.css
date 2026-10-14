@@ -11,3 +11,4 @@
 .flow span{display:block;color:var(--mute);font-size:14px;margin-top:2px}
 .bq .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
 @media(max-width:600px){.menu{grid-template-columns:1fr}footer{padding-bottom:88px}}
+@media(max-width:600px){.menu li{text-align:center}.flow li{flex-direction:column;align-items:center;gap:4px;text-align:center}.flow time{width:auto}}
