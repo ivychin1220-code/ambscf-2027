@@ -18,3 +18,4 @@ a.btn.btn-line:hover,a.btn.btn-line.guide-action:hover{background:#05b34c;transf
 /* 協助區的次要按鈕與首頁相同 */
 .guide-support a.btn.btn-ghost:not(.guide-action){border:0;background:rgba(255,255,255,.08);color:var(--ink)}
 .guide-support a.btn.btn-ghost:not(.guide-action):hover{background:rgba(255,255,255,.14)}
+@media(max-width:600px){footer{padding-bottom:88px}}

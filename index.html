@@ -642,6 +642,9 @@ details p{font-size:16px;margin:0 0 24px}
 .guide-after{margin:28px auto 0;max-width:760px;text-align:center;font-size:15px;color:var(--mute);line-height:1.8}
 .guide-after a{color:var(--cyan);font-weight:700;white-space:nowrap}
 .guide-after a:hover{text-decoration:underline}
+.ticket-shortcut{opacity:0;pointer-events:none;transition:opacity .3s,transform .25s}
+.ticket-shortcut.on{opacity:1;pointer-events:auto}
+@media(max-width:600px){.ticket-shortcut{width:48px;height:48px;padding:0;font-size:0;border-radius:50%;justify-content:center;right:14px;bottom:14px}.ticket-shortcut::after{content:"↑";font-size:20px;font-weight:700}footer{padding-bottom:88px}}
 </style></head>
 <body>
 
@@ -1003,7 +1006,7 @@ document.querySelectorAll(".rv").forEach(el=>io.observe(el));
 // 導覽列與浮動按鈕
 const nav=document.getElementById("nav");
 const heroArt=document.getElementById("heroArt");
-addEventListener("scroll",()=>{if(!reduce&&scrollY<innerHeight*1.6)heroArt.style.transform=`translateY(${scrollY*.12}px)`;nav.classList.toggle("on",scrollY>30)},{passive:true});
+addEventListener("scroll",()=>{if(!reduce&&scrollY<innerHeight*1.6)heroArt.style.transform=`translateY(${scrollY*.12}px)`;nav.classList.toggle("on",scrollY>30);document.querySelector(".ticket-shortcut")?.classList.toggle("on",scrollY>innerHeight*.8)},{passive:true});
 
 // 節目表分頁
 document.querySelectorAll(".tab").forEach(tb=>tb.onclick=()=>{
