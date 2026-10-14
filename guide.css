@@ -19,3 +19,6 @@ a.btn.btn-line:hover,a.btn.btn-line.guide-action:hover{background:#05b34c;transf
 .guide-support a.btn.btn-ghost:not(.guide-action){border:0;background:rgba(255,255,255,.08);color:var(--ink)}
 .guide-support a.btn.btn-ghost:not(.guide-action):hover{background:rgba(255,255,255,.14)}
 @media(max-width:600px){footer{padding-bottom:88px}}
+/* 平台按鈕加 Logo（2026-10-14） */
+.platform-link{gap:12px}
+.platform-icon{width:28px;height:28px;border-radius:8px;flex:none;background:#fff;object-fit:contain}
