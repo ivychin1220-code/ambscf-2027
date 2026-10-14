@@ -785,7 +785,7 @@ details p{font-size:16px;margin:0 0 24px}
     <p class="lead rv">市集免費入場。開運晚宴與命書方案於 KKTIX 販售，隨票附「市集護照」。</p>
 
     <div class="tix" id="tix"></div>
-    <p class="guide-after rv">已購買命書方案？付款後請用本人帳號註冊幸運點、開通問問並填寫出生資料，<a href="guide.html#steps">看購後必做步驟 →</a></p>
+    <p class="guide-after rv">已購買命書方案？付款後請用本人帳號註冊幸運點、開通問問並填寫出生資料，<a href="guide.html#steps">看命書購後必做步驟 →</a></p>
     <div class="biz rv">
       <p><b>企業合作桌</b>　企業桌次、品牌露出、命書團購方案，歡迎洽詢客服為您客製規劃。</p>
       <a class="btn btn-line" href="https://lin.ee/wRx6bWV" target="_blank" rel="noopener">官方 LINE @ambscf</a>
@@ -998,7 +998,7 @@ document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T2
     ${t.save&&!ended?`<p class="save">${t.save}</p>`:""}
     <p class="state ${ended?"off":""}">${state}</p>
     <ul>${t.f.map(x=>x[0]==="!"?`<li class="no">${x.slice(1)}</li>`:`<li>${x}</li>`).join("")}</ul>
-    ${["命書套票","VIP 命書票","命書＋趨勢影片組合"].includes(t.n)?`<a class="btn btn-ghost guide-ticket-action" href="guide.html#steps">購後必做：註冊幸運點＋開通問問 →</a>`:""}
+    ${["命書套票","VIP 命書票","命書＋趨勢影片組合"].includes(t.n)?`<a class="btn btn-ghost guide-ticket-action" href="guide.html#steps">命書購後必做：註冊幸運點＋開通問問 →</a>`:""}
     ${soon?`<span class="btn btn-ghost" aria-disabled="true" style="opacity:.5;cursor:default">${fmt(t.from)} 開放購票</span>`:`<a class="btn ${t.hot?"btn-main":"btn-ghost"}" href="${t.url||KKTIX}" target="_blank" rel="noopener">${ended?"已截止":"前往購票"}</a>`}
   </article>`}).join("");
 
