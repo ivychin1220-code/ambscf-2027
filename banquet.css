@@ -1,0 +1,13 @@
+.bq{padding-top:8px}
+.bq .guide-info{text-align:left}
+.menu{list-style:none;counter-reset:m;margin:16px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 28px}
+.menu li{counter-increment:m;color:var(--ink);font-size:16px;line-height:1.6;padding:10px 0;border-bottom:1px solid var(--line)}
+.menu li::before{content:counter(m,decimal-leading-zero);color:var(--pink);font-weight:700;font-size:12px;margin-right:12px}
+.menu-note{font-size:13px;color:var(--mute);margin-top:14px}
+.flow{list-style:none;margin:16px 0 0;padding:0}
+.flow li{display:flex;gap:18px;padding:12px 0;border-bottom:1px solid var(--line)}
+.flow time{flex:none;width:52px;color:var(--pink);font-weight:700;font-family:Oswald,sans-serif;font-size:17px}
+.flow b{display:block;color:var(--ink)}
+.flow span{display:block;color:var(--mute);font-size:14px;margin-top:2px}
+.bq .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+@media(max-width:600px){.menu{grid-template-columns:1fr}footer{padding-bottom:88px}}
