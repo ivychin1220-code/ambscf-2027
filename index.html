@@ -654,6 +654,7 @@ details p{font-size:16px;margin:0 0 24px}
 /* 晚宴菜單 */.menu-h{margin:26px 0 12px;font-size:17px;color:var(--ink)}.menu{list-style:none;counter-reset:m;margin:0 auto;padding:0;max-width:560px;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;text-align:left}.menu li{counter-increment:m;color:var(--ink);font-size:15px;line-height:1.6;padding:6px 0;border-bottom:1px solid var(--line)}.menu li::before{content:counter(m,decimal-leading-zero);color:var(--pink);font-weight:700;font-size:12px;margin-right:10px}.banquet .menu-note{font-size:13px;margin-top:10px}@media(max-width:600px){.menu{grid-template-columns:1fr}}
 /* 手機版：時間表與十道大菜置中 */@media(max-width:760px){.tl{padding-left:0}.tl::before{display:none}.ev,.ev:nth-child(even){text-align:center;padding:22px 0 30px;transform:translateY(12px)}.ev::before,.ev:nth-child(even)::before{left:50%;right:auto;top:0;transform:translateX(-50%)}.ev::after{content:"";position:absolute;left:50%;bottom:6px;width:1px;height:16px;background:var(--line)}.ev:last-child::after{display:none}.ev .tag{margin-left:8px}}@media(max-width:600px){.menu li{text-align:center}}
 /* 選單分隔線 */.nav li.nav-sep{padding-left:28px;border-left:1px solid var(--line)}
+/* 手機版十道大菜：整體置中、編號對齊 */@media(max-width:600px){.menu{display:block;width:max-content;max-width:100%;margin-left:auto;margin-right:auto}.menu li{text-align:left;padding-right:12px}.menu li::before{display:inline-block;width:22px}}
 </style></head>
 <body>
 

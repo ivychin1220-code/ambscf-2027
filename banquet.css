@@ -12,3 +12,4 @@
 .bq .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
 @media(max-width:600px){.menu{grid-template-columns:1fr}footer{padding-bottom:88px}}
 @media(max-width:600px){.menu li{text-align:center}.flow li{flex-direction:column;align-items:center;gap:4px;text-align:center}.flow time{width:auto}}
+@media(max-width:600px){.menu{display:block;width:max-content;max-width:100%;margin-left:auto;margin-right:auto}.menu li{text-align:left;padding-right:12px}.menu li::before{display:inline-block;width:22px}}
