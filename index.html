@@ -624,6 +624,15 @@ details p{font-size:16px;margin:0 0 24px}
 .banquet .banquet-subtitle{font-size:20px;font-weight:700;color:var(--ink);line-height:1.6;margin:0 0 24px}
 .banquet-preview-photo{margin:0 0 24px}.banquet-preview-photo img{width:100%;height:auto;border-radius:12px}.banquet-preview-photo figcaption{font-size:12px;color:var(--mute);margin-top:8px}
 .banquet .banquet-menu-lead{font-size:14px;margin-bottom:16px}.banquet{scroll-margin-top:96px}
+
+/* Compact schedule and optional transport details. */
+.schedule-link{text-align:center;margin:24px 0}.schedule-link a{color:var(--cyan);display:inline-block;padding:12px 0}
+#location .compact-transport{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.transport-details{text-align:left;padding:0 24px;border-bottom:1px solid var(--line)}
+.transport-details summary{font-size:16px;min-height:44px;padding:20px 32px 20px 0}
+.transport-details p{font-size:16px;line-height:1.7;margin:0 0 24px}
+.transport-details summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+@media(max-width:760px){#location .compact-transport{grid-template-columns:1fr}.compact-transport .step{padding:24px}.transport-details{padding:0 16px}}
 </style>
 <style>
 .nav ul{gap:clamp(12px,2vw,28px)}.mobile-guide{display:none}
@@ -952,28 +961,24 @@ details p{font-size:16px;margin:0 0 24px}
     <div class="day on" id="d1">
       <div class="tl">
         <div class="ev k-market" style="--i:0"><time>12:00</time><span class="tag">市集</span><h4>市集開始</h4><p>40+ 攤位開放，營業至 20:30</p></div>
-        <div class="ev k-stage" style="--i:1"><time>14:00 – 15:00</time><span class="tag">舞台</span><h4>Subi</h4><p>Organic／Tribal Melody Groove House × Ambient × 小提琴</p></div>
-        <div class="ev k-stage" style="--i:2"><time>15:00 – 17:00</time><span class="tag">舞台</span><h4>Victor F:Lo｜陸偉華</h4><p>聲音與光影藝術家</p></div>
-        <div class="ev k-stage" style="--i:3"><time>17:00 – 19:00</time><span class="tag">舞台</span><h4>DJ Yu Jin</h4><p>佛系吃素 DJ</p></div>
-        <div class="ev k-stage" style="--i:4"><time>19:00 – 21:00</time><span class="tag">舞台</span><h4>DJ Mandy Ray</h4><p>東方俠女氣息的跨曲風 DJ</p></div>
+        <div class="ev k-stage" style="--i:1"><time>14:00 – 15:00</time><span class="tag">舞台</span><h4>Subi</h4></div>
+        <div class="ev k-stage" style="--i:2"><time>15:00 – 17:00</time><span class="tag">舞台</span><h4>Victor F:Lo｜陸偉華</h4></div>
+        <div class="ev k-stage" style="--i:3"><time>17:00 – 19:00</time><span class="tag">舞台</span><h4>DJ Yu Jin</h4></div>
+        <div class="ev k-stage" style="--i:4"><time>19:00 – 21:00</time><span class="tag">舞台</span><h4>DJ Mandy Ray</h4></div>
         <div class="ev k-market" style="--i:5"><time>20:30</time><span class="tag">市集</span><h4>市集結束</h4></div>
       </div>
     </div>
     <div class="day" id="d2">
       <div class="tl">
         <div class="ev k-market" style="--i:0"><time>10:00</time><span class="tag">市集</span><h4>市集開始</h4><p>營業至 20:30</p></div>
-        <div class="ev k-stage" style="--i:1"><time>15:00 – 16:00</time><span class="tag">舞台</span><h4>路哥</h4><p>尺八演奏家・台北極鼓擊團長</p></div>
-        <div class="ev k-stage" style="--i:2"><time>16:00 – 17:00</time><span class="tag">舞台</span><h4>空行者</h4><p>梵唄音樂人・跨界創作藝術家</p></div>
-        <div class="ev k-gala" style="--i:3"><time>17:00</time><span class="tag">晚宴</span><h4>晚宴賓客報到進場</h4><p>暖場音樂</p></div>
-        <div class="ev k-gala" style="--i:4"><time>18:00</time><span class="tag">晚宴</span><h4>開運晚宴正式開始</h4><p>千人辦桌開席（阿海師掌杓）・吉董開場演唱、主持人開場、主辦單位致詞</p></div>
-        <div class="ev k-gala" style="--i:5"><time>18:45</time><span class="tag">晚宴</span><h4>魔術表演｜幾米</h4><p>有法力的魔術師</p></div>
-        <div class="ev k-gala" style="--i:6"><time>19:00</time><span class="tag">晚宴</span><h4>現場互動</h4></div>
-        <div class="ev k-gala" style="--i:7"><time>19:25</time><span class="tag">晚宴</span><h4>抽獎與頒獎</h4><p>第一次抽獎、頒獎、分會長分享</p></div>
-        <div class="ev k-gala" style="--i:8"><time>20:00</time><span class="tag">晚宴</span><h4>最終抽獎</h4></div>
-        <div class="ev k-gala" style="--i:9"><time>20:15</time><span class="tag">晚宴</span><h4>吉董壓軸演唱・一起為台灣祈福</h4><p>大合照與謝幕</p></div>
-        <div class="ev k-gala" style="--i:10"><time>20:30</time><span class="tag">晚宴</span><h4>晚宴結束</h4></div>
+        <div class="ev k-stage" style="--i:1"><time>15:00 – 16:00</time><span class="tag">舞台</span><h4>路哥</h4></div>
+        <div class="ev k-stage" style="--i:2"><time>16:00 – 17:00</time><span class="tag">舞台</span><h4>空行者</h4></div>
+        <div class="ev k-gala" style="--i:3"><time>17:00</time><span class="tag">晚宴</span><h4>晚宴賓客報到進場</h4></div>
+        <div class="ev k-gala" style="--i:4"><time>18:00</time><span class="tag">晚宴</span><h4>開運晚宴正式開始</h4></div>
+                                                <div class="ev k-gala" style="--i:10"><time>20:30</time><span class="tag">晚宴</span><h4>晚宴結束</h4></div>
       </div>
     </div>
+    <p class="schedule-link"><a href="banquet.html#program">查看完整晚宴流程 →</a></p>
     <p class="note">※ 節目內容與時間以活動現場公告為準。</p>
 
   </div>
@@ -986,13 +991,11 @@ details p{font-size:16px;margin:0 0 24px}
     <p class="lead rv">台北流行音樂中心 南基地戶外空間</p>
     <div class="loc">
       <div class="rv"><iframe loading="lazy" title="活動地點地圖" src="https://www.google.com/maps?q=25.0527719,121.5983165&z=16&output=embed"></iframe></div>
-      <div class="steps">
+      <div class="steps compact-transport">
         <div class="step rv"><i>01</i><div><h4>活動地點</h4><p>115 臺北市南港區市民大道八段 99 號<br><a href="https://maps.app.goo.gl/JzyRRCk3UfKYk9kp7" target="_blank" rel="noopener" style="color:var(--cyan)">在 Google 地圖開啟 ↗</a></p></div></div>
-        <div class="step rv" style="--d:.1s"><i>02</i><div><h4>市集時間・免費入場</h4><p>1/2（六）12:00–20:30<br>1/3（日）10:00–20:30</p></div></div>
-        <div class="step rv" style="--d:.2s"><i>03</i><div><h4>開運晚宴</h4><p>1/3（日）18:00–20:30，17:00 開始報到進場。<br>請攜帶 KKTIX 電子票券（手機畫面或列印皆可）。</p></div></div>
-        <div class="step rv"><i>04</i><div><h4>捷運</h4><p>板南線<b>昆陽站 4 號出口</b>，向東步行約 8 分鐘。<br>南港站由 1A 連通道經 CITYLINK B 棟出站，沿市民大道向西步行約 11 分鐘。</p></div></div>
-        <div class="step rv" style="--d:.1s"><i>05</i><div><h4>高鐵・台鐵・公車</h4><p>南港車站<b>北出口</b>，沿市民大道向西步行約 11 分鐘。<br>公車「臺北流行音樂中心站（市民大道）」：小12、小12區。</p></div></div>
-        <div class="step rv" style="--d:.2s"><i>06</i><div><h4>開車・停車</h4><p>北流地下停車場入口在南港路二段 178 巷，293 格、限高 2 公尺，例假日及活動日每小時 60 元（當日上限 500 元）。<br>機車停車場入口在南港路二段 71 號，每次 30 元。</p></div></div>
+        <div class="step rv"><i>02</i><div><h4>捷運</h4><p>板南線<b>昆陽站 4 號出口</b>，向東步行約 8 分鐘。<br>南港站由 1A 連通道經 CITYLINK B 棟出站，沿市民大道向西步行約 11 分鐘。</p></div></div>
+        <details class="transport-details"><summary>高鐵・台鐵・公車</summary><div><p>南港車站<b>北出口</b>，沿市民大道向西步行約 11 分鐘。<br>公車「臺北流行音樂中心站（市民大道）」：小12、小12區。</p></div></details>
+        <details class="transport-details"><summary>開車・停車</summary><div><p>北流地下停車場入口在南港路二段 178 巷，293 格、限高 2 公尺，例假日及活動日每小時 60 元（當日上限 500 元）。<br>機車停車場入口在南港路二段 71 號，每次 30 元。</p></div></details>
       </div>
     </div>
     <p class="note">※ 交通與停車資訊取自臺北流行音樂中心官網，建議多利用大眾運輸。</p>
