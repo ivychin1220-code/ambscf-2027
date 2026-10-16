@@ -640,6 +640,18 @@ details p{font-size:16px;margin:0 0 24px}
 .transport-details p{font-size:16px;line-height:1.7;margin:0 0 24px}
 .transport-details summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
 @media(max-width:760px){#location .compact-transport{grid-template-columns:1fr}.compact-transport .step{padding:24px}.transport-details{padding:0 16px}}
+
+/* Clear access labels and dinner recommendation. */
+.performance-access{display:inline-block;align-self:center;font-size:14px;font-weight:700;line-height:1.5;padding:6px 12px;margin:0 0 12px;border-radius:20px;background:var(--panel2);color:var(--cyan)}
+.performance-access.paid{color:var(--pink)}
+#tickets .banquet-value{font-size:14px;line-height:1.8;color:var(--ink);margin:16px 0 4px;padding:12px 8px;background:var(--panel2);border-radius:12px}
+
+.mingshu-details{border:0;margin-top:8px}.mingshu-details summary{font-size:14px;line-height:1.5;color:var(--cyan);padding:12px 32px 12px 0;min-height:44px}.mingshu-details summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}.mingshu-details>div{padding:4px 0 12px}
+
+.experience-copy .dinner-card-title{font-weight:700;color:var(--ink);margin:0 0 4px}.experience-copy .dinner-card-time{font-size:14px;margin:0 0 12px;color:var(--cyan)}#banquet{scroll-margin-top:96px}
+
+#faq .faq-group+ .faq-group{margin-top:32px}#faq .faq-group h3{text-align:left;font-size:20px;line-height:1.5;margin:0 0 12px;color:var(--cyan)}
+#faq summary{display:flex;align-items:baseline;gap:12px;text-align:left}#faq .faq-number{flex:0 0 28px;color:var(--mute);font-variant-numeric:tabular-nums}#faq .faq-question{min-width:0}#faq summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
 </style>
 <style>
 .nav ul{gap:clamp(12px,2vw,28px)}.mobile-guide{display:none}
@@ -827,7 +839,7 @@ details p{font-size:16px;margin:0 0 24px}
     </div>
     <div class="cta-row fade-up" style="animation-delay:1.3s">
       <a class="btn btn-ghost ticket-entry" href="#experiences">看免費市集 ↓</a>
-      <a class="btn btn-main" id="heroBuy" href="#tickets">立即購票 →</a>
+      <a class="btn btn-main" id="heroBuy" href="#tickets">晚宴購票 →</a>
     </div>
     <div class="count fade-up" style="animation-delay:1.4s" id="count" aria-label="距離活動開始">
       <span class="count-lb">距離開幕</span>
@@ -881,17 +893,17 @@ details p{font-size:16px;margin:0 0 24px}
       <article class="experience-card">
         <div class="market-carousel performer-carousel" role="region" aria-roledescription="輪播" aria-label="演出陣容照片" tabindex="0">
           <div class="market-slides" aria-live="off">
-            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 1 張，共 3 張"><img class="mandy-slide" src="assets/perf/mandy.jpg" alt="DJ Mandy Ray" loading="lazy"><figcaption>DJ Mandy Ray｜1/2 舞台演出</figcaption></figure>
-            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 2 張，共 3 張" hidden><img class="jidong-slide" src="assets/experiences/jidong-portrait.jpg" alt="吉董吳永吉抱吉他演唱宣傳照" loading="lazy"><figcaption>吉董 吳永吉｜1/3 開運晚宴</figcaption></figure>
-            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 3 張，共 3 張" hidden><img class="jimmy-slide" src="assets/perf/jimmy.jpg" alt="魔術師幾米" loading="lazy"><figcaption>魔術師幾米｜1/3 開運晚宴</figcaption></figure>
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 1 張，共 3 張"><img class="mandy-slide" src="assets/perf/mandy.jpg" alt="DJ Mandy Ray" loading="lazy"><figcaption>免費舞台｜DJ Mandy Ray · 1/2</figcaption></figure>
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 2 張，共 3 張" hidden><img class="jidong-slide" src="assets/experiences/jidong-portrait.jpg" alt="吉董吳永吉抱吉他演唱宣傳照" loading="lazy"><figcaption>晚宴限定・須購票｜吉董 · 1/3</figcaption></figure>
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 3 張，共 3 張" hidden><img class="jimmy-slide" src="assets/perf/jimmy.jpg" alt="魔術師幾米" loading="lazy"><figcaption>晚宴限定・須購票｜幾米 · 1/3</figcaption></figure>
           </div>
           <button class="market-arrow market-prev" type="button" aria-label="上一張演出照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
           <button class="market-arrow market-next" type="button" aria-label="下一張演出照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
           <div class="market-controls" aria-label="選擇演出照片"><button type="button" aria-label="顯示 Mandy" aria-pressed="true"></button><button type="button" aria-label="顯示吉董" aria-pressed="false"></button><button type="button" aria-label="顯示魔術師幾米" aria-pressed="false"></button><span class="market-count" aria-hidden="true">1 / 3</span><button class="carousel-play" type="button" aria-label="暫停自動輪播" title="暫停自動輪播"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button></div>
         </div>
-        <div class="experience-copy"><p class="experience-kicker">02 · 午後到入夜的音樂</p><h3>聽演出</h3><p>從 DJ、小提琴到尺八與梵唄，兩天音樂人接力演出；購票參加 1/3 開運晚宴，還有吉董演唱與幾米魔術。</p><a href="#dj">看音樂人與演出 →</a></div>
+        <div class="experience-copy"><p class="experience-kicker">02 · 午後到入夜的音樂</p><h3>聽演出</h3><p>從 DJ、小提琴到尺八與梵唄，兩天免費舞台接力演出；購票參加 1/3 開運晚宴，還有吉董演唱與幾米魔術。</p><a href="#dj">看音樂人與演出 →</a></div>
       </article>
-      <article class="experience-card">
+      <article class="experience-card" id="banquet">
         <div class="market-carousel banquet-carousel" role="region" aria-roledescription="輪播" aria-label="總舖師上菜與豐辦桌介紹" tabindex="0">
           <div class="market-slides" aria-live="off">
 <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 1 張，共 2 張"><img src="assets/banquet/banquet-hero.jpg" alt="總舖師上菜，豐辦桌過往宴席實景" loading="lazy"><figcaption>總舖師上菜｜過往宴席實景，非本次場地</figcaption></figure>
@@ -901,22 +913,11 @@ details p{font-size:16px;margin:0 0 24px}
           <button class="market-arrow market-next" type="button" aria-label="下一張晚宴照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
           <div class="market-controls" aria-label="選擇晚宴照片"><button type="button" aria-label="顯示總舖師上菜" aria-pressed="true"></button><button type="button" aria-label="顯示豐辦桌 Logo" aria-pressed="false"></button><span class="market-count" aria-hidden="true">1 / 2</span><button class="carousel-play" type="button" aria-label="暫停自動輪播" title="暫停自動輪播"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button></div>
         </div>
-        <div class="experience-copy"><p class="experience-kicker">03 · 晚宴另行購票</p><h3>吃晚宴</h3><p>十道美濃客家大菜，搭配吉董演唱、幾米魔術與抽獎。1/3 晚上，和千人一起吃新年第一桌。</p><a href="#banquet">看千人開運辦桌 →</a></div>
+        <div class="experience-copy"><p class="experience-kicker">03 · 晚宴另行購票</p><h3>吃晚宴</h3><p class="dinner-card-title">千人開運辦桌</p><p class="dinner-card-time">1/3（日）18:00</p><p>豐辦桌策劃、阿海師掌杓，十道美濃客家大菜，搭配吉董演唱、幾米魔術與抽獎。</p><a href="banquet.html">看晚宴介紹與十道菜單 →</a></div>
       </article>
     </div>
   </div>
 </section>
-
-<section id="banquet" class="banquet-section"><div class="wrap">
-    <div class="banquet rv">
-      <p class="eyebrow">開運晚宴 · 1/3（日）18:00</p>
-      <h2>千人開運辦桌</h2>
-      <p class="banquet-subtitle">北流首場千人辦桌<br>一千人同席寫歷史</p>
-      <figure class="banquet-preview-photo"><img src="assets/banquet/banquet-hero.jpg" alt="豐辦桌過往宴席實景" width="1800" height="1200" loading="lazy"><figcaption>豐辦桌過往宴席實景，非本次北流場地。</figcaption></figure>
-      <p class="banquet-highlights">豐辦桌策劃、阿海師掌杓，十道美濃客家大菜。<br>吉董演唱 × 幾米魔術 × 抽獎祈福</p>
-      <a class="banquet-link" href="banquet.html">看完整介紹與十道菜單 →</a>
-    </div>
-</div></section>
 
 <section id="tickets">
   <div class="wrap">
@@ -927,8 +928,12 @@ details p{font-size:16px;margin:0 0 24px}
     <div class="tix" id="tix"></div>
     <div class="mingshu-intro rv">
       <h3>2027 個人命書｜<span>依你的命盤，寫給你一個人</span></h3>
+      <p>近百頁專屬命書，含全年方向與每月提醒；紙本＋電子版，搭配問問解讀。</p>
+      <details class="mingshu-details"><summary>查看完整介紹</summary><div>
       <p>依你的出生時間排出紫微命盤，大耕老師審定，近百頁內容，從全年大方向到 12 個月逐月提醒，告訴你 2027 哪裡該衝、哪裡該守。紙本＋電子版，看不懂還能用「問問」繼續問。</p>
       <p class="mingshu-early">依下單順序製作，越早訂越早收到。</p>
+
+      </div></details>
     </div>
     <p class="guide-after rv">已購買命書方案？付款後請用本人帳號註冊幸運點、開通問問並填寫出生資料，<a href="guide.html#steps">看命書購後必做步驟 →</a></p>
     <div class="biz rv">
@@ -1019,16 +1024,22 @@ details p{font-size:16px;margin:0 0 24px}
     <p class="eyebrow rv">FAQ</p>
     <h2 class="rv">常見問題</h2>
     <div class="faq rv">
-      <details><summary>命書是什麼？</summary><p>2027 個人命書是依你的出生時間排出紫微斗數命盤後製作的年度運勢書，由大耕老師審定，近百頁，包含全年運勢重點與 12 個月逐月提醒，提供紙本與電子版。命書依下單順序製作，越早訂購、越早收到；購買後請完成幸運點註冊與問問開通，才能開始製作。</p></details>
-      <details><summary>我只想參加開運晚宴，應該買哪一種票？</summary><p>可選擇超早鳥、早鳥票或一般票。三個階段的票券內容完全相同，只有售價及販售名額不同。</p></details>
-      <details><summary>哪些票種包含命書？</summary><p>「命書＋趨勢影片組合」「命書套票」「VIP 命書票」三種包含完整命書。一般開運晚宴票與十人團體桌提供的是「命書折抵券 500 元」，不等同於已購買完整命書。</p></details>
-      <details><summary>買了命書方案之後要做什麼？</summary><p>付款後，請由實際使用命書的人用自己的帳號註冊幸運點，再用同一個帳號開通問問、填寫出生資料並生成命盤，主辦單位才能確認資料並製作命書。圖解步驟請看 <a href="guide.html#steps" style="color:var(--cyan)">命書購後必做</a>。</p></details>
-      <details><summary>VIP 命書票與命書套票有什麼不同？</summary><p>VIP 命書票除了包含命書及趨勢影片，另享有靠近舞台的 VIP 席位、香氛蠟燭、VIP 專屬抽獎券、VIP 加碼抽獎券與幸運點 12,000 點。命書套票為一般席位，贈送幸運點 10,000 點。</p></details>
-      <details><summary>命書可以在活動現場領取嗎？</summary><p>命書為個人化客製商品，需要另外安排資料確認及製作，並非活動現場即時製作或領取。實際製作及交付時間，請依主辦單位後續通知為準。</p></details>
-      <details><summary>可以現場買票嗎？</summary><p>建議提前於 KKTIX 完成線上購票。各票種及桌次數量有限，現場是否開放售票，將視活動當日狀況及主辦單位公告為準。</p></details>
-      <details><summary>需要素食餐點怎麼辦？</summary><p>請在購票備註中填寫「素食」。素食貴賓將統一安排於素食桌，席次有限，未事先備註者，恕無法保證現場臨時更換。</p></details>
-      <details><summary>購票後不能參加，可以轉讓嗎？</summary><p>可以將有效票券轉讓予他人。如需變更姓名、聯絡資料、桌次或餐食，請於 2026 年 12 月 10 日（含）前辦理。會員點數、個人化命書及其他已綁定帳號的權益，不一定能隨票券轉移。</p></details>
-      <details><summary>可以申請退票嗎？</summary><p>退換票與票券轉讓規則，請以 <a href="https://iszn.kktix.cc/events/culturalfestival2027" target="_blank" rel="noopener" style="color:var(--cyan)">KKTIX 售票頁</a>的最新公告為準。</p></details>
+<div class="faq-group" aria-labelledby="faq-group-0"><h3 id="faq-group-0">晚宴與入場</h3>
+<details><summary><span class="faq-number">1.</span><span class="faq-question">我只想參加開運晚宴，應該買哪一種票？</span></summary><p>可選擇超早鳥、早鳥票或一般票。三個階段的票券內容完全相同，只有售價及販售名額不同。</p></details>
+<details><summary><span class="faq-number">2.</span><span class="faq-question">可以現場買票嗎？</span></summary><p>建議提前於 KKTIX 完成線上購票。各票種及桌次數量有限，現場是否開放售票，將視活動當日狀況及主辦單位公告為準。</p></details>
+<details><summary><span class="faq-number">3.</span><span class="faq-question">需要素食餐點怎麼辦？</span></summary><p>請在購票備註中填寫「素食」。素食貴賓將統一安排於素食桌，席次有限，未事先備註者，恕無法保證現場臨時更換。</p></details>
+</div>
+<div class="faq-group" aria-labelledby="faq-group-1"><h3 id="faq-group-1">命書與套票</h3>
+<details><summary><span class="faq-number">4.</span><span class="faq-question">命書是什麼？</span></summary><p>2027 個人命書是依你的出生時間排出紫微斗數命盤後製作的年度運勢書，由大耕老師審定，近百頁，包含全年運勢重點與 12 個月逐月提醒，提供紙本與電子版。命書依下單順序製作，越早訂購、越早收到；購買後請完成幸運點註冊與問問開通，才能開始製作。</p></details>
+<details><summary><span class="faq-number">5.</span><span class="faq-question">哪些票種包含命書？</span></summary><p>「命書＋趨勢影片組合」「命書套票」「VIP 命書票」三種包含完整命書。一般開運晚宴票與十人團體桌提供的是「命書折抵券 500 元」，不等同於已購買完整命書。</p></details>
+<details><summary><span class="faq-number">6.</span><span class="faq-question">VIP 命書票與命書套票有什麼不同？</span></summary><p>VIP 命書票除了包含命書及趨勢影片，另享有靠近舞台的 VIP 席位、香氛蠟燭、VIP 專屬抽獎券、VIP 加碼抽獎券與幸運點 12,000 點。命書套票為一般席位，贈送幸運點 10,000 點。</p></details>
+<details><summary><span class="faq-number">7.</span><span class="faq-question">買了命書方案之後要做什麼？</span></summary><p>付款後，請由實際使用命書的人用自己的帳號註冊幸運點，再用同一個帳號開通問問、填寫出生資料並生成命盤，主辦單位才能確認資料並製作命書。圖解步驟請看 <a href="guide.html#steps" style="color:var(--cyan)">命書購後必做</a>。</p></details>
+<details><summary><span class="faq-number">8.</span><span class="faq-question">命書可以在活動現場領取嗎？</span></summary><p>命書為個人化客製商品，需要另外安排資料確認及製作，並非活動現場即時製作或領取。實際製作及交付時間，請依主辦單位後續通知為準。</p></details>
+</div>
+<div class="faq-group" aria-labelledby="faq-group-2"><h3 id="faq-group-2">退票與轉讓</h3>
+<details><summary><span class="faq-number">9.</span><span class="faq-question">購票後不能參加，可以轉讓嗎？</span></summary><p>可以將有效票券轉讓予他人。如需變更姓名、聯絡資料、桌次或餐食，請於 2026 年 12 月 10 日（含）前辦理。會員點數、個人化命書及其他已綁定帳號的權益，不一定能隨票券轉移。</p></details>
+<details><summary><span class="faq-number">10.</span><span class="faq-question">可以申請退票嗎？</span></summary><p>退換票與票券轉讓規則，請以 <a href="https://iszn.kktix.cc/events/culturalfestival2027" target="_blank" rel="noopener" style="color:var(--cyan)">KKTIX 售票頁</a>的最新公告為準。</p></details>
+</div>
     </div>
   </div>
 </section>
@@ -1165,6 +1176,7 @@ const djs=[
 ];
 const djrow=document.getElementById("djrow");
 djrow.innerHTML=djs.map(d=>`<article class="dj" style="--c:${d.c}">
+  <p class="performance-access ${["吉董","幾米"].includes(d.name)?"paid":"free"}">${["吉董","幾米"].includes(d.name)?"晚宴限定・須購票":"免費舞台"}</p>
   <div class="slot">${d.slot}</div>
   <div class="disc ${d.img?"photo":""} ${d.crop?"crop":""}">${d.img?`<img src="${d.img}" alt="${d.name}"${d.imgStyle?` style="${d.imgStyle}"`:""}>`:`<span>${[...d.name.replace("DJ ","")].slice(0,2).join("").toUpperCase()}</span>`}</div>
   <h3>${d.name}${d.sub&&d.sub!==d.name?`<small>${d.sub}</small>`:""}</h3>
@@ -1183,7 +1195,7 @@ djrow.innerHTML=djs.map(d=>`<article class="dj" style="--c:${d.c}">
 const tickets=[
  {n:"超早鳥",sub:"開運晚宴票｜前 200 席",p:"3,600",from:"2026-09-01",to:"2026-09-30",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"]},
  {n:"早鳥票",sub:"開運晚宴票",p:"3,980",from:"2026-10-01",to:"2026-10-31",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800",save:"10/31 23:59 前購票，比一般票省 NT$700"},
- {n:"命書套票",sub:"晚宴＋命書一次擁有",p:"6,600",from:"2026-09-01",to:"2027-01-02",hot:"最推薦",f:["開運晚宴一般席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香","市集抵用券 500 元","晚宴抽獎券＋加碼抽獎券","贈送點數 10,000 點"]},
+ {n:"命書套票",sub:"晚宴＋命書一次擁有",p:"6,600",from:"2026-09-01",to:"2027-01-02",hot:"晚宴＋命書推薦",f:["開運晚宴一般席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香","市集抵用券 500 元","晚宴抽獎券＋加碼抽獎券","贈送點數 10,000 點"]},
  {n:"一般票",sub:"開運晚宴票",p:"4,680",from:"2026-09-01",to:"2027-01-02",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800"},
  {n:"VIP 命書票",sub:"尊榮限定",p:"10,400",from:"2026-09-01",to:"2027-01-02",f:["VIP 開運晚宴靠近舞台席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香＋香氛蠟燭","VIP 市集抵用券（價值 500 元）","VIP 專屬抽獎券＋加碼抽獎券","贈送點數 12,000 點"]},
  {n:"十人團體桌",sub:"十人同桌，每人 NT$3,980",p:"39,800",unit:"／桌",from:"2026-09-01",to:"2027-01-02",f:["每人開運晚宴一般席位","每人 2027 趨勢影片","每人 2027 開運紅包","每人命書折抵券 500 元","每人晚宴抽獎券","每人贈送點數 8,000 點","活動演出與產品曝光露出機會"]},
@@ -1196,7 +1208,7 @@ const taipeiToday=new Date(now+8*3600000).toISOString().slice(0,10);
 (()=>{const eb=tickets.find(x=>x.n==="早鳥票"),btn=document.getElementById("heroBuy");if(!eb||!btn)return;
   const s=new Date(eb.from+"T00:00:00+08:00").getTime(),e=new Date(eb.to+"T23:59:59+08:00").getTime();if(now<s||now>e)return;
   const d=Math.max(0,Math.round((Date.parse(eb.to+"T00:00:00Z")-Date.parse(taipeiToday+"T00:00:00Z"))/86400000));
-  btn.textContent=`早鳥購票｜${d===0?"今天截止":"剩 "+d+" 天"} →`;})();
+  btn.textContent=`晚宴早鳥｜${d===0?"今天截止":"剩 "+d+" 天"} →`;})();
 
 document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T23:59:59+08:00").getTime()).map((t,i)=>{
   const s=new Date(t.from+"T00:00:00+08:00").getTime(),e=new Date(t.to+"T23:59:59+08:00").getTime();
@@ -1206,10 +1218,11 @@ document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T2
   const state=ended?"販售已結束":soon?`${fmt(t.from)} 開賣`:`販售中 · 至 ${fmt(t.to)}`;
   return `<article class="tk rv ${t.hot?"hot":""} ${ended?"ended":""}" style="--d:${i*.06}s">
     ${t.hot?`<span class="badge">${t.hot}</span>`:""}
-    <h3>${t.n}</h3><p class="sub">${t.sub}</p>
+    <h3>${t.n}</h3><p class="sub">${t.n==="早鳥票"?"只參加晚宴，推薦選這張":t.sub}</p>
     <div class="price"><small>NT$</small>${t.p}<em>${t.unit||""}</em></div>
     <p class="ticket-highlight ${t.n==="早鳥票"?"early-highlight":""}">${highlight||t.sub}</p>
     ${t.n==="早鳥票"?'<p class="early-deadline">10/31 23:59 截止・限前 500 席</p>':""}
+    ${t.n==="早鳥票"?'<p class="banquet-value">十道客家宴席＋吉董演唱<br>幾米魔術＋晚宴抽獎</p>':""}
     ${t.n!=="早鳥票"||soon?`<p class="state ${ended?"off":""}">${state}</p>`:""}
     ${t.n==="命書＋趨勢影片組合"?'<p class="ticket-exclusion">不含晚宴席位</p>':""}
     <details class="ticket-benefits"><summary aria-label="查看${t.n}完整權益">查看完整權益</summary><div class="ticket-benefits-body">
