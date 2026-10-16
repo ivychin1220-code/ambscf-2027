@@ -513,6 +513,13 @@ footer h5{letter-spacing:.12em;font-size:12px}
 #tickets .wrap,#location .wrap,#faq .wrap{text-align:center}
 #tickets h2,#location h2,#faq h2{font-size:clamp(36px,5vw,64px)}
 #tickets .lead,#location .lead{margin-inline:auto;font-size:18px}
+/* 命書一句話說明（2026-10-17） */
+.mingshu-intro{max-width:760px;margin:36px auto 0;padding:18px 22px;border-left:3px solid var(--cyan);border-radius:0 var(--r) var(--r) 0;background:rgba(255,255,255,.03);text-align:left}
+.mingshu-intro h3{margin:0 0 6px;font-size:17px;line-height:1.5;color:var(--ink)}
+.mingshu-intro h3 span{color:var(--cyan)}
+.mingshu-intro p{margin:0;color:var(--mute);font-size:15px;line-height:1.75}
+.mingshu-intro .mingshu-early{margin-top:6px;color:var(--amber);font-weight:700}
+@media (max-width:640px){.mingshu-intro{padding:16px 18px;margin-top:28px}.mingshu-intro h3{font-size:16px}}
 .tix{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
 .tk{flex:0 1 360px;text-align:center;padding:48px 32px 32px}
 .tk .badge{left:50%;translate:-50% 0;font-size:13px;padding:4px 16px}
@@ -820,7 +827,7 @@ details p{font-size:16px;margin:0 0 24px}
     </div>
     <div class="cta-row fade-up" style="animation-delay:1.3s">
       <a class="btn btn-ghost ticket-entry" href="#experiences">看免費市集 ↓</a>
-      <a class="btn btn-main" href="#banquet">看開運晚宴 →</a>
+      <a class="btn btn-main" id="heroBuy" href="#tickets">立即購票 →</a>
     </div>
     <div class="count fade-up" style="animation-delay:1.4s" id="count" aria-label="距離活動開始">
       <span class="count-lb">距離開幕</span>
@@ -918,6 +925,11 @@ details p{font-size:16px;margin:0 0 24px}
     <p class="lead rv">市集免費入場。開運晚宴與命書方案於 KKTIX 販售，隨票附「市集護照」。</p>
 
     <div class="tix" id="tix"></div>
+    <div class="mingshu-intro rv">
+      <h3>2027 個人命書｜<span>依你的命盤，寫給你一個人</span></h3>
+      <p>依你的出生時間排出紫微命盤，大耕老師審定，近百頁內容，從全年大方向到 12 個月逐月提醒，告訴你 2027 哪裡該衝、哪裡該守。紙本＋電子版，看不懂還能用「問問」繼續問。</p>
+      <p class="mingshu-early">依下單順序製作，越早訂越早收到。</p>
+    </div>
     <p class="guide-after rv">已購買命書方案？付款後請用本人帳號註冊幸運點、開通問問並填寫出生資料，<a href="guide.html#steps">看命書購後必做步驟 →</a></p>
     <div class="biz rv">
       <p><b>企業合作桌</b>　企業桌次、品牌露出、命書團購方案，歡迎洽詢客服為您客製規劃。</p>
@@ -1007,6 +1019,7 @@ details p{font-size:16px;margin:0 0 24px}
     <p class="eyebrow rv">FAQ</p>
     <h2 class="rv">常見問題</h2>
     <div class="faq rv">
+      <details><summary>命書是什麼？</summary><p>2027 個人命書是依你的出生時間排出紫微斗數命盤後製作的年度運勢書，由大耕老師審定，近百頁，包含全年運勢重點與 12 個月逐月提醒，提供紙本與電子版。命書依下單順序製作，越早訂購、越早收到；購買後請完成幸運點註冊與問問開通，才能開始製作。</p></details>
       <details><summary>我只想參加開運晚宴，應該買哪一種票？</summary><p>可選擇超早鳥、早鳥票或一般票。三個階段的票券內容完全相同，只有售價及販售名額不同。</p></details>
       <details><summary>哪些票種包含命書？</summary><p>「命書＋趨勢影片組合」「命書套票」「VIP 命書票」三種包含完整命書。一般開運晚宴票與十人團體桌提供的是「命書折抵券 500 元」，不等同於已購買完整命書。</p></details>
       <details><summary>買了命書方案之後要做什麼？</summary><p>付款後，請由實際使用命書的人用自己的帳號註冊幸運點，再用同一個帳號開通問問、填寫出生資料並生成命盤，主辦單位才能確認資料並製作命書。圖解步驟請看 <a href="guide.html#steps" style="color:var(--cyan)">命書購後必做</a>。</p></details>
@@ -1177,8 +1190,13 @@ const tickets=[
  {n:"命書＋趨勢影片組合",sub:"無法到場也能掌握 2027",p:"5,300",from:"2026-09-01",to:"2027-01-02",url:"https://pse.is/9m686m",f:["!不含開運晚宴入場席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）"]},
 ];
 const now=Date.now(),fmt=d=>d.slice(5).replace("-","/");
-const ticketHighlights={"超早鳥":"晚宴席位＋趨勢影片＋開運好禮","命書套票":"晚宴＋2027 個人命書","一般票":"晚宴席位＋趨勢影片＋市集券","VIP 命書票":"靠近舞台＋命書＋香氛蠟燭","十人團體桌":"揪團最划算＋每人 8,000 點","命書＋趨勢影片組合":"2027 個人命書＋趨勢影片"};
+const ticketHighlights={"超早鳥":"晚宴席位＋趨勢影片＋開運好禮","命書套票":"晚宴＋近百頁專屬命書","一般票":"晚宴席位＋趨勢影片＋市集券","VIP 命書票":"靠近舞台＋專屬命書＋香氛蠟燭","十人團體桌":"揪團最划算＋每人 8,000 點","命書＋趨勢影片組合":"近百頁專屬命書＋趨勢影片"};
 const taipeiToday=new Date(now+8*3600000).toISOString().slice(0,10);
+// 首屏主按鈕：早鳥期間顯示剩餘天數，截止後自動變回「立即購票」（2026-10-17）
+(()=>{const eb=tickets.find(x=>x.n==="早鳥票"),btn=document.getElementById("heroBuy");if(!eb||!btn)return;
+  const s=new Date(eb.from+"T00:00:00+08:00").getTime(),e=new Date(eb.to+"T23:59:59+08:00").getTime();if(now<s||now>e)return;
+  const d=Math.max(0,Math.round((Date.parse(eb.to+"T00:00:00Z")-Date.parse(taipeiToday+"T00:00:00Z"))/86400000));
+  btn.textContent=`早鳥購票｜${d===0?"今天截止":"剩 "+d+" 天"} →`;})();
 
 document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T23:59:59+08:00").getTime()).map((t,i)=>{
   const s=new Date(t.from+"T00:00:00+08:00").getTime(),e=new Date(t.to+"T23:59:59+08:00").getTime();
