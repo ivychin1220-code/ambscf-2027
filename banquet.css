@@ -83,3 +83,15 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
 .bq .banquet-program{text-align:center}
 .bq .flow li{flex-direction:column;align-items:center;gap:8px;text-align:center;padding:20px 0}
 .bq .flow time{width:auto}
+
+/* One swipeable album keeps all five food photos without a tall photo stack. */
+.bq .dish-gallery{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;max-width:none;width:100%;margin:24px 0 12px;padding:0 0 8px;overscroll-behavior-x:contain}
+.bq .dish-gallery figure{flex:0 0 42%;margin:0;scroll-snap-align:start;min-width:0}
+.bq .dish-gallery img{width:100%;height:auto;aspect-ratio:4/5;object-fit:contain;background:var(--panel);border-radius:12px}
+.bq .dish-gallery figcaption{text-align:center;font-size:14px;margin-top:8px}
+.dish-controls{display:flex;justify-content:center;align-items:center;gap:16px;color:var(--mute);font-size:13px;margin-bottom:24px}
+.dish-controls button{width:44px;height:44px;border:0;border-radius:50%;background:var(--panel);color:var(--ink);font-size:20px;cursor:pointer}
+.dish-controls button:hover:not(:disabled){background:var(--panel2)}
+.dish-controls button:disabled{opacity:.35;cursor:default}
+.dish-controls button:focus-visible,.dish-gallery:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+@media(max-width:600px){.bq .dish-gallery figure{flex-basis:86%}}
