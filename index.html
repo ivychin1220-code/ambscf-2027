@@ -718,6 +718,25 @@ details p{font-size:16px;margin:0 0 24px}
 .experience-card{container-type:inline-size}
 .market-carousel{--photo-height:75cqw}
 .experience-host .market-slide img.yuelao-slide{object-fit:cover;object-position:center 55%;padding:0 32px 48px;background:#a83329}
+
+/* Compact ticket overview; full supplied benefits remain available on demand. */
+#tickets .tix{align-items:flex-start}
+#tickets .tk{padding:28px 24px;gap:0}
+#tickets .tk h3{font-size:24px}
+#tickets .tk .sub{margin:4px 0 16px}
+#tickets .tk .price{font-size:40px}
+#tickets .tk .state{margin:12px 0}
+#tickets .ticket-benefits{border:0;margin:0 0 16px;text-align:left;width:100%}
+#tickets .ticket-benefits summary{font-size:14px;padding:12px 28px 12px 0;color:var(--cyan);line-height:1.5;min-height:44px}
+#tickets .ticket-benefits summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+#tickets .ticket-benefits summary::after{right:4px}
+#tickets .ticket-benefits-body{padding:4px 0 8px}
+#tickets .ticket-benefits .val{font-size:14px;margin:0 0 12px}
+#tickets .ticket-benefits .save{margin:0 0 12px;line-height:1.6}
+#tickets .ticket-benefits ul{margin:8px 0 0}
+#tickets .ticket-exclusion{font-size:14px;font-weight:700;color:var(--pink);margin:0 0 4px}
+#tickets .tk>.btn{width:100%}
+.banquet .banquet-highlights{margin:24px auto;line-height:1.8}
 </style><meta property="og:type" content="website">
 <meta property="og:title" content="2027 亞洲身心靈文化祭">
 <meta property="og:description" content="2027.01.02–01.03｜台北流行音樂中心南基地｜免費市集・演出・千人辦桌，晚宴另行購票。">
@@ -854,12 +873,8 @@ details p{font-size:16px;margin:0 0 24px}
       <h2>千人開運辦桌</h2>
       <p class="banquet-subtitle">北流首場千人辦桌<br>一千人同席寫歷史</p>
       <figure class="banquet-preview-photo"><img src="assets/banquet/banquet-hero.jpg" alt="豐辦桌過往宴席實景" width="1800" height="1200" loading="lazy"><figcaption>豐辦桌過往宴席實景，非本次北流場地。</figcaption></figure>
-      <p>北流首度舉辦千人辦桌，一百張圓桌、十道大菜，邀請一千人吃下新年第一席。文化祭最後一夜，邊吃台菜、邊看吉董演唱與幾米魔術，最後一起抽獎祈福，以台灣最有人情味的宴席寫下北流新紀錄。</p>
-      <h4 class="menu-h">十道美濃客家大菜</h4>
-      <p class="banquet-menu-lead">從總舖師手路菜到美濃在地手作糕點，一席吃遍南方好味。</p>
-      <ol class="menu"><li>五福好彩迎賓拼盤</li><li>倒扣紅燒海味鮮羹</li><li>老菜脯龍虎石斑魚</li><li>台式錦繡古早米糕</li><li>老中青三代雞湯盅</li><li>經典龍蝦三明治盤</li><li>特製美濃梅干扣肉</li><li>白玉蘿蔔鮮肉丸湯</li><li>季節繽紛當令鮮果</li><li>桂圓銀耳紅綠雙糕</li></ol>
-      <p class="menu-note">※菜色依當日食材可能微調</p>
-      <a class="banquet-link" href="banquet.html">看晚宴完整介紹 →</a>
+      <p class="banquet-highlights">豐辦桌策劃、阿海師掌杓，十道美濃客家大菜。<br>吉董演唱 × 幾米魔術 × 抽獎祈福</p>
+      <a class="banquet-link" href="banquet.html">看完整介紹與十道菜單 →</a>
     </div>
 </div></section>
 
@@ -1127,8 +1142,8 @@ const tickets=[
  {n:"早鳥票",sub:"開運晚宴票｜前 500 席",p:"3,980",from:"2026-10-01",to:"2026-10-31",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800",save:"10/31 23:59 前購票，比一般票省 NT$700"},
  {n:"命書套票",sub:"晚宴＋命書一次擁有",p:"6,600",from:"2026-09-01",to:"2027-01-02",hot:"最推薦",f:["開運晚宴一般席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香","市集抵用券 500 元","晚宴抽獎券＋加碼抽獎券","贈送點數 10,000 點"]},
  {n:"一般票",sub:"開運晚宴票",p:"4,680",from:"2026-09-01",to:"2027-01-02",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800"},
- {n:"VIP 命書票",sub:"尊榮限定",p:"10,400",from:"2026-09-01",to:"2027-01-02",f:["VIP 開運晚宴靠近舞台席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香＋香氛蠟燭","VIP 市集抵用券（價值 500 元）","VIP 專屬抽獎券＋加碼抽獎券","贈送點數 12,000 點"]},
- {n:"十人團體桌",sub:"揪團最划算",p:"39,800",unit:"／桌",from:"2026-09-01",to:"2027-01-02",f:["每人開運晚宴一般席位","每人 2027 趨勢影片","每人 2027 開運紅包","每人命書折抵券 500 元","每人晚宴抽獎券","每人贈送點數 8,000 點","活動演出與產品曝光露出機會"]},
+ {n:"VIP 命書票",sub:"靠近舞台席位＋命書方案",p:"10,400",from:"2026-09-01",to:"2027-01-02",f:["VIP 開運晚宴靠近舞台席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香＋香氛蠟燭","VIP 市集抵用券（價值 500 元）","VIP 專屬抽獎券＋加碼抽獎券","贈送點數 12,000 點"]},
+ {n:"十人團體桌",sub:"十人同桌，每人 NT$3,980",p:"39,800",unit:"／桌",from:"2026-09-01",to:"2027-01-02",f:["每人開運晚宴一般席位","每人 2027 趨勢影片","每人 2027 開運紅包","每人命書折抵券 500 元","每人晚宴抽獎券","每人贈送點數 8,000 點","活動演出與產品曝光露出機會"]},
  {n:"命書＋趨勢影片組合",sub:"無法到場也能掌握 2027",p:"5,300",from:"2026-09-01",to:"2027-01-02",url:"https://pse.is/9m686m",f:["!不含開運晚宴入場席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）"]},
 ];
 const now=Date.now(),fmt=d=>d.slice(5).replace("-","/");
@@ -1140,11 +1155,14 @@ document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T2
     ${t.hot?`<span class="badge">${t.hot}</span>`:""}
     <h3>${t.n}</h3><p class="sub">${t.sub}</p>
     <div class="price"><small>NT$</small>${t.p}<em>${t.unit||""}</em></div>
+    <p class="state ${ended?"off":""}">${state}</p>
+    ${t.n==="命書＋趨勢影片組合"?'<p class="ticket-exclusion">不含晚宴席位</p>':""}
+    <details class="ticket-benefits"><summary aria-label="查看${t.n}完整權益">查看完整權益</summary><div class="ticket-benefits-body">
     ${t.v?`<p class="val">權益價值 NT$${t.v}+<span>影片 3,800＋市集券 500＋命書券 500，再加晚宴席位、紅包與抽獎</span></p>`:""}
     ${t.save&&!ended?`<p class="save">${t.save}</p>`:""}
-    <p class="state ${ended?"off":""}">${state}</p>
     <ul>${t.f.map(x=>x[0]==="!"?`<li class="no">${x.slice(1)}</li>`:`<li>${x}</li>`).join("")}</ul>
     ${["命書套票","VIP 命書票","命書＋趨勢影片組合"].includes(t.n)?`<a class="btn btn-ghost guide-ticket-action" href="guide.html#steps">命書購後必做：註冊幸運點＋開通問問 →</a>`:""}
+    </div></details>
     ${soon?`<span class="btn btn-ghost" aria-disabled="true" style="opacity:.5;cursor:default">${fmt(t.from)} 開放購票</span>`:`<a class="btn ${t.hot?"btn-main":"btn-ghost"}" href="${t.url||KKTIX}" target="_blank" rel="noopener">${ended?"已截止":"前往購票"}</a>`}
   </article>`}).join("");
 
