@@ -624,6 +624,10 @@ details p{font-size:16px;margin:0 0 24px}
 .tk .val{margin:10px 0 0;font-size:15px;font-weight:700;color:var(--ink)}
 .tk .val span{display:block;margin-top:4px;font-size:12px;font-weight:400;line-height:1.5;color:var(--mute)}
 .tk .save{display:inline-block;align-self:center;margin:12px 0 0;padding:4px 12px;border-radius:999px;background:var(--pink);color:#fff;font-size:13px;font-weight:700}
+/* 2026-10-16 晚宴照片與廠商原文 */
+.banquet .banquet-subtitle{font-size:20px;font-weight:700;color:var(--ink);line-height:1.6;margin:0 0 24px}
+.banquet-preview-photo{margin:0 0 24px}.banquet-preview-photo img{width:100%;height:auto;border-radius:12px}.banquet-preview-photo figcaption{font-size:12px;color:var(--mute);margin-top:8px}
+.banquet .banquet-menu-lead{font-size:14px;margin-bottom:16px}.banquet{scroll-margin-top:96px}
 </style>
 <style>
 .nav ul{gap:clamp(12px,2vw,28px)}.mobile-guide{display:none}
@@ -644,7 +648,7 @@ details p{font-size:16px;margin:0 0 24px}
 .guide-after a:hover{text-decoration:underline}
 .ticket-shortcut{opacity:0;pointer-events:none;transition:opacity .3s,transform .25s}
 .ticket-shortcut.on{opacity:1;pointer-events:auto}
-@media(max-width:600px){.ticket-shortcut{width:48px;height:48px;padding:0;font-size:0;border-radius:50%;justify-content:center;right:14px;bottom:14px}.ticket-shortcut::after{content:"↑";font-size:20px;font-weight:700}footer{padding-bottom:88px}}
+@media(max-width:600px){.ticket-shortcut{width:48px;height:48px;padding:0;font-size:0;border-radius:50%;justify-content:center;right:14px;bottom:14px}.ticket-shortcut{gap:0;letter-spacing:0;line-height:1}.ticket-shortcut::after{content:"↑";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;line-height:1;letter-spacing:0}footer{padding-bottom:88px}}
 /* 命書購後入口降級：首頁以文化祭活動為主（2026-10-14） */
 .mobile-guide{display:none!important}
 .nav .guide-nav-entry{background:none;border:0;border-radius:0;padding:6px 0;font-weight:inherit;color:inherit;opacity:.8}
@@ -652,12 +656,72 @@ details p{font-size:16px;margin:0 0 24px}
 .nav ul a.guide-nav-entry::after{display:block}
 /* 晚宴｜豐辦桌 */.banquet{margin:40px auto 0;max-width:760px;padding:32px 28px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}.banquet .eyebrow{color:var(--pink);margin:0 0 8px}.banquet h3{font-size:clamp(22px,4vw,30px);margin:0 0 14px}.banquet p{color:var(--mute);line-height:1.9;margin:0}.banquet strong{color:var(--ink);white-space:nowrap}.banquet-link{display:inline-block;margin-top:18px;color:var(--pink);font-weight:700;text-decoration:none}.banquet-link:hover{text-decoration:underline}@media(max-width:600px){.banquet{padding:24px 18px}}
 /* 晚宴菜單 */.menu-h{margin:26px 0 12px;font-size:17px;color:var(--ink)}.menu{list-style:none;counter-reset:m;margin:0 auto;padding:0;max-width:560px;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;text-align:left}.menu li{counter-increment:m;color:var(--ink);font-size:15px;line-height:1.6;padding:6px 0;border-bottom:1px solid var(--line)}.menu li::before{content:counter(m,decimal-leading-zero);color:var(--pink);font-weight:700;font-size:12px;margin-right:10px}.banquet .menu-note{font-size:13px;margin-top:10px}@media(max-width:600px){.menu{grid-template-columns:1fr}}
-/* 手機版：時間表與十道大菜置中 */@media(max-width:760px){.tl{padding-left:0}.tl::before{display:none}.ev,.ev:nth-child(even){text-align:center;padding:22px 0 30px;transform:translateY(12px)}.ev::before,.ev:nth-child(even)::before{left:50%;right:auto;top:0;transform:translateX(-50%)}.ev::after{content:"";position:absolute;left:50%;bottom:6px;width:1px;height:16px;background:var(--line)}.ev:last-child::after{display:none}.ev .tag{margin-left:8px}}@media(max-width:600px){.menu li{text-align:center}}
+/* 時間表全尺寸置中；手機菜單置中 */.tl{padding-left:0}.tl::before{display:none}.ev,.ev:nth-child(even){width:100%;margin-left:0;text-align:center;padding:22px 0 30px;transform:translateY(12px)}.ev::before,.ev:nth-child(even)::before{left:50%;right:auto;top:0;transform:translateX(-50%)}.ev::after{content:"";position:absolute;left:50%;bottom:6px;width:1px;height:16px;background:var(--line)}.ev:last-child::after{display:none}.ev .tag{margin-left:8px}@media(max-width:600px){.menu li{text-align:center}}
 /* 選單分隔線 */.nav li.nav-sep{padding-left:28px;border-left:1px solid var(--line)}
 /* 手機版十道大菜：整體置中、編號對齊 */@media(max-width:600px){.menu{display:block;width:max-content;max-width:100%;margin-left:auto;margin-right:auto}.menu li{text-align:left;padding-right:12px}.menu li::before{display:inline-block;width:22px}}
 /* 攤商 Logo 放大到 140 */.lg{width:140px;height:140px;border-radius:28px}
 /* 去背 Logo 不加底色 */.lg.bare{background:none;border-radius:0;overflow:visible}.lg.bare img{object-fit:contain}
 /* 攤商 Logo 統一圓形白底 140px */.lg,.lg.light,.lg.bare{width:140px;height:140px;border-radius:50%;background:#fff;overflow:hidden}.lg img,.lg.bare img{object-fit:cover;padding:0}.lg.pad img{object-fit:contain;padding:22px}.lg.fill img{object-fit:contain}.lg.none{border-radius:50%}
+
+/* 2026-10-16 首頁：清楚分流與三大體驗 */
+.hero2 .slogan{font-size:clamp(18px,2.2vw,24px);line-height:1.6;letter-spacing:0;margin-bottom:16px}
+.entry-clarity{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;color:var(--ink);font-size:18px;margin:0 0 32px;line-height:1.6}
+.entry-clarity strong:first-child{color:var(--cyan)}
+.hero-copy-break{display:none}
+.experiences{text-align:center}.experiences .lead{margin:0 auto 40px;max-width:760px}
+.experience-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;text-align:left}
+.experience-card{background:var(--panel);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.experience-card figure{margin:0}.experience-card figure img{width:100%;height:280px;object-fit:cover}
+.experience-card:nth-child(1) img{object-position:center 45%}.experience-card:nth-child(2) img{object-position:center 30%}
+.experience-card figcaption{font-size:11px;color:var(--mute);padding:12px 24px 0;line-height:1.6}
+.experience-copy{padding:20px 24px 24px;display:flex;flex:1;flex-direction:column}
+.experience-copy .experience-kicker{font-size:12px;font-weight:700;color:var(--pink);margin:0 0 8px}
+.experience-copy h3{font-size:30px;line-height:1.3;margin:0 0 16px;letter-spacing:0}
+.experience-copy p{font-size:16px;line-height:1.7;color:var(--mute);margin:0 0 20px}
+.experience-copy a{margin-top:auto;color:var(--ink);font-weight:700;display:inline-flex;align-items:center;min-height:44px}
+.experience-copy a:hover{color:var(--pink)}.experience-copy a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.banquet-section .banquet{margin-top:0}.banquet-section h2{font-size:clamp(24px,4vw,36px);margin:0 0 16px}
+@media(max-width:900px){.experience-grid{gap:16px}.experience-card figure img{height:220px}.experience-copy{padding:20px}.experience-card figcaption{padding:12px 20px 0}}
+@media(max-width:600px){.hero-copy-break{display:block}.hero2 .slogan{font-size:18px}.entry-clarity{font-size:14px;gap:4px;margin-bottom:24px}.hero2 .cta-row .btn{font-size:14px;padding:12px 20px}.experience-grid{grid-template-columns:1fr;gap:24px}.experience-card figure img{height:280px}.experience-copy{text-align:center;padding:24px}.experience-copy a{justify-content:center}.experience-card figcaption{text-align:center}.experience-copy h3{font-size:24px}}
+.experience-card.experience-host figure img{object-fit:contain;object-position:center;background:var(--ink);padding:32px}
+
+/* 市集手動輪播：主辦優先，品牌名稱隨照片切換 */
+.market-carousel{position:relative;--photo-height:280px;touch-action:pan-y}
+.market-carousel:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+.market-slide[hidden]{display:none}
+.experience-card.experience-host .market-slide img{height:var(--photo-height);object-fit:cover;object-position:center;padding:0;background:var(--bg)}
+.experience-card.experience-host .market-slide .host-slide{object-fit:contain;padding:32px;background:var(--ink)}
+.market-carousel figcaption{padding-top:12px}
+.market-arrow{position:absolute;top:calc(var(--photo-height)/2 - 22px);width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;padding:0;background:var(--bg);color:var(--ink);cursor:pointer}
+.market-prev{left:12px}.market-next{right:12px}
+.market-arrow svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.market-arrow:hover{background:var(--bg2);color:var(--pink)}
+.market-arrow:focus-visible,.market-controls button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.market-controls{position:absolute;top:calc(var(--photo-height) - 48px);left:50%;transform:translateX(-50%);display:flex;justify-content:center;align-items:center;height:44px;gap:0;background:var(--bg);border-radius:24px;padding:0 12px;white-space:nowrap}
+.market-controls button{width:32px;height:44px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.market-controls button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mute)}
+.market-controls button[aria-pressed="true"]::before{background:var(--pink);width:20px;border-radius:8px}
+.market-controls button:hover::before{background:var(--pink)}
+.market-count{font-size:12px;color:var(--mute);margin-left:12px}
+@media(max-width:900px){.market-carousel{--photo-height:220px}}
+@media(max-width:600px){.market-carousel{--photo-height:280px}.market-controls button{width:44px}.market-carousel figcaption{justify-content:center}}
+
+.performer-carousel .market-slide img{height:var(--photo-height);object-fit:cover}.performer-carousel .mandy-slide{object-position:center 30%}.performer-carousel .jimmy-slide{object-position:62% center}.performer-carousel .jidong-slide{object-position:center}
+.carousel-play{position:absolute;z-index:1;top:12px;right:12px;min-width:44px;min-height:44px;border:0;border-radius:24px;padding:8px 12px;background:var(--bg);color:var(--ink);font:inherit;font-size:12px;cursor:pointer}.carousel-play:hover{color:var(--pink)}.carousel-play:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+
+.market-controls .carousel-play{position:static;min-width:44px;width:44px;height:44px;padding:0;margin-left:4px;color:var(--mute);background:none;border-radius:50%}
+.market-controls .carousel-play::before{content:none}
+.market-controls .carousel-play:hover{color:var(--pink)}
+.carousel-play svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+.banquet-carousel .market-slide img{height:var(--photo-height);object-fit:cover;object-position:center}
+.banquet-carousel .market-slide img.feng-logo-slide{object-fit:contain;padding:16px 24px 54px;background:#fff8ec}
+.experience-card .market-carousel figcaption{height:48px}
+
+/* 三欄圖片均為 4:3，菜色另以相同主體比例裁切 */
+.experience-card{container-type:inline-size}
+.market-carousel{--photo-height:75cqw}
+.experience-host .market-slide img.yuelao-slide{object-fit:cover;object-position:center 55%;padding:0 32px 48px;background:#a83329}
 </style></head>
 <body>
 
@@ -685,17 +749,16 @@ details p{font-size:16px;margin:0 0 24px}
   <div class="wrap hero2-text">
     <p class="year fade-up" style="animation-delay:.1s">2027.01.02 SAT — 01.03 SUN · TAIPEI</p>
     <h1 id="title" aria-label="亞洲身心靈文化祭"></h1>
-    <p class="slogan fade-up" style="animation-delay:1s">兩天市集 × 千人開運辦桌｜新年第一場轉運派對</p>
-    <p class="en fade-up" style="animation-delay:1.1s">2027 Asia Mind-Body-Spirit Festival</p>
+    <p class="slogan fade-up" style="animation-delay:1s">逛身心靈市集、聽現場演出，<br class="hero-copy-break">再和千人一起吃新年第一桌。</p>
+    <p class="entry-clarity fade-up" style="animation-delay:1.1s"><strong>市集免費入場</strong><span aria-hidden="true">｜</span><strong>開運晚宴另行購票</strong></p>
     <div class="facts fade-up" style="animation-delay:1.2s">
       <div class="fact"><small>DATE 日期</small><b>01.02 Sat – 01.03 Sun</b></div>
       <div class="fact"><small>TIME 時間</small><b>1/2 12:00 – 20:30<br>1/3 10:00 – 20:30</b></div>
       <div class="fact"><small>VENUE 地點</small><b>台北流行音樂中心 南基地戶外空間</b></div>
     </div>
     <div class="cta-row fade-up" style="animation-delay:1.3s">
-      <a class="btn btn-ghost ticket-entry" href="#tickets">查看票券方案 ↓</a>
-      <a class="btn btn-main" href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">立即購票 →</a>
-      <a class="btn btn-ghost" href="#vendors">看攤商陣容</a>
+      <a class="btn btn-ghost ticket-entry" href="#experiences">看免費市集 ↓</a>
+      <a class="btn btn-main" href="#banquet">看開運晚宴 →</a>
     </div>
     <div class="count fade-up" style="animation-delay:1.4s" id="count" aria-label="距離活動開始">
       <span class="count-lb">距離開幕</span>
@@ -725,6 +788,106 @@ details p{font-size:16px;margin:0 0 24px}
       <div class="stat rv" style="--d:.3s"><b data-n="1">0</b><span>場新年開運晚宴</span></div>
     </div>
   </div>
+</section>
+
+<section id="experiences" class="experiences">
+  <div class="wrap">
+    <p class="eyebrow">EXPLORE THE FESTIVAL</p>
+    <h2>這兩天，你可以這樣玩</h2>
+    <p class="lead">逛喜歡的攤位、聽一段音樂，再和朋友一起吃新年第一桌。</p>
+    <div class="experience-grid">
+      <article class="experience-card experience-host">
+        <div class="market-carousel" role="region" aria-roledescription="輪播" aria-label="市集品牌照片" tabindex="0">
+          <div class="market-slides" aria-live="off">
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 1 張，共 3 張"><img class="host-slide" src="assets/vendors/iszn_logo.png" alt="ISZN 國際紫微學會 Logo" width="420" height="420"><figcaption>主辦單位｜ISZN 國際紫微學會</figcaption></figure>
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 2 張，共 3 張" hidden><img class="yuelao-slide" src="assets/experiences/market-yuelao-logo.jpg" alt="月老來電 Logo" loading="lazy"><figcaption>月老來電｜巴西莓・調飲・咖啡</figcaption></figure>
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 3 張，共 3 張" hidden><img src="assets/experiences/market-conversation.jpg" alt="Medi Journey 人生翻譯所過往攤位互動" loading="lazy"><figcaption>人生翻譯所｜過往攤位互動</figcaption></figure>
+          </div>
+          <button class="market-arrow market-prev" type="button" aria-label="上一張市集照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+          <button class="market-arrow market-next" type="button" aria-label="下一張市集照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+          <div class="market-controls" aria-label="選擇市集照片"><button type="button" aria-label="顯示國際紫微學會" aria-pressed="true"></button><button type="button" aria-label="顯示月老來電 Logo" aria-pressed="false"></button><button type="button" aria-label="顯示人生翻譯所" aria-pressed="false"></button><span class="market-count" aria-hidden="true">1 / 3</span><button class="carousel-play" type="button" aria-label="暫停自動輪播" title="暫停自動輪播"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button></div>
+        </div>
+        <div class="experience-copy"><p class="experience-kicker">01 · 市集免費入場</p><h3>逛市集</h3><p>逛逛命理、療癒、香氛、手作與文創攤位，問一個心裡的問題、挑一份喜歡的小物，累了就吃點輕食，和朋友慢慢逛。</p><a href="#vendors">看攤商與體驗 →</a></div>
+      </article>
+      <article class="experience-card">
+        <div class="market-carousel performer-carousel" role="region" aria-roledescription="輪播" aria-label="演出陣容照片" tabindex="0">
+          <div class="market-slides" aria-live="off">
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 1 張，共 3 張"><img class="mandy-slide" src="assets/perf/mandy.jpg" alt="DJ Mandy Ray" loading="lazy"><figcaption>DJ Mandy Ray｜1/2 舞台演出</figcaption></figure>
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 2 張，共 3 張" hidden><img class="jidong-slide" src="assets/experiences/jidong-portrait.jpg" alt="吉董吳永吉抱吉他演唱宣傳照" loading="lazy"><figcaption>吉董 吳永吉｜1/3 開運晚宴</figcaption></figure>
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 3 張，共 3 張" hidden><img class="jimmy-slide" src="assets/perf/jimmy.jpg" alt="魔術師幾米" loading="lazy"><figcaption>魔術師幾米｜1/3 開運晚宴</figcaption></figure>
+          </div>
+          <button class="market-arrow market-prev" type="button" aria-label="上一張演出照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+          <button class="market-arrow market-next" type="button" aria-label="下一張演出照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+          <div class="market-controls" aria-label="選擇演出照片"><button type="button" aria-label="顯示 Mandy" aria-pressed="true"></button><button type="button" aria-label="顯示吉董" aria-pressed="false"></button><button type="button" aria-label="顯示魔術師幾米" aria-pressed="false"></button><span class="market-count" aria-hidden="true">1 / 3</span><button class="carousel-play" type="button" aria-label="暫停自動輪播" title="暫停自動輪播"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button></div>
+        </div>
+        <div class="experience-copy"><p class="experience-kicker">02 · 午後到入夜的音樂</p><h3>聽演出</h3><p>從 DJ、小提琴到尺八與梵唄，兩天音樂人接力演出；購票參加 1/3 開運晚宴，還有吉董演唱與幾米魔術。</p><a href="#dj">看音樂人與演出 →</a></div>
+      </article>
+      <article class="experience-card">
+        <div class="market-carousel banquet-carousel" role="region" aria-roledescription="輪播" aria-label="總舖師上菜與豐辦桌介紹" tabindex="0">
+          <div class="market-slides" aria-live="off">
+<figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 1 張，共 2 張"><img src="assets/banquet/banquet-hero.jpg" alt="總舖師上菜，豐辦桌過往宴席實景" loading="lazy"><figcaption>總舖師上菜｜過往宴席實景，非本次場地</figcaption></figure>
+<figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 2 張，共 2 張" hidden><img class="feng-logo-slide" src="assets/banquet/feng-logo.png" alt="豐辦桌 Logo" loading="lazy"><figcaption>宴席策劃｜豐辦桌</figcaption></figure>
+</div>
+          <button class="market-arrow market-prev" type="button" aria-label="上一張晚宴照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+          <button class="market-arrow market-next" type="button" aria-label="下一張晚宴照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+          <div class="market-controls" aria-label="選擇晚宴照片"><button type="button" aria-label="顯示總舖師上菜" aria-pressed="true"></button><button type="button" aria-label="顯示豐辦桌 Logo" aria-pressed="false"></button><span class="market-count" aria-hidden="true">1 / 2</span><button class="carousel-play" type="button" aria-label="暫停自動輪播" title="暫停自動輪播"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button></div>
+        </div>
+        <div class="experience-copy"><p class="experience-kicker">03 · 晚宴另行購票</p><h3>吃晚宴</h3><p>十道美濃客家大菜，搭配吉董演唱、幾米魔術與抽獎。1/3 晚上，和千人一起吃新年第一桌。</p><a href="#banquet">看千人開運辦桌 →</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="banquet" class="banquet-section"><div class="wrap">
+    <div class="banquet rv">
+      <p class="eyebrow">開運晚宴 · 1/3（日）18:00</p>
+      <h2>千人開運辦桌</h2>
+      <p class="banquet-subtitle">北流首場千人辦桌<br>一千人同席寫歷史</p>
+      <figure class="banquet-preview-photo"><img src="assets/banquet/banquet-hero.jpg" alt="豐辦桌過往宴席實景" width="1800" height="1200" loading="lazy"><figcaption>豐辦桌過往宴席實景，非本次北流場地。</figcaption></figure>
+      <p>北流首度舉辦千人辦桌，一百張圓桌、十道大菜，邀請一千人吃下新年第一席。文化祭最後一夜，邊吃台菜、邊看吉董演唱與幾米魔術，最後一起抽獎祈福，以台灣最有人情味的宴席寫下北流新紀錄。</p>
+      <h4 class="menu-h">十道美濃客家大菜</h4>
+      <p class="banquet-menu-lead">從總舖師手路菜到美濃在地手作糕點，一席吃遍南方好味。</p>
+      <ol class="menu"><li>五福好彩迎賓拼盤</li><li>倒扣紅燒海味鮮羹</li><li>老菜脯龍虎石斑魚</li><li>台式錦繡古早米糕</li><li>老中青三代雞湯盅</li><li>經典龍蝦三明治盤</li><li>特製美濃梅干扣肉</li><li>白玉蘿蔔鮮肉丸湯</li><li>季節繽紛當令鮮果</li><li>桂圓銀耳紅綠雙糕</li></ol>
+      <p class="menu-note">※菜色依當日食材可能微調</p>
+      <a class="banquet-link" href="banquet.html">看晚宴完整介紹 →</a>
+    </div>
+</div></section>
+
+<section id="tickets">
+  <div class="wrap">
+    <p class="eyebrow rv">JOIN US · 怎麼參加</p>
+    <h2 class="rv">票券方案</h2>
+    <p class="lead rv">市集免費入場。開運晚宴與命書方案於 KKTIX 販售，隨票附「市集護照」。</p>
+
+    <div class="tix" id="tix"></div>
+    <p class="guide-after rv">已購買命書方案？付款後請用本人帳號註冊幸運點、開通問問並填寫出生資料，<a href="guide.html#steps">看命書購後必做步驟 →</a></p>
+    <div class="biz rv">
+      <p><b>企業合作桌</b>　企業桌次、品牌露出、命書團購方案，歡迎洽詢客服為您客製規劃。</p>
+      <a class="btn btn-line" href="https://lin.ee/wRx6bWV" target="_blank" rel="noopener">官方 LINE @ambscf</a>
+    </div>
+    <p class="note">※ 各票種名額有限，售完即進入下一階段票價。完整權益、退換票及轉讓規則請見 KKTIX 售票頁。</p>
+  </div>
+</section>
+
+<section id="vendors">
+  <div class="wrap">
+    <p class="eyebrow rv">The Market · Taipei 2027</p>
+    <h2 class="rv">攤商陣容</h2>
+    <p class="lead rv">命理開運、身心療癒、香氛手作、文創選物、輕食飲品，40+ 身心靈品牌在現場等你相遇。</p>
+    <div class="chips rv" id="chips"></div>
+    <div class="vgrid" id="vgrid"></div>
+    <p class="note">※ 攤商名單持續更新，實際參展品牌與擺攤日期以現場公告為準。</p>
+  </div>
+</section>
+
+<section id="dj" class="djsec">
+  <div class="wrap">
+    <p class="eyebrow rv">Stage Lineup · 1/2 – 1/3</p>
+    <h2 class="rv">DJ 與舞台陣容</h2>
+    <p class="lead rv">1/2 四組音樂人從午後接力到入夜，1/3 尺八與梵唄接棒，晚宴有吉董與魔術師幾米。</p>
+  </div>
+  <p class="swipe rv">← SWIPE →</p>
+  <div class="djrow" id="djrow"></div>
 </section>
 
 <section class="sched" id="schedule">
@@ -763,54 +926,7 @@ details p{font-size:16px;margin:0 0 24px}
       </div>
     </div>
     <p class="note">※ 節目內容與時間以活動現場公告為準。</p>
-    <div class="banquet rv">
-      <p class="eyebrow">開運晚宴 · 1/3（日）18:00</p>
-      <h3>千人開運辦桌</h3>
-      <p>新年第一桌，吃的是好彩頭。千人晚宴由<strong>百年台菜「豐」辦桌</strong>承辦，請來高雄美濃總舖師世家的<strong>阿海師</strong>掌杓，把南部正宗辦桌的火候與人情搬進會場；邊吃台菜，邊看吉董演唱、幾米魔術，最後一起抽獎、為新的一年祈福。</p>
-      <h4 class="menu-h">十道大菜</h4>
-      <ol class="menu"><li>五福好采頭拼盤</li><li>倒扣紅燒海鮮羹</li><li>老菜脯龍虎石斑</li><li>台式錦繡米糕</li><li>老中青三代雞湯</li><li>龍蝦三明治</li><li>特製美濃梅干扣肉</li><li>白玉蘿蔔鮮肉丸湯</li><li>季節繽紛鮮果</li><li>桂圓銀耳紅綠雙糕</li></ol>
-      <p class="menu-note">※ 菜色依當日食材可能微調。</p>
-      <a class="banquet-link" href="banquet.html">看晚宴完整介紹 →</a>
-    </div>
-  </div>
-</section>
 
-<section id="vendors">
-  <div class="wrap">
-    <p class="eyebrow rv">The Market · Taipei 2027</p>
-    <h2 class="rv">攤商陣容</h2>
-    <p class="lead rv">命理開運、身心療癒、香氛手作、文創選物、輕食飲品，40+ 身心靈品牌在現場等你相遇。</p>
-    <div class="chips rv" id="chips"></div>
-    <div class="vgrid" id="vgrid"></div>
-    <p class="note">※ 攤商名單持續更新，實際參展品牌與擺攤日期以現場公告為準。</p>
-  </div>
-</section>
-
-<section id="dj" class="djsec">
-  <div class="wrap">
-    <p class="eyebrow rv">Stage Lineup · 1/2 – 1/3</p>
-    <h2 class="rv">DJ 與舞台陣容</h2>
-    <p class="lead rv">1/2 四組音樂人從午後接力到入夜，1/3 尺八與梵唄接棒，晚宴有吉董與魔術師幾米。</p>
-  </div>
-  <p class="swipe rv">← SWIPE →</p>
-  <div class="djrow" id="djrow"></div>
-</section>
-
-
-
-<section id="tickets">
-  <div class="wrap">
-    <p class="eyebrow rv">Tickets</p>
-    <h2 class="rv">票券方案</h2>
-    <p class="lead rv">市集免費入場。開運晚宴與命書方案於 KKTIX 販售，隨票附「市集護照」。</p>
-
-    <div class="tix" id="tix"></div>
-    <p class="guide-after rv">已購買命書方案？付款後請用本人帳號註冊幸運點、開通問問並填寫出生資料，<a href="guide.html#steps">看命書購後必做步驟 →</a></p>
-    <div class="biz rv">
-      <p><b>企業合作桌</b>　企業桌次、品牌露出、命書團購方案，歡迎洽詢客服為您客製規劃。</p>
-      <a class="btn btn-line" href="https://lin.ee/wRx6bWV" target="_blank" rel="noopener">官方 LINE @ambscf</a>
-    </div>
-    <p class="note">※ 各票種名額有限，售完即進入下一階段票價。完整權益、退換票及轉讓規則請見 KKTIX 售票頁。</p>
   </div>
 </section>
 
@@ -1096,5 +1212,6 @@ if(!reduce&&matchMedia("(hover:hover)").matches){
   function draw(){x.clearRect(0,0,W,H);for(const s of st){s.p+=s.s;x.globalAlpha=.35+Math.sin(s.p)*.35;x.fillStyle="#fff";x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fill()}if(!reduce)requestAnimationFrame(draw)}
   size();draw();addEventListener("resize",size)})();
 </script>
+<script src="market-carousel.js"></script>
 </body>
 </html>

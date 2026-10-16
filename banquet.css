@@ -14,3 +14,72 @@
 @media(max-width:600px){.menu li{text-align:center}.flow li{flex-direction:column;align-items:center;gap:4px;text-align:center}.flow time{width:auto}}
 @media(max-width:600px){.menu{display:block;width:max-content;max-width:100%;margin-left:auto;margin-right:auto}.menu li{text-align:left;padding-right:12px}.menu li::before{display:inline-block;width:22px}}
 /* 手機版整頁置中，與首頁一致 */@media(max-width:600px){body .guide-intro .wrap,.bq .guide-info,.bq .guide-support{text-align:center}.bq .cta-row{justify-content:center}.bq .guide-info p{text-align:center}}
+
+/* 2026-10-16｜廠商原文與照片；沿用官網色彩與字型 */
+body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.banquet-intro{padding:136px 0 48px;text-align:center}
+.banquet-intro h1{margin-bottom:24px;letter-spacing:0}
+.banquet-tagline{font-size:24px;font-weight:700;line-height:1.5;margin:0 0 24px}
+.banquet-date{color:var(--mute);font-size:16px;line-height:1.7;margin:0 0 24px}
+.banquet-intro .cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.banquet-intro .btn{letter-spacing:0}
+.banquet-hero{margin:0 auto 48px;max-width:1000px}
+.banquet-hero img{width:100%;height:auto;border-radius:var(--r)}
+.banquet-hero figcaption{text-align:right;margin:8px 0 0;font-size:12px}
+.bq{padding-top:0}
+.bq .guide-info{padding:48px 0}
+.bq .guide-info h2{font-size:30px;line-height:1.3;font-weight:700;letter-spacing:0;margin:0 0 24px}
+.bq .guide-info p{font-size:16px;line-height:1.7;margin:0 0 20px}
+.bq .guide-info .eyebrow{font-size:12px;color:var(--pink);margin:0 0 12px}
+.bq .banquet-story{text-align:center;padding:24px 0 48px;border-top:0}
+.banquet-story p:last-child{max-width:760px;margin-inline:auto;margin-bottom:0}
+.partner-layout{display:grid;grid-template-columns:180px 1fr;gap:48px;align-items:center}
+.partner-logo{background:var(--ink);border-radius:var(--r);padding:24px;display:flex;justify-content:center}
+.partner-logo img{height:200px;width:auto}
+.guide-shell .banquet-text-link{color:var(--pink);font-size:14px;font-weight:700;display:inline-flex;align-items:center;min-height:44px}
+.banquet-text-link:hover{text-decoration:underline}
+.chef-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+.chef-photos{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;align-items:center}
+.chef-photos img{width:100%;border-radius:12px;height:auto}
+.chef-photos figure:first-child img{aspect-ratio:3/4;object-fit:cover;object-position:52% center}
+.menu-heading{text-align:center}
+.dish-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:32px 0}
+.dish-gallery img{width:100%;height:auto;border-radius:12px}
+.dish-gallery figcaption{font-size:14px;color:var(--ink);margin-top:12px;line-height:1.6}
+.bq .menu{padding:0;margin:24px 0 32px;gap:0 32px}
+.bq .menu li{margin:0;padding:16px 0;font-size:16px;color:var(--ink)}
+.dessert-gallery{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0 24px}
+.dessert-gallery img{width:100%;height:auto;border-radius:12px}
+.dessert-gallery figcaption{text-align:center;font-size:14px;color:var(--ink)}
+.bq .guide-info .menu-note{font-size:12px;margin:12px 0 0}
+.bq .flow{padding-left:0}.bq .flow li{margin:0}
+@media(max-width:760px){
+ .banquet-intro{padding:112px 0 32px}.banquet-hero{margin-bottom:24px}.banquet-hero figcaption{text-align:center}
+ .partner-layout{grid-template-columns:120px 1fr;gap:24px}.partner-logo{padding:16px}.partner-logo img{height:160px}
+ .chef-layout{grid-template-columns:1fr;gap:24px}.chef-photos{max-width:600px;margin-inline:auto}
+ .bq .guide-info{padding:32px 0}.bq .guide-info h2{font-size:24px}.bq .guide-info p{font-size:16px}
+ .dish-gallery{gap:12px}.dish-gallery figcaption{font-size:12px}
+}
+@media(max-width:600px){
+ .banquet-tagline{font-size:20px}.banquet-date{font-size:14px}.banquet-intro .btn{font-size:14px;padding:12px 20px}
+ .partner-layout{grid-template-columns:1fr;gap:24px}.partner-logo{width:120px;margin:auto}.partner-logo img{height:160px}
+ .bq .menu{display:block;width:100%;max-width:360px;margin:24px auto 32px}.bq .menu li{text-align:center;padding:12px 0}
+ .dish-gallery{grid-template-columns:1fr;max-width:360px;margin:24px auto;gap:24px}
+ .dish-gallery img{aspect-ratio:4/5;object-fit:cover}.dish-gallery figcaption{font-size:14px;text-align:center}
+ .dessert-gallery{gap:12px}.dessert-gallery figcaption{font-size:12px}
+ .bq .cta-row{justify-content:center}.bq .guide-info h2{text-wrap:balance}
+}
+/* 首屏同時看見文案與宴席照片 */
+.banquet-hero-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.banquet-intro{text-align:left;padding-bottom:64px}
+.banquet-intro h1{font-size:48px;white-space:nowrap}
+.banquet-intro .cta-row{justify-content:flex-start}
+.banquet-intro .banquet-hero{margin:0;width:100%}
+.banquet-intro .banquet-hero figcaption{text-align:left}
+@media(max-width:1000px){.banquet-hero-layout{grid-template-columns:1fr;gap:32px;max-width:760px}.banquet-intro{text-align:center}.banquet-intro .cta-row{justify-content:center}.banquet-intro .banquet-hero figcaption{text-align:center}}
+@media(max-width:600px){.banquet-intro h1{font-size:36px}.banquet-intro{padding-bottom:32px}.banquet-intro .banquet-hero{margin:0}.banquet-hero-layout{gap:24px}}
+
+/* 晚宴流程：所有尺寸均以中央軸線排列 */
+.bq .banquet-program{text-align:center}
+.bq .flow li{flex-direction:column;align-items:center;gap:8px;text-align:center;padding:20px 0}
+.bq .flow time{width:auto}
