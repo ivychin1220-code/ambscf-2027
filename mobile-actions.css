@@ -1,6 +1,8 @@
 /* Mobile action bar: safe-area aware, with room for existing floating controls. */
 .mobile-actions{display:none}
 @media(max-width:600px){
+ /* The fixed bottom bar provides the mobile ticket action. */
+ .nav .btn-main{display:none}
  body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
  html{scroll-padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
  .mobile-actions{position:fixed;inset:auto 0 0;z-index:49;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:var(--bg);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
