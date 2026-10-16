@@ -748,6 +748,19 @@ details p{font-size:16px;margin:0 0 24px}
 #vgrid .vendor-details .ds{display:block;overflow:visible;-webkit-line-clamp:unset;white-space:normal;font-size:15px;line-height:1.7;margin:8px 0 16px}
 #vgrid .vendor-social{display:inline-block;color:var(--cyan);font-size:14px;padding:12px 0}
 #vgrid summary:focus-visible,#vgrid a:focus-visible,#vgrid .vmore:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+
+/* Performer bios are available on demand; ticket differences stay visible. */
+.djrow{align-items:flex-start}
+.dj{padding-bottom:24px}
+.dj .role{font-size:15px;line-height:1.6;margin:12px 0 16px}
+.performer-details{position:relative;border:0;text-align:left;width:100%}
+.performer-details summary{font-size:14px;color:var(--cyan);padding:12px 28px 12px 0;line-height:1.5;min-height:44px}
+.performer-details summary::after{right:4px}
+.performer-details .bio{padding:8px 0 0;min-height:0;text-align:left;line-height:1.7;user-select:text}
+.performer-details summary:focus-visible,.performer-details a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+#tickets .ticket-highlight{font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;margin:16px 0 0}
+#tickets .early-highlight{color:var(--cyan)}
+#tickets .early-deadline{font-size:13px;color:var(--mute);margin:4px 0 0;line-height:1.5}
 </style><meta property="og:type" content="website">
 <meta property="og:title" content="2027 亞洲身心靈文化祭">
 <meta property="og:description" content="2027.01.02–01.03｜台北流行音樂中心南基地｜免費市集・演出・千人辦桌，晚宴另行購票。">
@@ -1137,15 +1150,15 @@ const djrow=document.getElementById("djrow");
 djrow.innerHTML=djs.map(d=>`<article class="dj" style="--c:${d.c}">
   <div class="slot">${d.slot}</div>
   <div class="disc ${d.img?"photo":""} ${d.crop?"crop":""}">${d.img?`<img src="${d.img}" alt="${d.name}"${d.imgStyle?` style="${d.imgStyle}"`:""}>`:`<span>${[...d.name.replace("DJ ","")].slice(0,2).join("").toUpperCase()}</span>`}</div>
-  <h3>${d.name}${d.sub?`<small>${d.sub}</small>`:""}</h3>
-  <p class="role">${d.role}</p>
-  <p class="bio">${d.bio||"介紹即將公開"}</p>
+  <h3>${d.name}${d.sub&&d.sub!==d.name?`<small>${d.sub}</small>`:""}</h3>
+  <p class="role">${d.name==="Subi"?"讓小提琴與電子節拍交織的音樂人":d.role}</p>
+  <details class="performer-details"><summary>查看完整介紹</summary><div class="performer-details-body"><p class="bio">${d.bio||"介紹即將公開"}</p>
   ${d.url?`<a class="djlink" href="${d.url}" target="_blank" rel="noopener">${d.urlText||"看更多"} ↗</a>`:""}
   <div class="tags">${d.tags.map(t=>`<span>${t}</span>`).join("")}</div>
-  <div class="eq"><i></i><i></i><i></i><i></i></div></article>`).join("");
+  </div></details></article>`).join("");
 // 滑鼠拖曳橫向捲動
 {let down=false,sx=0,sl=0;
- djrow.onpointerdown=e=>{if(e.pointerType!=="mouse")return;down=true;sx=e.clientX;sl=djrow.scrollLeft;djrow.classList.add("drag")};
+ djrow.onpointerdown=e=>{if(e.pointerType!=="mouse"||e.target.closest("summary,a,button,details"))return;down=true;sx=e.clientX;sl=djrow.scrollLeft;djrow.classList.add("drag")};
  addEventListener("pointermove",e=>{if(down)djrow.scrollLeft=sl-(e.clientX-sx)});
  addEventListener("pointerup",()=>{down=false;djrow.classList.remove("drag")});}
 
@@ -1160,19 +1173,25 @@ const tickets=[
  {n:"命書＋趨勢影片組合",sub:"無法到場也能掌握 2027",p:"5,300",from:"2026-09-01",to:"2027-01-02",url:"https://pse.is/9m686m",f:["!不含開運晚宴入場席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）"]},
 ];
 const now=Date.now(),fmt=d=>d.slice(5).replace("-","/");
+const ticketHighlights={"超早鳥":"晚宴席位＋趨勢影片＋開運好禮","命書套票":"晚宴＋2027 個人命書","一般票":"晚宴席位＋趨勢影片＋市集券","VIP 命書票":"靠近舞台＋命書＋香氛蠟燭","十人團體桌":"十人同桌｜每人 NT$3,980","命書＋趨勢影片組合":"2027 個人命書＋趨勢影片"};
+const taipeiToday=new Date(now+8*3600000).toISOString().slice(0,10);
+
 document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T23:59:59+08:00").getTime()).map((t,i)=>{
   const s=new Date(t.from+"T00:00:00+08:00").getTime(),e=new Date(t.to+"T23:59:59+08:00").getTime();
   const ended=now>=e,soon=now<s;
+  const daysLeft=Math.max(0,Math.round((Date.parse(t.to+"T00:00:00Z")-Date.parse(taipeiToday+"T00:00:00Z"))/86400000));
+  const highlight=t.n==="早鳥票"?`比一般票省 NT$700｜${daysLeft===0?"今天截止":"剩 "+daysLeft+" 天"}`:ticketHighlights[t.n];
   const state=ended?"販售已結束":soon?`${fmt(t.from)} 開賣`:`販售中 · 至 ${fmt(t.to)}`;
   return `<article class="tk rv ${t.hot?"hot":""} ${ended?"ended":""}" style="--d:${i*.06}s">
     ${t.hot?`<span class="badge">${t.hot}</span>`:""}
     <h3>${t.n}</h3><p class="sub">${t.sub}</p>
     <div class="price"><small>NT$</small>${t.p}<em>${t.unit||""}</em></div>
+    <p class="ticket-highlight ${t.n==="早鳥票"?"early-highlight":""}">${highlight||t.sub}</p>
+    ${t.n==="早鳥票"?'<p class="early-deadline">10/31 23:59 截止，限前 500 席</p>':""}
     <p class="state ${ended?"off":""}">${state}</p>
     ${t.n==="命書＋趨勢影片組合"?'<p class="ticket-exclusion">不含晚宴席位</p>':""}
     <details class="ticket-benefits"><summary aria-label="查看${t.n}完整權益">查看完整權益</summary><div class="ticket-benefits-body">
     ${t.v?`<p class="val">權益價值 NT$${t.v}+<span>影片 3,800＋市集券 500＋命書券 500，再加晚宴席位、紅包與抽獎</span></p>`:""}
-    ${t.save&&!ended?`<p class="save">${t.save}</p>`:""}
     <ul>${t.f.map(x=>x[0]==="!"?`<li class="no">${x.slice(1)}</li>`:`<li>${x}</li>`).join("")}</ul>
     ${["命書套票","VIP 命書票","命書＋趨勢影片組合"].includes(t.n)?`<a class="btn btn-ghost guide-ticket-action" href="guide.html#steps">命書購後必做：註冊幸運點＋開通問問 →</a>`:""}
     </div></details>
