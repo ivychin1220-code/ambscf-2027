@@ -737,6 +737,17 @@ details p{font-size:16px;margin:0 0 24px}
 #tickets .ticket-exclusion{font-size:14px;font-weight:700;color:var(--pink);margin:0 0 4px}
 #tickets .tk>.btn{width:100%}
 .banquet .banquet-highlights{margin:24px auto;line-height:1.8}
+
+/* Vendor overview: six cards, full supplied introductions on demand. */
+#vgrid{align-items:start}
+#vgrid .vr{width:100%;padding:24px}
+#vgrid .vendor-days{font-size:14px;color:var(--mute);margin:16px 0 8px}
+#vgrid .vendor-details{width:100%;border:0;text-align:left}
+#vgrid .vendor-details summary{font-size:14px;line-height:1.5;padding:12px 28px 12px 0;min-height:44px;color:var(--cyan)}
+#vgrid .vendor-details summary::after{right:4px}
+#vgrid .vendor-details .ds{display:block;overflow:visible;-webkit-line-clamp:unset;white-space:normal;font-size:15px;line-height:1.7;margin:8px 0 16px}
+#vgrid .vendor-social{display:inline-block;color:var(--cyan);font-size:14px;padding:12px 0}
+#vgrid summary:focus-visible,#vgrid a:focus-visible,#vgrid .vmore:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
 </style><meta property="og:type" content="website">
 <meta property="og:title" content="2027 亞洲身心靈文化祭">
 <meta property="og:description" content="2027.01.02–01.03｜台北流行音樂中心南基地｜免費市集・演出・千人辦桌，晚宴另行購票。">
@@ -1096,16 +1107,18 @@ const vendors=[
 const chips=document.getElementById("chips"),vgrid=document.getElementById("vgrid");
 let showAll=false;
 function drawVendors(f){
-  const all=vendors.filter(v=>f==="全部"||v.cat===f),list=showAll||f!=="全部"?all:all.slice(0,12);
-  vgrid.innerHTML=list.map((v,i)=>{const tag=v.url?"a":"div",attr=v.url?` href="${v.url}" target="_blank" rel="noopener"`:"";
-    return `<${tag} class="vr"${attr} style="--c:${CATS[v.cat]};--i:${Math.min(i,14)}">
-    <div>${v.img?`<span class="lg ${v.fit||""}"${v.bg?` style="background:${v.bg}"`:""}><img src="${v.img}" alt="${v.name} Logo" loading="lazy"></span>`:`<span class="lg none">${[...v.name][0]}</span>`}${v.host?`<span class="host">主辦單位</span>`:""}<p class="cat">${v.cat}</p><h3>${v.name}</h3>${v.tags?`<p class="tg">${v.tags}</p>`:""}<p class="ds">${v.desc}</p></div>
-    <div class="side"><span>${v.days.length?v.days.join(" · "):""}</span>${v.url?'<span class="go">↗</span>':""}</div></${tag}>`}).join("")
-   +(list.length<all.length?`<button class="vmore" id="vmore">看全部 ${all.length} 個攤位</button>`:"");
-  const m=document.getElementById("vmore");if(m)m.onclick=()=>{showAll=true;drawVendors(f)};
+  const all=vendors.filter(v=>f==="全部"||v.cat===f).sort((a,b)=>Number(!!b.host)-Number(!!a.host));
+  const list=showAll?all:all.slice(0,6);
+  vgrid.innerHTML=list.map((v,i)=>`<article class="vr" style="--c:${CATS[v.cat]};--i:${Math.min(i,14)}">
+    <div>${v.img?`<span class="lg ${v.fit||""}"${v.bg?` style="background:${v.bg}"`:""}><img src="${v.img}" alt="${v.name} Logo" loading="lazy"></span>`:`<span class="lg none">${[...v.name][0]}</span>`}${v.host?'<span class="host">主辦單位</span>':""}<p class="cat">${v.cat}</p><h3>${v.name}</h3>${v.tags?`<p class="tg">${v.tags}</p>`:""}</div>
+    <p class="vendor-days">${v.days.join(" · ")}</p>
+    <details class="vendor-details"><summary>查看完整介紹</summary><div class="vendor-details-body"><p class="ds">${v.desc}</p>${v.url?`<a class="vendor-social" href="${v.url}" target="_blank" rel="noopener">前往品牌網站／社群 ↗</a>`:""}</div></details>
+    </article>`).join("")
+    +(all.length>6?`<button class="vmore" id="vmore" aria-expanded="${showAll}">${showAll?"收合，顯示前六個":"看全部 "+all.length+" 個攤位"}</button>`:"");
+  const m=document.getElementById("vmore");if(m)m.onclick=()=>{showAll=!showAll;drawVendors(f);if(!showAll)document.getElementById("vendors").scrollIntoView({block:"start"});document.getElementById("vmore")?.focus({preventScroll:true})};
 }
 chips.innerHTML=["全部",...Object.keys(CATS)].map((c,i)=>`<button class="chip" aria-pressed="${i===0}" data-c="${c}">${c}<small>${c==="全部"?vendors.length:vendors.filter(v=>v.cat===c).length}</small></button>`).join("");
-chips.onclick=e=>{const b=e.target.closest(".chip");if(!b)return;chips.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));drawVendors(b.dataset.c)};
+chips.onclick=e=>{const b=e.target.closest(".chip");if(!b)return;chips.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));showAll=false;drawVendors(b.dataset.c)};
 drawVendors("全部");
 
 // ===== DJ 資料 =====
