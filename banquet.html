@@ -1,5 +1,5 @@
 <!doctype html><html lang="zh-Hant"><head>
-<meta name="robots" content="noindex,nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>千人開運辦桌｜2027 亞洲身心靈文化祭</title><meta name="description" content="北流首場千人辦桌，一千人同席寫歷史。2027.01.03，由豐辦桌策劃、阿海師掌杓，十道美濃客家大菜。"><link rel="icon" href="assets/logo-mark.png"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:ital,wght@1,500&family=Oswald:wght@500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="original.css"><link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="banquet.css"><meta property="og:type" content="website">
+<meta name="robots" content="noindex,nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>千人開運辦桌｜2027 亞洲身心靈文化祭</title><meta name="description" content="北流首場千人辦桌，一千人同席寫歷史。2027.01.03，由豐辦桌策劃、阿海師掌杓，十道美濃客家大菜。"><link rel="icon" href="assets/logo-mark.png"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:ital,wght@1,500&family=Oswald:wght@500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="original.css"><link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="banquet.css?v=mobile-finish"><meta property="og:type" content="website">
 <meta property="og:title" content="千人開運辦桌｜2027 亞洲身心靈文化祭">
 <meta property="og:description" content="2027.01.03 18:00–20:30｜台北流行音樂中心南基地｜豐辦桌策劃、阿海師掌杓，一千人同席寫歷史。">
 <meta property="og:url" content="https://ivychin1220-code.github.io/ambscf-2027/banquet.html">
@@ -12,7 +12,7 @@
 <meta name="twitter:title" content="千人開運辦桌｜2027 亞洲身心靈文化祭">
 <meta name="twitter:description" content="2027.01.03 18:00–20:30｜台北流行音樂中心南基地｜豐辦桌策劃、阿海師掌杓，一千人同席寫歷史。">
 <meta name="twitter:image" content="https://ivychin1220-code.github.io/ambscf-2027/assets/share/banquet-photo-logo-20261016.jpg">
-<link rel="stylesheet" href="mobile-actions.css">
+<link rel="stylesheet" href="mobile-actions.css?v=mobile-finish">
 </head><body>
 <header class="nav on"><div class="wrap"><a class="brand" href="index.html"><img src="assets/logo-mark.png" alt="">亞洲身心靈文化祭</a><a class="guide-back guide-action btn btn-ghost" href="index.html#schedule">← 返回官網</a><a class="btn btn-main guide-action" href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">立即購票</a></div></header>
 <main>
@@ -21,6 +21,7 @@
 <h1>千人<span class="grad-text">開運辦桌</span></h1>
 <p class="banquet-tagline">北流首場千人辦桌<br>一千人同席寫歷史</p>
 <p class="banquet-date">2027.01.03（日）18:00－20:30<br>17:00開始報到<br>台北流行音樂中心南基地戶外空間</p>
+<p class="banquet-offer" id="banquetOffer">早鳥每人 NT$3,980｜10/31 23:59 截止</p>
 <div class="cta-row"><a class="btn btn-ghost" href="#menu">看十道大菜 ↓</a></div>
 </div>
 <figure class="banquet-hero"><img src="assets/banquet/banquet-hero.jpg" alt="豐辦桌過往宴席實景，總舖師端菜走向滿席賓客" width="1800" height="1200" fetchpriority="high"><figcaption>豐辦桌過往宴席實景，非本次北流場地。</figcaption></figure>
@@ -123,4 +124,6 @@
 const update=()=>{prev.disabled=gallery.scrollLeft<2;next.disabled=gallery.scrollLeft+gallery.clientWidth>=gallery.scrollWidth-2};
 const move=dir=>gallery.scrollBy({left:dir*(gallery.querySelector('figure').getBoundingClientRect().width+16),behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
 prev.onclick=()=>move(-1);next.onclick=()=>move(1);gallery.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();move(e.key==='ArrowLeft'?-1:1)}});gallery.addEventListener('scroll',update,{passive:true});addEventListener('resize',update);update();})();
+</script><script>
+(()=>{const el=document.getElementById('banquetOffer');const now=Date.now();if(now>=Date.parse('2026-11-01T00:00:00+08:00')){el.textContent=now<Date.parse('2027-01-03T00:00:00+08:00')?'一般票每人 NT$4,680｜1/2 23:59 截止':'線上售票已截止';}})();
 </script></body></html>

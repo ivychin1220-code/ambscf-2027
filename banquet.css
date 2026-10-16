@@ -97,3 +97,5 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
 @media(max-width:600px){.bq .dish-gallery figure{flex-basis:86%}}
 
 .participation-points{max-width:540px;margin:24px auto;padding-left:24px;text-align:left;color:var(--mute);line-height:1.8}.participation-points li{padding-left:4px;margin:12px 0}.participation-points li::marker{color:var(--cyan)}
+
+.banquet-offer{font-size:16px;font-weight:700;color:var(--cyan);line-height:1.7;margin:16px 0}

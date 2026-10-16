@@ -802,7 +802,7 @@ details p{font-size:16px;margin:0 0 24px}
 <meta name="twitter:title" content="2027 亞洲身心靈文化祭">
 <meta name="twitter:description" content="2027.01.02–01.03｜台北流行音樂中心南基地｜免費市集・演出・千人辦桌，晚宴另行購票。">
 <meta name="twitter:image" content="https://ivychin1220-code.github.io/ambscf-2027/assets/share/home-photo-logo-20261016.jpg">
-<link rel="stylesheet" href="mobile-actions.css">
+<link rel="stylesheet" href="mobile-actions.css?v=mobile-finish">
 </head>
 <body>
 
@@ -1076,11 +1076,12 @@ details p{font-size:16px;margin:0 0 24px}
     <p class="copy">© 2027 亞洲身心靈文化祭 · 主辦單位保留活動內容及辦法之修改、變更權利，以官方最新公告為準。</p>
   </div>
 <button class="music" id="music" type="button" aria-pressed="false" aria-label="開啟背景音樂"><span class="mbars"><i></i><i></i><i></i><i></i></span><span class="mtxt">音樂</span></button>
+<a class="btn btn-ghost ticket-shortcut" href="#top" aria-label="回到最上方">回到最上方 ↑</a>
 </footer>
 
 
 
-<a class="btn btn-ghost ticket-shortcut" href="#top" aria-label="回到最上方">回到最上方 ↑</a>
+
 
 <script>
 const KKTIX="https://kktix.com/events/culturalfestival2027/registrations/new";
@@ -1216,7 +1217,7 @@ document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T2
   const daysLeft=Math.max(0,Math.round((Date.parse(t.to+"T00:00:00Z")-Date.parse(taipeiToday+"T00:00:00Z"))/86400000));
   const highlight=t.n==="早鳥票"?`比一般票省 NT$700｜${daysLeft===0?"今天截止":"剩 "+daysLeft+" 天"}`:ticketHighlights[t.n];
   const state=ended?"販售已結束":soon?`${fmt(t.from)} 開賣`:`販售中 · 至 ${fmt(t.to)}`;
-  return `<article class="tk rv ${t.hot?"hot":""} ${ended?"ended":""}" style="--d:${i*.06}s">
+  return `<article class="tk rv ${t.n==="早鳥票"?"early-ticket":""} ${t.hot?"hot":""} ${ended?"ended":""}" style="--d:${i*.06}s">
     ${t.hot?`<span class="badge">${t.hot}</span>`:""}
     <h3>${t.n}</h3><p class="sub">${t.n==="早鳥票"?"只參加晚宴，推薦選這張":t.sub}</p>
     <div class="price"><small>NT$</small>${t.p}<em>${t.unit||""}</em></div>
