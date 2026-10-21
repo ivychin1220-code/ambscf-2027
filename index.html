@@ -1204,7 +1204,7 @@ const tickets=[
  {n:"超早鳥",sub:"開運晚宴票｜前 200 席",p:"3,600",from:"2026-09-01",to:"2026-09-30",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"]},
  {n:"早鳥票",sub:"開運晚宴票",p:"3,980",from:"2026-10-01",to:"2026-10-31",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800",save:"10/31 23:59 前購票，比一般票省 NT$700"},
  {n:"命書套票",sub:"晚宴＋命書一次擁有",p:"6,600",from:"2026-09-01",to:"2027-01-02",hot:"晚宴＋命書推薦",f:["開運晚宴一般席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香","市集抵用券 500 元","晚宴抽獎券＋加碼抽獎券","贈送點數 10,000 點"]},
- {n:"一般票",sub:"開運晚宴票",p:"4,680",from:"2026-09-01",to:"2027-01-02",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800"},
+ {n:"一般票",unavailable:true,sub:"開運晚宴票",p:"4,680",from:"2026-09-01",to:"2027-01-02",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800"},
  {n:"VIP 命書票",sub:"尊榮限定",p:"10,400",from:"2026-09-01",to:"2027-01-02",f:["VIP 開運晚宴靠近舞台席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香＋香氛蠟燭","VIP 市集抵用券（價值 500 元）","VIP 專屬抽獎券＋加碼抽獎券","贈送點數 12,000 點"]},
  {n:"十人團體桌",sub:"十人同桌，每人 NT$3,980",p:"39,800",unit:"／桌",from:"2026-09-01",to:"2027-01-02",f:["每人開運晚宴一般席位","每人 2027 趨勢影片","每人 2027 開運紅包","每人命書折抵券 500 元","每人晚宴抽獎券","每人贈送點數 8,000 點","活動演出與產品曝光露出機會"]},
  {n:"命書＋趨勢影片組合",sub:"無法到場也能掌握 2027",p:"5,300",from:"2026-09-01",to:"2027-01-02",url:"https://kktix.com/events/culturalfestival2027/registrations/new",f:["!不含開運晚宴入場席位","命書優先製作資格","2027 趨勢影片（價值 NT$3,800）"]},
@@ -1223,7 +1223,7 @@ document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T2
   const ended=now>=e,soon=now<s;
   const daysLeft=Math.max(0,Math.round((Date.parse(t.to+"T00:00:00Z")-Date.parse(taipeiToday+"T00:00:00Z"))/86400000));
   const highlight=t.n==="早鳥票"?`比一般票省 NT$700｜${daysLeft===0?"今天截止":"剩 "+daysLeft+" 天"}`:ticketHighlights[t.n];
-  const state=ended?"販售已結束":soon?`${fmt(t.from)} 開賣`:`販售中 · 至 ${fmt(t.to)}`;
+  const state=t.unavailable?"尚未開賣":ended?"販售已結束":soon?`${fmt(t.from)} 開賣`:`販售中 · 至 ${fmt(t.to)}`;
   return `<article class="tk rv ${t.n==="早鳥票"?"early-ticket":""} ${t.hot?"hot":""} ${ended?"ended":""}" style="--d:${i*.06}s">
     ${t.hot?`<span class="badge">${t.hot}</span>`:""}
     <h3>${t.n}</h3><p class="sub">${t.n==="早鳥票"?"只參加晚宴，推薦選這張":t.sub}</p>
@@ -1238,7 +1238,7 @@ document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T2
     <ul>${t.f.map(x=>x[0]==="!"?`<li class="no">${x.slice(1)}</li>`:`<li>${x}</li>`).join("")}</ul>
     ${["命書套票","VIP 命書票","命書＋趨勢影片組合"].includes(t.n)?`<a class="btn btn-ghost guide-ticket-action" href="guide.html#steps">命書購後必做：註冊幸運點＋開通問問 →</a>`:""}
     </div></details>
-    ${soon?`<span class="btn btn-ghost" aria-disabled="true" style="opacity:.5;cursor:default">${fmt(t.from)} 開放購票</span>`:`<a class="btn ${t.hot?"btn-main":"btn-ghost"}" href="${t.url||KKTIX}" target="_blank" rel="noopener">${ended?"已截止":"前往購票"}</a>`}
+    ${t.unavailable?`<button class="btn btn-ghost" type="button" disabled aria-disabled="true" style="opacity:.6;cursor:not-allowed">尚未開賣</button>`:soon?`<span class="btn btn-ghost" aria-disabled="true" style="opacity:.5;cursor:default">${fmt(t.from)} 開放購票</span>`:`<a class="btn ${t.hot?"btn-main":"btn-ghost"}" href="${t.url||KKTIX}" target="_blank" rel="noopener">${ended?"已截止":"前往購票"}</a>`}
   </article>`}).join("");
 
 // 捲動進場＋數字跳動
