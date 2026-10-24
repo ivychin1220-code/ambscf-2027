@@ -9,7 +9,9 @@
 <link rel="icon" href="assets/logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:ital,wght@1,500&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/poster-dark.avif" type="image/avif" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:ital,wght@1,500&family=Oswald:wght@500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:ital,wght@1,500&family=Oswald:wght@500;700&display=swap"></noscript>
 <style>
 :root{
   --bg:#0d0a2a; --bg2:#151040; --panel:rgba(255,255,255,.055); --line:rgba(255,255,255,.14);
@@ -790,6 +792,18 @@ details p{font-size:16px;margin:0 0 24px}
 #tickets .early-highlight{color:var(--cyan)}
 #tickets .early-deadline{font-size:13px;color:var(--mute);margin:4px 0 0;line-height:1.5}
 /* 攤商簡介保留分段；多個社群連結一行一個 */#vgrid .vendor-details .ds{white-space:pre-line}#vgrid .vendor-social+.vendor-social{padding-top:0}#vgrid .vendor-details-body .vendor-social{display:table}
+.nav-toggle{display:none}
+.hero-art picture{display:block;height:100%}
+@media(max-width:860px){
+  .nav .wrap{position:relative}
+  .nav-toggle{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-left:auto;padding:0;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);cursor:pointer}
+  .nav-toggle span{display:block;width:18px;height:2px;margin-inline:auto;background:currentColor;border-radius:2px}
+  .nav-toggle:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+  .nav ul{position:fixed;top:68px;left:0;right:0;z-index:60;flex-direction:column;gap:0;margin:0;padding:8px 20px 16px;background:rgba(14,10,43,.98);border-bottom:1px solid var(--line);max-height:calc(100svh - 68px);overflow:auto}
+  .nav ul.is-open{display:flex}
+  .nav ul a{display:flex;align-items:center;min-height:48px;font-size:16px;letter-spacing:.04em}
+  .nav li.nav-sep{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+}
 </style><meta property="og:type" content="website">
 <meta property="og:title" content="2027 亞洲身心靈文化祭">
 <meta property="og:description" content="2027.01.02–01.03｜台北流行音樂中心南基地｜免費市集・演出・千人辦桌，晚宴另行購票。">
@@ -803,10 +817,10 @@ details p{font-size:16px;margin:0 0 24px}
 <meta name="twitter:title" content="2027 亞洲身心靈文化祭">
 <meta name="twitter:description" content="2027.01.02–01.03｜台北流行音樂中心南基地｜免費市集・演出・千人辦桌，晚宴另行購票。">
 <meta name="twitter:image" content="https://asiaspiritfest.com/assets/share/home-photo-logo-20261016.jpg">
-<link rel="stylesheet" href="mobile-actions.css?v=mobile-finish">
+<link rel="stylesheet" href="mobile-actions.css?v=nav-860">
 <link rel="canonical" href="https://asiaspiritfest.com/">
 <!-- 結構化資料（活動資料卡），2026-10-22 加。票價或日期改了要一起改 -->
-<script type="application/ld+json">
+<script type="application/ld+json" id="event-jsonld">
 {
  "@context": "https://schema.org",
  "@graph": [
@@ -921,7 +935,8 @@ details p{font-size:16px;margin:0 0 24px}
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/logo-mark.png" alt="">亞洲身心靈文化祭</a>
-    <ul>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="開啟選單"><span></span><span></span><span></span></button>
+    <ul id="primary-nav">
       <li><a href="#schedule">時間表</a></li>
       <li><a href="#vendors">攤商</a></li>
       <li><a href="#dj">演出</a></li>
@@ -931,7 +946,7 @@ details p{font-size:16px;margin:0 0 24px}
       <li class="nav-sep"><a class="guide-nav-entry" href="guide.html#steps">命書購後必做</a></li>
     </ul>
     <a class="mobile-guide" href="guide.html#steps"><b>命書購後必做</b><small>註冊幸運點＋開通問問</small></a>
-    <a class="btn btn-main" href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">立即購票</a>
+    <a class="btn btn-main" data-kktix-buy href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">立即購票</a>
   </div>
 </header>
 
@@ -962,7 +977,7 @@ details p{font-size:16px;margin:0 0 24px}
     </div>
   </div>
   <div class="hero-beams" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="hero-art" id="heroArt" aria-hidden="true"><img src="assets/poster-dark.jpg" alt=""></div>
+  <div class="hero-art" id="heroArt" aria-hidden="true"><picture><source srcset="assets/poster-dark.avif" type="image/avif"><source srcset="assets/poster-dark.webp" type="image/webp"><img src="assets/poster-dark.jpg" alt="" width="1080" height="1350" fetchpriority="high" decoding="async"></picture></div>
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="marquee-track" id="mq"></div></div>
@@ -1005,7 +1020,7 @@ details p{font-size:16px;margin:0 0 24px}
       <article class="experience-card">
         <div class="market-carousel performer-carousel" role="region" aria-roledescription="輪播" aria-label="演出陣容照片" tabindex="0">
           <div class="market-slides" aria-live="off">
-            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 1 張，共 3 張"><img class="mandy-slide" src="assets/perf/mandy.jpg" alt="DJ Mandy Ray" loading="lazy"><figcaption>免費舞台｜DJ Mandy Ray · 1/2</figcaption></figure>
+            <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 1 張，共 3 張"><img class="mandy-slide" src="assets/perf/mandy.jpg" alt="DJ Mandy Ray" loading="lazy" decoding="async"><figcaption>免費舞台｜DJ Mandy Ray · 1/2</figcaption></figure>
             <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 2 張，共 3 張" hidden><img class="jidong-slide" src="assets/experiences/jidong-portrait.jpg" alt="吉董吳永吉抱吉他演唱宣傳照" loading="lazy"><figcaption>晚宴限定・須購票｜吉董 · 1/3</figcaption></figure>
             <figure class="market-slide" role="group" aria-roledescription="投影片" aria-label="第 3 張，共 3 張" hidden><img class="jimmy-slide" src="assets/perf/jimmy.jpg" alt="魔術師幾米" loading="lazy"><figcaption>晚宴限定・須購票｜幾米 · 1/3</figcaption></figure>
           </div>
@@ -1137,7 +1152,7 @@ details p{font-size:16px;margin:0 0 24px}
     <h2 class="rv">常見問題</h2>
     <div class="faq rv">
 <div class="faq-group" aria-labelledby="faq-group-0"><h3 id="faq-group-0">晚宴與入場</h3>
-<details><summary><span class="faq-number">1.</span><span class="faq-question">我只想參加開運晚宴，應該買哪一種票？</span></summary><p>只想參加開運晚宴，推薦選早鳥票，每人 NT$3,980。10/31 23:59 前購票，比一般票省 NT$700，限前 500 席。包含晚宴一般席位，可享十道客家宴席、吉董演唱、幾米魔術與晚宴抽獎。</p></details>
+<details><summary><span class="faq-number">1.</span><span class="faq-question">我只想參加開運晚宴，應該買哪一種票？</span></summary><p id="faq-dinner-answer">只想參加開運晚宴，推薦選早鳥票，每人 NT$3,980。10/31 23:59 前購票，比一般票省 NT$700，限前 500 席。包含晚宴一般席位，可享十道客家宴席、吉董演唱、幾米魔術與晚宴抽獎。</p></details>
 <details><summary><span class="faq-number">2.</span><span class="faq-question">可以現場買票嗎？</span></summary><p>建議提前於 KKTIX 完成線上購票。各票種及桌次數量有限，現場是否開放售票，將視活動當日狀況及主辦單位公告為準。</p></details>
 <details><summary><span class="faq-number">3.</span><span class="faq-question">需要素食餐點怎麼辦？</span></summary><p>請在購票備註中填寫「素食」。素食貴賓將統一安排於素食桌，席次有限，未事先備註者，恕無法保證現場臨時更換。</p></details>
 </div>
@@ -1166,7 +1181,7 @@ details p{font-size:16px;margin:0 0 24px}
     <p class="eyebrow rv">2027.01.02 – 01.03 · Taipei Music Center</p>
     <h2 class="rv">身心富足，<span class="grad-text">好好生活</span></h2>
     <p class="rv">在新年的第一週，替自己預約一個全新的開始。</p>
-    <a class="btn btn-main rv" href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">前往 KKTIX 購票 →</a>
+    <a class="btn btn-main rv" data-kktix-buy href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">前往 KKTIX 購票 →</a>
   </div>
 </section>
 </main>
@@ -1199,8 +1214,9 @@ details p{font-size:16px;margin:0 0 24px}
 
 
 
+<script src="tickets.js"></script>
 <script>
-const KKTIX="https://kktix.com/events/culturalfestival2027/registrations/new";
+const KKTIX=FestivalTickets.config.buyUrl;
 const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
 
 // 標題逐字進場
@@ -1289,14 +1305,14 @@ const djs=[
   {slot:"1/2（六）18:30 — 20:30 · CLOSING",name:"DJ Mandy Ray",role:"帶著東方俠女氣息的跨曲風 DJ",bio:"來自台灣的跨曲風 DJ Mandy Ray，擅長 Psytechno、Techno、Tech House、Electronic、World Music 與 Spiritual Music 等多元曲風。她不以單一風格定義自己，而是感受現場與人群的能量，透過節奏、頻率與情緒，帶領大家走進一場流動的聲音旅程。曾參與羅漢祭、山神祭、地球革命、奇蹟音樂祭、Mirage 等活動，也曾將電子音樂、梵唄與東方精神元素融合於跨界演出，作品更曾多次進入 Mixcloud 全球榜單。對 Mandy Ray 而言，DJ 不只是播放音樂，而是讀取空間的能量，再用音樂重新調頻。",tags:["Psytechno","Techno","World Music"],img:"assets/perf/mandy.jpg",imgStyle:"object-position:50% 0;transform:scale(2.3);transform-origin:53% 25%",url:"https://www.instagram.com/lovedjmandyray/",urlText:"Instagram",c:"var(--amber)"},
   {slot:"1/3（日）15:00 — 16:00",name:"路哥",role:"尺八演奏家・台北極鼓擊團長",bio:"",tags:["尺八"],img:"",url:"https://www.instagram.com/dom112/",urlText:"Instagram",c:"#7dffb0"},
   {slot:"1/3（日）16:00 — 17:00",name:"空行者",role:"梵唄音樂人・跨界創作藝術家",bio:"長年修習梵唄、太極、氣功與冥想，空行者將古老梵音與咒語融入鋼琴、木吉他、電子音樂與 Psytrance，打造跨越傳統與當代的聲音體驗。自 2019 年起持續每日梵唄直播，讓聲音成為陪伴，也成為一場持續不斷的修行。代表作《楞嚴咒心》累積大量聆聽與分享，並曾於羅漢祭、山神祭、地球革命、Mirage 等活動演出。音樂不只是表演，而是一種聲音的修行。",tags:["梵唄","世界音樂","電子"],img:"assets/perf/kongxingzhe.jpg",crop:1,url:"https://www.instagram.com/voidwalker.0.1/",urlText:"Instagram",c:"var(--cyan)"},
-  {slot:"1/3（日）18:00 起 · 開運晚宴",name:"吉董",sub:"吳永吉",role:"開運晚宴開場與壓軸演唱",bio:"頭戴礦工帽、手抱吉他，這次不是來挖礦，是來挖出大家藏在心裡的故事。吉董即將登上亞洲身心靈文化祭舞台，用歌聲陪大家走進生活、感受土地，也聽見那些平常忙到沒空好好聽見的心情。有人用水晶補充能量，有人靠音樂重新充電。如果最近有點累，就來現場聽一首歌吧。",tags:["現場演唱"],img:"assets/perf/jidong.jpg",crop:1,c:"var(--pink)"},
+  {slot:"1/3（日）18:00 起 · 開運晚宴",name:"吉董",sub:"吳永吉",role:"開運晚宴開場與壓軸演唱",bio:"頭戴礦工帽、手抱吉他，這次不是來挖礦，是來挖出大家藏在心裡的故事。吉董即將登上亞洲身心靈文化祭舞台，用歌聲陪大家走進生活、感受土地，也聽見那些平常忙到沒空好好聽見的心情。有人用水晶補充能量，有人靠音樂重新充電。如果最近有點累，就來現場聽一首歌吧。",tags:["現場演唱"],img:"assets/experiences/jidong-portrait.jpg",crop:1,c:"var(--pink)"},
   {slot:"1/3（日）18:45 · 開運晚宴",name:"幾米",sub:"Magic Jimmy",role:"有法力的魔術師",bio:"晚宴當天除了菜會一道一道出現，還可能有東西在你眼前突然消失！這次邀請「法力的魔術師幾米」帶來精彩魔術演出。你可能會看到不可思議的瞬間、懷疑自己的眼睛，最後忍不住問旁邊的人：「剛剛到底發生什麼事？」1 月 3 日晚宴，不只一起吃飯，更要一起見證驚喜與奇蹟。",tags:["魔術","紫微斗數","命理占卦"],img:"assets/perf/jimmy.jpg",imgStyle:"object-position:62% 0;transform:scale(1.9);transform-origin:60% 22%",url:"https://www.instagram.com/jimmychaostudio/",urlText:"Instagram",c:"var(--amber)"},
 ];
 const djrow=document.getElementById("djrow");
 djrow.innerHTML=djs.map(d=>`<article class="dj" style="--c:${d.c}">
   <p class="performance-access ${["吉董","幾米"].includes(d.name)?"paid":"free"}">${["吉董","幾米"].includes(d.name)?"晚宴限定・須購票":"免費舞台"}</p>
   <div class="slot">${d.slot}</div>
-  <div class="disc ${d.img?"photo":""} ${d.crop?"crop":""}">${d.img?`<img src="${d.img}" alt="${d.name}"${d.imgStyle?` style="${d.imgStyle}"`:""}>`:`<span>${[...d.name.replace("DJ ","")].slice(0,2).join("").toUpperCase()}</span>`}</div>
+  <div class="disc ${d.img?"photo":""} ${d.crop?"crop":""}">${d.img?`<img src="${d.img}" alt="${d.name}" loading="lazy" decoding="async"${d.imgStyle?` style="${d.imgStyle}"`:""}>`:`<span>${[...d.name.replace("DJ ","")].slice(0,2).join("").toUpperCase()}</span>`}</div>
   <h3>${d.name}${d.sub&&d.sub!==d.name?`<small>${d.sub}</small>`:""}</h3>
   <p class="role">${d.name==="Subi"?"讓小提琴與電子節拍交織的音樂人":d.role}</p>
   <details class="performer-details"><summary>查看完整介紹</summary><div class="performer-details-body"><p class="bio">${d.bio||"介紹即將公開"}</p>
@@ -1312,43 +1328,48 @@ djrow.innerHTML=djs.map(d=>`<article class="dj" style="--c:${d.c}">
 // 票券（狀態依販售期間自動切換）
 const tickets=[
  {n:"超早鳥",sub:"開運晚宴票｜前 200 席",p:"3,600",from:"2026-09-01",to:"2026-09-30",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"]},
- {n:"早鳥票",sub:"開運晚宴票",p:"3,980",from:"2026-10-01",to:"2026-10-31",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800",save:"10/31 23:59 前購票，比一般票省 NT$700"},
+ {n:"早鳥票",key:"earlyBird",sub:"開運晚宴票",p:"3,980",from:"2026-10-01",to:"2026-10-31",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800"},
  {n:"命書套票",sub:"晚宴＋命書一次擁有",p:"6,600",from:"2026-09-01",to:"2027-01-02",hot:"晚宴＋命書推薦",f:["開運晚宴一般席位","2027 完整年度命書（含優先製作）","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香","市集抵用券 500 元","晚宴抽獎券＋加碼抽獎券","贈送點數 10,000 點"]},
- {n:"一般票",unavailable:true,sub:"開運晚宴票",p:"4,680",from:"2026-09-01",to:"2027-01-02",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800"},
+ {n:"一般票",key:"general",sub:"開運晚宴票",p:"4,680",from:"2026-11-01",to:"2027-01-02",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800"},
  {n:"VIP 命書票",sub:"尊榮限定",p:"10,400",from:"2026-09-01",to:"2027-01-02",f:["VIP 開運晚宴靠近舞台席位","2027 完整年度命書（含優先製作）","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香＋香氛蠟燭","VIP 市集抵用券（價值 500 元）","VIP 專屬抽獎券＋加碼抽獎券","贈送點數 12,000 點"]},
  {n:"十人團體桌",sub:"十人同桌，每人 NT$3,980",p:"39,800",unit:"／桌",from:"2026-09-01",to:"2027-01-02",f:["每人開運晚宴一般席位","每人 2027 趨勢影片","每人 2027 開運紅包","每人市集抵用券 500 元","每人命書折抵券 500 元","每人晚宴抽獎券","每人贈送點數 8,000 點","演出／產品曝光須洽主辦單位"]},
  {n:"命書＋趨勢影片組合",sub:"無法到場也能掌握 2027",p:"5,300",from:"2026-09-01",to:"2027-01-02",url:"https://kktix.com/events/culturalfestival2027/registrations/new",f:["!不含開運晚宴入場席位","2027 完整年度命書（含優先製作）","2027 趨勢影片（價值 NT$3,800）"]},
 ];
-const now=Date.now(),fmt=d=>d.slice(5).replace("-","/");
+const now=FestivalTickets.nowMs(),fmt=d=>d.slice(5).replace("-","/");
 const ticketHighlights={"超早鳥":"晚宴席位＋趨勢影片＋開運好禮","命書套票":"晚宴＋近百頁專屬命書","一般票":"晚宴席位＋趨勢影片＋市集券","VIP 命書票":"靠近舞台＋專屬命書＋香氛蠟燭","十人團體桌":"揪團最划算＋每人 8,000 點","命書＋趨勢影片組合":"近百頁專屬命書＋趨勢影片"};
-const taipeiToday=new Date(now+8*3600000).toISOString().slice(0,10);
-// 首屏主按鈕：早鳥期間顯示剩餘天數，截止後自動變回「立即購票」（2026-10-17）
-(()=>{const eb=tickets.find(x=>x.n==="早鳥票"),btn=document.getElementById("heroBuy");if(!eb||!btn)return;
-  const s=new Date(eb.from+"T00:00:00+08:00").getTime(),e=new Date(eb.to+"T23:59:59+08:00").getTime();if(now<s||now>e)return;
-  const d=Math.max(0,Math.round((Date.parse(eb.to+"T00:00:00Z")-Date.parse(taipeiToday+"T00:00:00Z"))/86400000));
+(()=>{const btn=document.getElementById("heroBuy");if(!btn)return;
+  if(FestivalTickets.statusOf(FestivalTickets.config.earlyBird,now)!=="onsale")return;
+  const d=FestivalTickets.daysUntil(FestivalTickets.config.earlyBird.end,now);
   btn.textContent=`晚宴早鳥｜${d===0?"今天截止":"剩 "+d+" 天"} →`;})();
 
-document.getElementById("tix").innerHTML=tickets.filter(t=>now<new Date(t.to+"T23:59:59+08:00").getTime()).map((t,i)=>{
-  const s=new Date(t.from+"T00:00:00+08:00").getTime(),e=new Date(t.to+"T23:59:59+08:00").getTime();
-  const ended=now>=e,soon=now<s;
-  const daysLeft=Math.max(0,Math.round((Date.parse(t.to+"T00:00:00Z")-Date.parse(taipeiToday+"T00:00:00Z"))/86400000));
-  const highlight=t.n==="早鳥票"?`比一般票省 NT$700｜${daysLeft===0?"今天截止":"剩 "+daysLeft+" 天"}`:ticketHighlights[t.n];
-  const state=t.unavailable?"尚未開賣":ended?"販售已結束":soon?`${fmt(t.from)} 開賣`:`販售中 · 至 ${fmt(t.to)}`;
-  return `<article class="tk rv ${t.n==="早鳥票"?"early-ticket":""} ${t.hot?"hot":""} ${ended?"ended":""}" style="--d:${i*.06}s">
+document.getElementById("tix").innerHTML=tickets.filter(t=>t.key==="earlyBird"||t.key==="general"||now<new Date(t.to+"T23:59:59+08:00").getTime()).map((t,i)=>{
+  const spec=t.key?FestivalTickets.config[t.key]:null;
+  const st=spec?FestivalTickets.statusOf(spec,now):null;
+  const s=t.from?new Date(t.from+"T00:00:00+08:00").getTime():0,e=t.to?new Date(t.to+"T23:59:59+08:00").getTime():0;
+  const ended=st?st==="ended":now>=e,soon=st?st==="upcoming"||st==="disabled":now<s;
+  const showPrice=!(t.key==="general"&&st!=="onsale"&&st!=="ended");
+  const priceLabel=spec?FestivalTickets.money(spec.price):t.p;
+  const daysLeft=t.key==="earlyBird"?FestivalTickets.daysUntil(spec.end,now):0;
+  const save=FestivalTickets.config.general.enabled?FestivalTickets.money(FestivalTickets.config.general.price-FestivalTickets.config.earlyBird.price):"";
+  const highlight=t.key==="earlyBird"&&st==="onsale"?(save?`比一般票省 NT$${save}｜`:"")+(daysLeft===0?"今天截止":"剩 "+daysLeft+" 天"):t.key&&st==="ended"?"本階段已結束":t.key==="general"&&soon?"即將開賣":ticketHighlights[t.n];
+  const state=st==="disabled"||st==="upcoming"?"即將開賣":ended?"販售已結束":soon?`${fmt(t.from)} 開賣`:`販售中 · 至 ${fmt(spec?spec.end.slice(0,10):t.to)}`;
+  const deadline=spec?FestivalTickets.shortDeadline(spec.end):"";
+  return `<article class="tk rv ${t.n==="早鳥票"&&st==="onsale"?"early-ticket":""} ${t.hot?"hot":""} ${ended?"ended":""}" style="--d:${i*.06}s">
     ${t.hot?`<span class="badge">${t.hot}</span>`:""}
-    <h3>${t.n}</h3><p class="sub">${t.n==="早鳥票"?"只參加晚宴，推薦選這張":t.sub}</p>
-    <div class="price"><small>NT$</small>${t.p}<em>${t.unit||""}</em></div>
-    <p class="ticket-highlight ${t.n==="早鳥票"?"early-highlight":""}">${highlight||t.sub}</p>
-    ${t.n==="早鳥票"?'<p class="early-deadline">10/31 23:59 截止・限前 500 席</p>':""}
-    ${t.n==="早鳥票"?'<p class="banquet-value">十道客家宴席＋吉董演唱<br>幾米魔術＋晚宴抽獎</p>':""}
-    ${t.n!=="早鳥票"||soon?`<p class="state ${ended?"off":""}">${state}</p>`:""}
+    <h3>${t.n}</h3><p class="sub">${t.n==="早鳥票"&&st==="onsale"?"只參加晚宴，推薦選這張":t.sub}</p>
+    ${showPrice?`<div class="price"><small>NT$</small>${priceLabel}<em>${t.unit||""}</em></div>`:""}
+    <p class="ticket-highlight ${t.n==="早鳥票"&&st==="onsale"?"early-highlight":""}">${highlight||t.sub}</p>
+    ${t.n==="早鳥票"&&st==="onsale"?`<p class="early-deadline">${deadline} 截止・限前 500 席</p>`:""}
+    ${t.n==="早鳥票"&&st==="onsale"?'<p class="banquet-value">十道客家宴席＋吉董演唱<br>幾米魔術＋晚宴抽獎</p>':""}
+    ${t.n==="一般票"&&st==="onsale"?'<p class="banquet-value">十道客家宴席＋吉董演唱<br>幾米魔術＋晚宴抽獎</p>':""}
+    ${!(t.n==="早鳥票"&&st==="onsale")?`<p class="state ${ended?"off":""}">${state}</p>`:""}
     ${t.n==="命書＋趨勢影片組合"?'<p class="ticket-exclusion">不含晚宴席位</p>':""}
     <details class="ticket-benefits"><summary aria-label="查看${t.n}完整權益">查看完整權益</summary><div class="ticket-benefits-body">
-    ${t.v?`<p class="val">權益價值 NT$${t.v}+<span>影片 3,800＋市集券 500＋命書券 500，再加晚宴席位、紅包與抽獎</span></p>`:""}
+    ${t.v&&showPrice?`<p class="val">權益價值 NT$${t.v}+<span>影片 3,800＋市集券 500＋命書券 500，再加晚宴席位、紅包與抽獎</span></p>`:""}
     <ul>${t.f.map(x=>x[0]==="!"?`<li class="no">${x.slice(1)}</li>`:`<li>${x}</li>`).join("")}</ul>
     ${["命書套票","VIP 命書票","命書＋趨勢影片組合"].includes(t.n)?`<a class="btn btn-ghost guide-ticket-action" href="guide.html#steps">命書購後必做：註冊幸運點＋開通問問 →</a>`:""}
     </div></details>
-    ${t.unavailable?`<button class="btn btn-ghost" type="button" disabled aria-disabled="true" style="opacity:.6;cursor:not-allowed">尚未開賣</button>`:soon?`<span class="btn btn-ghost" aria-disabled="true" style="opacity:.5;cursor:default">${fmt(t.from)} 開放購票</span>`:`<a class="btn ${t.hot?"btn-main":"btn-ghost"}" href="${t.url||KKTIX}" target="_blank" rel="noopener">${ended?"已截止":"前往購票"}</a>`}
+    ${st==="onsale"||(!spec&&!soon&&!ended)?`<a class="btn ${t.hot||(t.key==="general"&&st==="onsale")?"btn-main":"btn-ghost"}" data-kktix-buy href="${t.url||KKTIX}" target="_blank" rel="noopener">前往購票</a>`:ended?`<button class="btn btn-ghost" type="button" disabled aria-disabled="true" style="opacity:.6;cursor:not-allowed">已截止</button>`:`<button class="btn btn-ghost" type="button" disabled aria-disabled="true" style="opacity:.6;cursor:not-allowed">即將開賣</button>`}
   </article>`}).join("");
 
 // 捲動進場＋數字跳動
@@ -1424,8 +1445,39 @@ if(!reduce&&matchMedia("(hover:hover)").matches){
   function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;st=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H*.75,r:Math.random()*1.4+.3,p:Math.random()*6.28,s:Math.random()*.02+.006}))}
   function draw(){x.clearRect(0,0,W,H);for(const s of st){s.p+=s.s;x.globalAlpha=.35+Math.sin(s.p)*.35;x.fillStyle="#fff";x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fill()}if(!reduce)requestAnimationFrame(draw)}
   size();draw();addEventListener("resize",size)})();
+
+(function(){
+  const btn=document.getElementById("navToggle"),menu=document.getElementById("primary-nav");
+  if(!btn||!menu)return;
+  const links=()=>[...menu.querySelectorAll("a")];
+  function setOpen(on){
+    btn.setAttribute("aria-expanded",on?"true":"false");
+    btn.setAttribute("aria-label",on?"關閉選單":"開啟選單");
+    menu.classList.toggle("is-open",on);
+    document.body.style.overflow=on?"hidden":"";
+    if(on)links()[0]?.focus();
+  }
+  btn.addEventListener("click",()=>setOpen(btn.getAttribute("aria-expanded")!=="true"));
+  menu.addEventListener("click",e=>{if(e.target.closest("a"))setOpen(false)});
+  document.addEventListener("keydown",e=>{
+    if(btn.getAttribute("aria-expanded")!=="true")return;
+    if(e.key==="Escape"){setOpen(false);btn.focus();return}
+    if(e.key!=="Tab")return;
+    const items=links();if(!items.length)return;
+    const first=items[0],last=items[items.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+  });
+  document.addEventListener("click",e=>{
+    if(btn.getAttribute("aria-expanded")!=="true")return;
+    if(btn.contains(e.target)||menu.contains(e.target))return;
+    setOpen(false);
+  });
+  matchMedia("(max-width:860px)").addEventListener("change",e=>{if(!e.matches)setOpen(false)});
+})();
 </script>
 <script src="market-carousel.js"></script>
-<nav class="mobile-actions" aria-label="活動快捷入口"><a href="#experiences">免費活動</a><a class="mobile-buy" href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">晚宴購票 <span aria-hidden="true">↗</span></a></nav>
+<nav class="mobile-actions" aria-label="活動快捷入口"><a href="#experiences">免費活動</a><a href="#schedule">時間表</a><a href="#location">交通</a><a class="mobile-buy" data-kktix-buy href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">晚宴購票 <span aria-hidden="true">↗</span></a></nav>
+<script>FestivalTickets.boot();</script>
 </body>
 </html>
