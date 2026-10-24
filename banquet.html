@@ -1,5 +1,5 @@
 <!doctype html><html lang="zh-Hant"><head>
-<meta name="robots" content="index,follow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>千人開運辦桌｜2027 亞洲身心靈文化祭</title><meta name="description" content="北流首場千人辦桌，一千人同席寫歷史。2027.01.03，由豐辦桌策劃、阿海師掌杓，十道美濃客家大菜。"><link rel="icon" href="assets/logo-mark.png"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:ital,wght@1,500&family=Oswald:wght@500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="original.css"><link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="banquet.css?v=mobile-finish"><meta property="og:type" content="website">
+<meta name="robots" content="index,follow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>千人開運辦桌｜2027 亞洲身心靈文化祭</title><meta name="description" content="北流首場千人辦桌，一千人同席寫歷史。2027.01.03，由豐辦桌策劃、阿海師掌杓，十道美濃客家大菜。"><link rel="icon" href="assets/logo-mark.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:ital,wght@1,500&family=Oswald:wght@500;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:ital,wght@1,500&family=Oswald:wght@500;700&display=swap"></noscript><link rel="stylesheet" href="original.css"><link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="banquet.css?v=mobile-finish"><meta property="og:type" content="website">
 <meta property="og:title" content="千人開運辦桌｜2027 亞洲身心靈文化祭">
 <meta property="og:description" content="2027.01.03 18:00–20:30｜台北流行音樂中心南基地｜豐辦桌策劃、阿海師掌杓，一千人同席寫歷史。">
 <meta property="og:url" content="https://asiaspiritfest.com/banquet.html">
@@ -12,10 +12,10 @@
 <meta name="twitter:title" content="千人開運辦桌｜2027 亞洲身心靈文化祭">
 <meta name="twitter:description" content="2027.01.03 18:00–20:30｜台北流行音樂中心南基地｜豐辦桌策劃、阿海師掌杓，一千人同席寫歷史。">
 <meta name="twitter:image" content="https://asiaspiritfest.com/assets/share/banquet-photo-logo-20261016.jpg">
-<link rel="stylesheet" href="mobile-actions.css?v=mobile-finish">
+<link rel="stylesheet" href="mobile-actions.css?v=nav-860">
 <link rel="canonical" href="https://asiaspiritfest.com/banquet.html">
 </head><body>
-<header class="nav on"><div class="wrap"><a class="brand" href="index.html"><img src="assets/logo-mark.png" alt="">亞洲身心靈文化祭</a><a class="guide-back guide-action btn btn-ghost" href="index.html#schedule">← 返回官網</a><a class="btn btn-main guide-action" href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">立即購票</a></div></header>
+<header class="nav on"><div class="wrap"><a class="brand" href="index.html"><img src="assets/logo-mark.png" alt="">亞洲身心靈文化祭</a><a class="guide-back guide-action btn btn-ghost" href="index.html#schedule">← 返回官網</a><a class="btn btn-main guide-action" data-kktix-buy href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">立即購票</a></div></header>
 <main>
 <div class="guide-intro banquet-intro"><canvas id="stars" aria-hidden="true"></canvas><div class="wrap banquet-hero-layout"><div class="banquet-hero-copy">
 <p class="eyebrow">OPENING BANQUET · 2027.01.03 SUN</p>
@@ -119,12 +119,13 @@
   function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;st=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H*.75,r:Math.random()*1.4+.3,p:Math.random()*6.28,s:Math.random()*.02+.006}))}
   function draw(){x.clearRect(0,0,W,H);for(const s of st){s.p+=s.s;x.globalAlpha=.35+Math.sin(s.p)*.35;x.fillStyle="#fff";x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fill()}if(!reduce)requestAnimationFrame(draw)}
   size();draw();addEventListener("resize",size)})();
-</script><nav class="mobile-actions" aria-label="活動快捷入口"><a href="index.html#experiences">免費活動</a><a class="mobile-buy" href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">晚宴購票 <span aria-hidden="true">↗</span></a></nav>
+</script><nav class="mobile-actions" aria-label="活動快捷入口"><a href="index.html#experiences">免費活動</a><a href="index.html#schedule">時間表</a><a href="index.html#location">交通</a><a class="mobile-buy" data-kktix-buy href="https://kktix.com/events/culturalfestival2027/registrations/new" target="_blank" rel="noopener">晚宴購票 <span aria-hidden="true">↗</span></a></nav>
 <script>
 (()=>{const gallery=document.getElementById('dishGallery'),prev=document.getElementById('dishPrev'),next=document.getElementById('dishNext');
 const update=()=>{prev.disabled=gallery.scrollLeft<2;next.disabled=gallery.scrollLeft+gallery.clientWidth>=gallery.scrollWidth-2};
 const move=dir=>gallery.scrollBy({left:dir*(gallery.querySelector('figure').getBoundingClientRect().width+16),behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
 prev.onclick=()=>move(-1);next.onclick=()=>move(1);gallery.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();move(e.key==='ArrowLeft'?-1:1)}});gallery.addEventListener('scroll',update,{passive:true});addEventListener('resize',update);update();})();
-</script><script>
-(()=>{const el=document.getElementById('banquetOffer');const now=Date.now();if(now>=Date.parse('2026-11-01T00:00:00+08:00')){el.textContent=now<Date.parse('2027-01-03T00:00:00+08:00')?'一般票每人 NT$4,680｜1/2 23:59 截止':'線上售票已截止';}})();
-</script></body></html>
+</script>
+<script src="tickets.js"></script>
+<script>FestivalTickets.boot();</script>
+</body></html>
