@@ -1164,7 +1164,7 @@ details p{font-size:16px;margin:0 0 24px}
 <details><summary><span class="faq-number">8.</span><span class="faq-question">命書可以在活動現場領取嗎？</span></summary><p>命書需完成資料確認後安排製作，交付時間與領取方式以主辦單位後續通知為準。</p></details>
 </div>
 <div class="faq-group" aria-labelledby="faq-group-benefits"><h3 id="faq-group-benefits">權益與領取</h3>
-<details><summary><span class="faq-number">9.</span><span class="faq-question">買票後，贈品和權益什麼時候拿到？</span></summary><p>贈品依購買票種提供，寄送或現場領取方式以購票後通知為準；幸運點於 2027/1/5 起陸續發放。</p><p>詳細權益與相關公告請見 <a href="https://iszn.kktix.cc/events/culturalfestival2027" target="_blank" rel="noopener" style="color:var(--cyan)">KKTIX 售票頁</a>。</p></details>
+<details><summary><span class="faq-number">9.</span><span class="faq-question">買票後，贈品和權益什麼時候拿到？</span></summary><p>贈品依購買票種提供，寄送或現場領取方式以購票後通知為準；幸運點・命書折抵券 500 元：2027/1/5 統一發放，無法在本次活動中使用。</p><p>詳細權益與相關公告請見 <a href="https://iszn.kktix.cc/events/culturalfestival2027" target="_blank" rel="noopener" style="color:var(--cyan)">KKTIX 售票頁</a>。</p></details>
 <details><summary><span class="faq-number">10.</span><span class="faq-question">運費怎麼算？</span></summary><p>寄送地區、運費及是否可改為現場領取，請參閱 <a href="https://iszn.kktix.cc/events/culturalfestival2027" target="_blank" rel="noopener" style="color:var(--cyan)">KKTIX 售票頁</a> 的相關公告；如有特殊需求，請洽官方 LINE <a href="https://lin.ee/wRx6bWV" target="_blank" rel="noopener" style="color:var(--cyan)">@ambscf</a> 確認。</p></details>
 </div>
 <div class="faq-group" aria-labelledby="faq-group-2"><h3 id="faq-group-2">退票與轉讓</h3>
@@ -1327,12 +1327,12 @@ djrow.innerHTML=djs.map(d=>`<article class="dj" style="--c:${d.c}">
 
 // 票券（狀態依販售期間自動切換）
 const tickets=[
- {n:"超早鳥",sub:"開運晚宴票｜前 200 席",p:"3,600",from:"2026-09-01",to:"2026-09-30",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"]},
- {n:"早鳥票",key:"earlyBird",sub:"開運晚宴票",p:"3,980",from:"2026-10-01",to:"2026-10-31",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800"},
+ {n:"超早鳥",sub:"開運晚宴票｜前 200 席",p:"3,600",from:"2026-09-01",to:"2026-09-30",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元（2027/1/5 統一發放，無法在本次活動中使用）","晚宴抽獎券"]},
+ {n:"早鳥票",key:"earlyBird",sub:"開運晚宴票",p:"3,980",from:"2026-10-01",to:"2026-10-31",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元（2027/1/5 統一發放，無法在本次活動中使用）","晚宴抽獎券"],v:"4,800"},
  {n:"命書套票",sub:"晚宴＋命書一次擁有",p:"6,600",from:"2026-09-01",to:"2027-01-02",hot:"晚宴＋命書推薦",f:["開運晚宴一般席位","2027 完整年度命書（含優先製作）","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香","市集抵用券 500 元","晚宴抽獎券＋加碼抽獎券","贈送點數 10,000 點"]},
- {n:"一般票",key:"general",sub:"開運晚宴票",p:"4,680",from:"2026-11-01",to:"2027-01-02",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元","晚宴抽獎券"],v:"4,800"},
+ {n:"一般票",key:"general",sub:"開運晚宴票",p:"4,680",from:"2026-11-01",to:"2027-01-02",f:["開運晚宴一般席位","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","市集抵用券 500 元","命書折抵券 500 元（2027/1/5 統一發放，無法在本次活動中使用）","晚宴抽獎券"],v:"4,800"},
  {n:"VIP 命書票",sub:"尊榮限定",p:"10,400",from:"2026-09-01",to:"2027-01-02",f:["VIP 開運晚宴靠近舞台席位","2027 完整年度命書（含優先製作）","2027 趨勢影片（價值 NT$3,800）","2027 開運紅包","4H 藏香＋香氛蠟燭","VIP 市集抵用券（價值 500 元）","VIP 專屬抽獎券＋加碼抽獎券","贈送點數 12,000 點"]},
- {n:"十人團體桌",sub:"十人同桌，每人 NT$3,980",p:"39,800",unit:"／桌",from:"2026-09-01",to:"2027-01-02",f:["每人開運晚宴一般席位","每人 2027 趨勢影片","每人 2027 開運紅包","每人市集抵用券 500 元","每人命書折抵券 500 元","每人晚宴抽獎券","每人贈送點數 8,000 點","演出／產品曝光須洽主辦單位"]},
+ {n:"十人團體桌",sub:"十人同桌，每人 NT$3,980",p:"39,800",unit:"／桌",from:"2026-09-01",to:"2027-01-02",f:["每人開運晚宴一般席位","每人 2027 趨勢影片","每人 2027 開運紅包","每人市集抵用券 500 元","每人命書折抵券 500 元（2027/1/5 統一發放，無法在本次活動中使用）","每人晚宴抽獎券","每人贈送點數 8,000 點","演出／產品曝光須洽主辦單位"]},
  {n:"命書＋趨勢影片組合",sub:"無法到場也能掌握 2027",p:"5,300",from:"2026-09-01",to:"2027-01-02",url:"https://kktix.com/events/culturalfestival2027/registrations/new",f:["!不含開運晚宴入場席位","2027 完整年度命書（含優先製作）","2027 趨勢影片（價值 NT$3,800）"]},
 ];
 const now=FestivalTickets.nowMs(),fmt=d=>d.slice(5).replace("-","/");
