@@ -1316,7 +1316,7 @@ const djs=[
   {slot:"1/2（六）18:30 — 20:30 · CLOSING",name:"DJ Mandy Ray",role:"帶著東方俠女氣息的跨曲風 DJ",bio:"來自台灣的跨曲風 DJ Mandy Ray，擅長 Psytechno、Techno、Tech House、Electronic、World Music 與 Spiritual Music 等多元曲風。她不以單一風格定義自己，而是感受現場與人群的能量，透過節奏、頻率與情緒，帶領大家走進一場流動的聲音旅程。曾參與羅漢祭、山神祭、地球革命、奇蹟音樂祭、Mirage 等活動，也曾將電子音樂、梵唄與東方精神元素融合於跨界演出，作品更曾多次進入 Mixcloud 全球榜單。對 Mandy Ray 而言，DJ 不只是播放音樂，而是讀取空間的能量，再用音樂重新調頻。",tags:["Psytechno","Techno","World Music"],img:"assets/perf/mandy.jpg",imgStyle:"object-position:50% 0;transform:scale(2.3);transform-origin:53% 25%",url:"https://www.instagram.com/lovedjmandyray/",urlText:"Instagram",c:"var(--amber)"},
   {slot:"1/3（日）15:00 — 16:00",name:"路哥",role:"尺八演奏家・台北極鼓擊團長",bio:"",tags:["尺八"],img:"",url:"https://www.instagram.com/dom112/",urlText:"Instagram",c:"#7dffb0"},
   {slot:"1/3（日）16:00 — 17:00",name:"空行者",role:"梵唄音樂人・跨界創作藝術家",bio:"長年修習梵唄、太極、氣功與冥想，空行者將古老梵音與咒語融入鋼琴、木吉他、電子音樂與 Psytrance，打造跨越傳統與當代的聲音體驗。自 2019 年起持續每日梵唄直播，讓聲音成為陪伴，也成為一場持續不斷的修行。代表作《楞嚴咒心》累積大量聆聽與分享，並曾於羅漢祭、山神祭、地球革命、Mirage 等活動演出。音樂不只是表演，而是一種聲音的修行。",tags:["梵唄","世界音樂","電子"],img:"assets/perf/kongxingzhe.jpg",crop:1,url:"https://www.instagram.com/voidwalker.0.1/",urlText:"Instagram",c:"var(--cyan)"},
-  {slot:"1/3（日）18:00 起 · 開運晚宴",name:"吉董",sub:"吳永吉",role:"開運晚宴開場與壓軸演唱",bio:"頭戴礦工帽、手抱吉他，這次不是來挖礦，是來挖出大家藏在心裡的故事。吉董即將登上亞洲身心靈文化祭舞台，用歌聲陪大家走進生活、感受土地，也聽見那些平常忙到沒空好好聽見的心情。有人用水晶補充能量，有人靠音樂重新充電。如果最近有點累，就來現場聽一首歌吧。",tags:["現場演唱"],img:"assets/perf/jidong-cast.jpg",c:"var(--pink)"},
+  {slot:"1/3（日）18:00 起 · 開運晚宴",name:"吉董",sub:"吳永吉",sub2:"kiat Tàng與礦工兄弟",role:"開運晚宴開場與壓軸演唱",bio:"頭戴礦工帽、手抱吉他，這次不是來挖礦，是來挖出大家藏在心裡的故事。吉董即將登上亞洲身心靈文化祭舞台，用歌聲陪大家走進生活、感受土地，也聽見那些平常忙到沒空好好聽見的心情。有人用水晶補充能量，有人靠音樂重新充電。如果最近有點累，就來現場聽一首歌吧。",tags:["現場演唱"],img:"assets/perf/jidong-cast.jpg",c:"var(--pink)"},
   {slot:"1/3（日）18:45 · 開運晚宴",name:"幾米",sub:"Magic Jimmy",role:"有法力的魔術師",bio:"晚宴當天除了菜會一道一道出現，還可能有東西在你眼前突然消失！這次邀請「法力的魔術師幾米」帶來精彩魔術演出。你可能會看到不可思議的瞬間、懷疑自己的眼睛，最後忍不住問旁邊的人：「剛剛到底發生什麼事？」1 月 3 日晚宴，不只一起吃飯，更要一起見證驚喜與奇蹟。",tags:["魔術","紫微斗數","命理占卦"],img:"assets/perf/jimmy.jpg",imgStyle:"object-position:62% 0;transform:scale(1.9);transform-origin:60% 22%",url:"https://www.instagram.com/jimmychaostudio/",urlText:"Instagram",c:"var(--amber)"},
 ];
 const djrow=document.getElementById("djrow");
@@ -1324,7 +1324,7 @@ djrow.innerHTML=djs.map(d=>`<article class="dj" style="--c:${d.c}">
   <p class="performance-access ${["吉董","幾米"].includes(d.name)?"paid":"free"}">${["吉董","幾米"].includes(d.name)?"晚宴限定・須購票":"免費舞台"}</p>
   <div class="slot">${d.slot}</div>
   <div class="disc ${d.img?"photo":""} ${d.crop?"crop":""}">${d.img?`<img src="${d.img}" alt="${d.name}" loading="lazy" decoding="async"${d.imgStyle?` style="${d.imgStyle}"`:""}>`:`<span>${[...d.name.replace("DJ ","")].slice(0,2).join("").toUpperCase()}</span>`}</div>
-  <h3>${d.name}${d.sub&&d.sub!==d.name?`<small>${d.sub}</small>`:""}</h3>
+  <h3>${d.name}${d.sub&&d.sub!==d.name?`<small>${d.sub}</small>`:""}${d.sub2?`<small class="sub2">${d.sub2}</small>`:""}</h3>
   <p class="role">${d.name==="Subi"?"讓小提琴與電子節拍交織的音樂人":d.role}</p>
   <details class="performer-details"><summary>查看完整介紹</summary><div class="performer-details-body"><p class="bio">${d.bio||"介紹即將公開"}</p>
   ${d.url?`<a class="djlink" href="${d.url}" target="_blank" rel="noopener">${d.urlText||"看更多"} ↗</a>`:""}
