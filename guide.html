@@ -85,4 +85,7 @@
   function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;st=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H*.75,r:Math.random()*1.4+.3,p:Math.random()*6.28,s:Math.random()*.02+.006}))}
   function draw(){x.clearRect(0,0,W,H);for(const s of st){s.p+=s.s;x.globalAlpha=.35+Math.sin(s.p)*.35;x.fillStyle="#fff";x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fill()}if(!reduce)requestAnimationFrame(draw)}
   size();draw();addEventListener("resize",size)})();
-</script></body></html>
+</script><!-- Cloudflare Web Analytics -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"f1c8b30029904bfea5128dfb308c660d"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body></html>
